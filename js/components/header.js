@@ -32,11 +32,11 @@ export function renderHeader(activeKey = "", basePath = ""){
       <a href="${basePath}index.html" class="logo header-logo"><img class="header-logo-image" src="${basePath}img/logo-nong-san-xanh.png" alt="Logo Nông Sản Xanh"></a>
       <form class="search-box" id="header-search-form">
         <input type="search" id="header-search-input" placeholder="Tìm sản phẩm, nông sản, nhà vườn...">
-        <button type="submit" title="Tìm kiếm">🔍</button>
+        <button type="submit" title="Tìm kiếm" aria-label="Tìm kiếm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></button>
       </form>
       <div class="header-actions">
         ${accountHtml}
-        <a href="${basePath}gio-hang.html" class="icon-btn" title="Giỏ hàng"><span class="cart-icon">🛒</span><span class="cart-count" id="cart-count">0</span></a>
+        <a href="${basePath}gio-hang.html" class="icon-btn" title="Giỏ hàng" aria-label="Giỏ hàng"><span class="cart-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart" aria-hidden="true"><path d="m2.05 2.05 1.099-.028a1 1 0 0 1 1.008.815l2.69 14.347A1 1 0 0 0 7.83 18H18"/><path d="M4.563 5h16.435a1 1 0 0 1 .981 1.204l-1.026 6.226A2 2 0 0 1 18.962 14H6.25"/><circle cx="18" cy="20" r="2"/><circle cx="8" cy="20" r="2"/></svg></span><span class="cart-count" id="cart-count">0</span></a>
         <button class="nav-toggle" id="nav-toggle" aria-label="Menu">☰</button>
       </div>
     </div>

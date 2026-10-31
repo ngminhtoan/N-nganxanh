@@ -22,6 +22,9 @@ export function productCardHtml(product, farm, basePath = "", options = {}){
   const originHtml = options.showOrigin === false
     ? ""
     : `<div class="product-origin">${product.origin}${farm ? " · " + farm.name : ""}</div>`;
+  const harvestHtml = product.harvestSeason
+    ? `<div class="product-origin product-harvest">Mùa vụ: ${product.harvestSeason}</div>`
+    : "";
 
   return `
     <div class="product-card">
@@ -35,10 +38,9 @@ export function productCardHtml(product, farm, basePath = "", options = {}){
         ${logoStamp(basePath)}
       </div>
       <div class="product-body">
-        <span class="product-cat">${product.category}</span>
         <div class="product-name"><a href="${basePath}chi-tiet-san-pham.html?id=${product.id}">${product.name}</a></div>
         ${originHtml}
-        <div class="product-origin product-harvest">${product.harvestSeason ? `🗓️ Mùa vụ: ${product.harvestSeason}` : ""}</div>
+        ${harvestHtml}
         <div class="product-standards${standardsHtml ? "" : " is-empty"}">${standardsHtml}</div>
         <div class="product-price ${priceClass}">
           ${priceLabel}${priceExtra}

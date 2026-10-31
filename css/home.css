@@ -214,7 +214,8 @@
 }
 /* Hai nút nổi cạnh tiêu đề "Sản phẩm nổi bật" */
 .quote-buttons{ display:flex; flex-direction:column; gap:10px; }
-.quote-buttons .btn{ border-radius: 999px; justify-content:flex-start; padding: 11px 22px; }
+.quote-buttons .btn{ border-radius: 4px; justify-content:flex-start; padding: 8px 12px; }
+.quote-buttons .btn svg{ width:16px; height:16px; flex:0 0 16px; }
 
 /* ---------- Modal "Nhận báo giá" ---------- */
 .lead-modal-overlay{

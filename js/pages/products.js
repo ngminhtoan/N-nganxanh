@@ -65,7 +65,7 @@ function applyAndRender(){
 
   resultCount.textContent = `${list.length} sản phẩm`;
   if(list.length === 0){
-    grid.innerHTML = `<div class="state-box" style="grid-column:1/-1;"><div class="glyph">🌾</div><p>Chưa có sản phẩm phù hợp bộ lọc.</p></div>`;
+    grid.innerHTML = `<div class="state-box" style="grid-column:1/-1;"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package-x" aria-hidden="true" style="display:inline-block; width:52px; height:52px; vertical-align:middle;"><path d="M12 22V12"/><path d="m16.5 14.5 5 5"/><path d="m16.5 19.5 5-5"/><path d="M21 10.5V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.729l7 4a2 2 0 0 0 2 .001l.13-.074"/><path d="M3.29 7 12 12l8.71-5"/><path d="m7.5 4.27 8.997 5.148"/></svg></div><p>Chưa có sản phẩm phù hợp bộ lọc.</p></div>`;
     return;
   }
   grid.innerHTML = list.map(p => productCardHtml(p, farms.find(f => f.id === p.farmId), "", { showOrigin: false })).join("");
