@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lịch sử đơn hàng — Nông Sản Việt</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
+
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Trang chủ</a> / <a href="tai-khoan.html">Tài khoản</a> / Lịch sử đơn hàng</div>
+
+    <div class="account-layout">
+      <aside class="account-nav">
+        <a href="tai-khoan.html">Thông tin cá nhân</a>
+        <a href="lich-su-don-hang.html" class="active">Lịch sử đơn hàng</a>
+        <a href="admin/index.html" id="farm-admin-link" style="display:none;">Khu vực nhà vườn/HTX</a>
+      </aside>
+
+      <div>
+        <div class="section-head"><div><h2>Lịch sử đơn hàng</h2></div></div>
+
+        <div id="order-history-table-wrap">
+          <table class="order-table">
+            <thead>
+              <tr><th>Mã đơn</th><th>Ngày đặt</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Trạng thái</th><th></th></tr>
+            </thead>
+            <tbody id="order-history-body"></tbody>
+          </table>
+        </div>
+
+        <div class="state-box" id="order-history-empty" style="display:none;">
+          <div class="glyph">📦</div>
+          <p>Bạn chưa có đơn hàng nào.</p>
+          <a href="san-pham.html" class="btn btn-outline">Mua sắm ngay</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script type="module" src="js/pages/order-history.js"></script>
+</body>
+</html>

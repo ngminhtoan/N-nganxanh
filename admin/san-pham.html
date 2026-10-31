@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quản lý sản phẩm — Nông Sản Việt</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="icon" type="image/png" href="../img/logo-nong-san-xanh.png">
+
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="logo"><img class="logo-img" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Việt"> Nông Sản Việt</div>
+    <nav>
+      <a href="index.html">📊 Bảng điều khiển</a>
+      <a href="san-pham.html" class="active">🌿 Sản phẩm</a>
+      <a href="don-hang.html">📦 Đơn hàng</a>
+      <a href="doanh-thu.html">💰 Doanh thu</a>
+      <a href="thong-tin-htx.html">🏢 Thông tin HTX</a>
+    </nav>
+    <a href="../index.html" class="back-link">← Về trang khách hàng</a>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1>Quản lý sản phẩm</h1>
+      <div class="admin-user-chip">
+        Xin chào, <strong id="admin-user-name"></strong> ·
+        <button type="button" id="admin-logout" style="color:var(--color-danger); font-weight:600;">Đăng xuất</button>
+      </div>
+    </div>
+
+    <div class="admin-panel">
+      <div class="admin-toolbar">
+        <input type="search" id="admin-product-search" class="admin-search" placeholder="Tìm sản phẩm theo tên...">
+        <a href="them-san-pham.html" class="btn btn-sm">+ Thêm sản phẩm</a>
+      </div>
+      <table class="admin-table">
+        <thead>
+          <tr><th>Sản phẩm</th><th>Danh mục</th><th>Giá</th><th>Tồn kho</th><th>Mùa vụ</th><th></th></tr>
+        </thead>
+        <tbody id="admin-products-body"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="../js/admin/products.js"></script>
+</body>
+</html>

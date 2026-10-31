@@ -1,0 +1,128 @@
+/* =========================================================
+   THEME.CSS — nạp SAU cùng các file css khác trên mọi trang.
+   Màu chữ thống nhất, căn đều hai bên, ảnh + logo cho thẻ, trang đăng nhập.
+
+   >> Muốn đổi màu nền xanh lá: sửa --color-bg / --color-bg-alt trong style.css
+   >> Muốn đổi màu chữ chung : sửa --color-text trong style.css
+   ========================================================= */
+
+:root{ color-scheme:light; }
+
+/* ---------- 2. Màu chữ THỐNG NHẤT cho nội dung ---------- */
+.about-hero .logo-text, .mv-card .mv-head h3, .full-title, .value-slide h3, .value-slide p,
+.journey-card p, .stat-item .num, .cert-badge .name, .product-name a, .product-price,
+.detail-price, .shop-title, .cat-title, .shop-card-name, .vn-map-pin{
+  color: var(--color-text);
+}
+/* Các phần tử cần chữ sáng trên nền tối/ảnh: menu, footer, banner, chú thích ảnh */
+.header-bottom .main-nav a{ color:#fff; }
+.header-bottom .main-nav a.active{ color:#fff; border-color:#fff; }
+.site-footer, .site-footer p, .site-footer li, .site-footer a, .site-footer .footer-bottom{ color:#fff; }
+.site-footer p, .site-footer li{ opacity:.92; }
+.site-footer .footer-bottom{ opacity:.8; }
+
+/* ---------- 3. Căn đều hai bên cho mọi đoạn nội dung ---------- */
+p, .farm-desc, .detail-desc, .product-desc, .cat-desc, .shop-desc, .about-text{
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+/* ngoại lệ: khối vốn là chữ căn giữa (nếu căn đều sẽ xấu) */
+.state-box p, .login-required-box p, .qc-intro p, .qc-card p, .cert-card p, .cert-note,
+.stat-item p, .footer-bottom, .auth-foot, .lead-modal-form p[style*="center"]{
+  text-align:center;
+}
+
+/* ---------- 4. Logo + ảnh cho thẻ ---------- */
+.logo .logo-img{ width:38px; height:38px; flex-shrink:0; }
+.footer-brand{ display:flex; align-items:center; gap:10px; }
+.footer-brand.footer-brand-image{ width:110px; margin-bottom:12px; }
+.footer-brand-image .footer-logo-img{ display:block; width:100%; height:auto; object-fit:contain; }
+.footer-brand .logo-img{ width:40px; height:40px; }
+.admin-sidebar .logo{ display:flex; align-items:center; gap:10px; }
+.admin-sidebar .logo .logo-img{ width:34px; height:34px; }
+.lead-modal-info .modal-logo{ padding:0; overflow:visible; background:none; }
+.lead-modal-info .modal-logo img{ display:block; width:100%; height:auto; object-fit:contain; }
+.auth-logo{ width:64px; height:64px; margin:0 auto 14px; }
+.auth-logo-full{ display:block; width:180px; max-width:100%; height:auto; margin:0 auto 18px; object-fit:contain; }
+
+/* ảnh phủ kín khung (thẻ sản phẩm, slide, nhà vườn...). Nếu ảnh lỗi, emoji bên dưới vẫn hiển thị */
+.img-fill{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.product-thumb, .shop-card-thumb, .cart-thumb, .farm-logo, .detail-visual{ position:relative; overflow:hidden; }
+.product-thumb .thumb-badges, .shop-card-thumb .thumb-badges, .shop-card-tags{ z-index:3; }
+/* logo nhỏ đóng dấu ở góc dưới của thẻ sản phẩm */
+.thumb-logo{
+  position:absolute; right:8px; bottom:8px; z-index:3;
+  width:40px; height:40px; border-radius:50%;
+  padding:4px; border:2px solid #fff; object-fit:contain;
+  box-shadow:0 2px 6px rgba(0,0,0,.3); background:#fff;
+}
+.feature-slide-image .thumb-logo{ top:10px; right:10px; bottom:auto; }
+.farm-card .farm-logo{ width:60px; height:60px; border:2px solid var(--color-line); }
+.farm-card .farm-logo .farm-logo-badge{
+  position:absolute; right:-2px; bottom:-2px; width:20px; height:20px; border-radius:50%; background:#fff; z-index:2;
+}
+.category-card .category-img{
+  width:86px; height:86px; margin:0 auto 12px; border-radius:16px; object-fit:cover;
+  box-shadow: 0 4px 10px rgba(30,42,31,.18);
+}
+.cert-badge .ring img{ display:block; width:100%; height:100%; object-fit:contain; object-position:center; border-radius:0; }
+.hero-slide .hero-slide-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; }
+.hero-slide-caption{ z-index:2; }
+
+/* ---------- Khung ảnh FULL MÀN HÌNH dưới banner ---------- */
+.fullscreen-image{
+  position:relative; width:100%; height:100vh; min-height:440px; max-height:1080px;
+  margin-top:48px; overflow:hidden; background: var(--color-primary-dark);
+}
+.fullscreen-image img{ width:100%; height:100%; object-fit:cover; display:block; }
+.fullscreen-image::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: linear-gradient(0deg, rgba(10,25,14,.7) 0%, rgba(10,25,14,.05) 55%);
+}
+.fullscreen-caption{
+  position:absolute; left:0; right:0; bottom:0; z-index:2;
+  max-width: var(--container); margin:0 auto; padding: 0 28px 48px; color:#fff;
+}
+.fullscreen-caption h2{ color:#fff; font-size: clamp(1.6rem, 3.4vw, 2.6rem); margin-bottom:.3em; }
+.fullscreen-caption p{ color:#fff; max-width:60ch; opacity:.95; text-align:left; }
+
+/* ---------- Trang đăng nhập / đăng ký / quản trị: chữ TRẮNG hoặc ĐEN ---------- */
+body.auth-page{ background: linear-gradient(160deg, #1E4A28 0%, #0F2A18 100%); background-attachment: fixed; min-height:100vh; }
+body.auth-page .site-footer{ border-top:1px solid rgba(255,255,255,.18); }
+.auth-page .auth-shell{
+  --color-text:#000; --color-ink:#000; --color-ink-soft:#000; --color-surface:#fff; --color-line:#9DB592;
+  background:#fff; color:#000;
+}
+.auth-page .auth-shell h1, .auth-page .auth-shell p, .auth-page .auth-shell label,
+.auth-page .auth-shell .sub, .auth-page .auth-shell .auth-foot, .auth-page .auth-shell strong{ color:#000; }
+.auth-page .auth-shell .auth-foot a{ color:#1E4A28; text-decoration:underline; }
+.auth-page .auth-shell .field input, .auth-page .auth-shell .field select{ background:#fff; color:#000; }
+.auth-page .auth-shell .btn{ color:#fff; }
+.login-page #login-form button[type="submit"]{
+  background:#2F6B3C; border-color:#2F6B3C; color:#F6D84A; border-radius:999px;
+}
+.login-page #login-form button[type="submit"]:hover{
+  background:#1E4A28; border-color:#1E4A28; color:#F6D84A;
+}
+.auth-page .auth-shell .role-toggle button:not(.is-active){ background:#fff; color:#000; }
+@media (max-width: 620px){
+  .fullscreen-image{ height:70vh; min-height:340px; }
+  .fullscreen-caption{ padding-bottom:28px; }
+  .category-card .category-img{ width:64px; height:64px; }
+}
+
+/* ---------- Trang Sản phẩm: khung từng nhóm có ảnh + logo ---------- */
+.shop-visual-img{
+  position:absolute; right:6%; bottom:8%; width:44%; aspect-ratio:1/1; object-fit:cover;
+  border-radius:20px; box-shadow:0 10px 24px rgba(30,74,40,.3); border:3px solid #fff;
+}
+.shop-block--photo .shop-visual-img{ inset:0; z-index:0; width:100%; height:100%; aspect-ratio:auto; object-fit:cover; border:0; border-radius:inherit; box-shadow:none; }
+.shop-visual-logo{ position:absolute; left:28px; bottom:22px; width:44px; height:44px; border-radius:50%; background:#fff; box-shadow:0 3px 8px rgba(0,0,0,.25); }
+.detail-visual .img-fill{ border-radius: var(--radius); }
+
+/* Chú thích + chấm điều hướng của banner không bị thanh thống kê (nổi lên -38px) che mất */
+.hero-slide-caption{ padding-bottom: 62px; }
+.hero-slider .slider-dots{ bottom: 50px; }
+.auth-shell .sub{ text-align:center; }

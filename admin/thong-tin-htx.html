@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thông tin HTX — Nông Sản Xanh</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="icon" type="image/png" href="../img/logo-nong-san-xanh.png">
+
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="logo"><img class="logo-img" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Việt"> Nông Sản Xanh</div>
+    <nav>
+      <a href="index.html">📊 Bảng điều khiển</a>
+      <a href="san-pham.html">🌿 Sản phẩm</a>
+      <a href="don-hang.html">📦 Đơn hàng</a>
+      <a href="doanh-thu.html">💰 Doanh thu</a>
+      <a href="thong-tin-htx.html" class="active">🏢 Thông tin HTX</a>
+    </nav>
+    <a href="../index.html" class="back-link">← Về trang khách hàng</a>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1>Thông tin Nhà vườn/HTX</h1>
+      <div class="admin-user-chip">
+        Xin chào, <strong id="admin-user-name"></strong> ·
+        <button type="button" id="admin-logout" style="color:var(--color-danger); font-weight:600;">Đăng xuất</button>
+      </div>
+    </div>
+
+    <div class="admin-panel" style="max-width:640px;">
+      <form id="farm-profile-form">
+        <div class="field">
+          <label for="fp-name">Tên nhà vườn/HTX</label>
+          <input type="text" id="fp-name">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="fp-type">Loại hình</label>
+            <select id="fp-type">
+              <option value="Nhà vườn">Nhà vườn</option>
+              <option value="Hợp tác xã">Hợp tác xã</option>
+              <option value="Cơ sở sản xuất">Cơ sở sản xuất</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fp-province">Tỉnh/thành</label>
+            <input type="text" id="fp-province">
+          </div>
+        </div>
+        <div class="field">
+          <label for="fp-address">Địa chỉ</label>
+          <input type="text" id="fp-address">
+        </div>
+        <div class="field">
+          <label for="fp-phone">Số điện thoại</label>
+          <input type="tel" id="fp-phone">
+          <div style="font-size:.78rem; color:var(--color-ink-soft); margin-top:6px;">Số này sẽ hiển thị công khai trên sản phẩm ở chế độ "Liên hệ nhà vườn" để khách hàng gọi trực tiếp.</div>
+        </div>
+        <div class="field">
+          <label for="fp-taxrate">Thuế suất áp dụng (%)</label>
+          <input type="number" id="fp-taxrate" min="0" max="100" step="0.1" placeholder="Ví dụ: 10">
+          <div style="font-size:.78rem; color:var(--color-ink-soft); margin-top:6px;">Dùng để tính doanh thu sau thuế trên Bảng điều khiển. Đây là con số mô phỏng cho mục đích học tập, không phải mức thuế thực tế.</div>
+        </div>
+        <div class="field">
+          <label for="fp-description">Giới thiệu</label>
+          <textarea id="fp-description" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn">Lưu thay đổi</button>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="../js/admin/farm-profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tìm kiếm sản phẩm — Nông Sản Việt</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/product.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
+
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><div><h2 id="search-title">Tìm kiếm sản phẩm</h2></div></div>
+
+    <form id="search-form" class="filter-price-row" style="max-width:520px; margin-bottom:32px; gap:10px;">
+      <input type="search" id="search-input" placeholder="Tìm theo tên, danh mục, nguồn gốc, nhà vườn..." style="flex:1; padding:11px 14px; border:1px solid var(--color-line); border-radius:6px;">
+      <button type="submit" class="btn btn-sm">Tìm</button>
+    </form>
+
+    <div class="product-grid" id="search-grid"></div>
+
+    <div class="state-box" id="search-empty" style="display:none;">
+      <div class="glyph">🔍</div>
+      <p>Không tìm thấy sản phẩm phù hợp.</p>
+      <a href="#" id="clear-search" class="btn btn-outline">Xóa bộ lọc</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script type="module" src="js/pages/search.js"></script>
+</body>
+</html>

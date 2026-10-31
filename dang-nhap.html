@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng nhập — Nông Sản Việt</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
+
+</head>
+<body class="auth-page login-page">
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<div class="auth-shell">
+  <img class="auth-logo auth-logo-full" src="img/logo-nong-san-xanh.png" alt="Logo Nông Sản Xanh">
+  <h1 style="text-align:center;">Đăng nhập</h1>
+  <p class="sub">Đăng nhập để mua sắm và theo dõi đơn hàng</p>
+
+  <div class="form-note" id="form-note"></div>
+
+  <form id="login-form" novalidate>
+    <div class="field">
+      <label for="login-email">Email</label>
+      <input type="email" id="login-email" placeholder="ban@email.com">
+      <div class="field-error"></div>
+    </div>
+    <div class="field">
+      <label for="login-password">Mật khẩu</label>
+      <input type="password" id="login-password" placeholder="Tối thiểu 6 ký tự">
+      <div class="field-error"></div>
+    </div>
+    <button type="submit" class="btn btn-block">Đăng nhập</button>
+  </form>
+
+  <div class="auth-foot">Chưa có tài khoản? <a href="dang-ky.html">Đăng ký ngay</a></div>
+</div>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script type="module" src="js/pages/auth.js"></script>
+</body>
+</html>

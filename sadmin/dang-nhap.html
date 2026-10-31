@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng nhập Quản trị hệ thống — Nông Sản Việt</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/cart.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="icon" type="image/png" href="../img/logo-nong-san-xanh.png">
+
+</head>
+<body class="auth-page">
+
+<div class="auth-shell" style="margin-top:100px;">
+  <img class="auth-logo" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Việt">
+  <h1 style="text-align:center;">Quản trị hệ thống</h1>
+  <p class="sub">Dành riêng cho quản trị viên sàn Nông Sản Xanh</p>
+
+  <div class="form-note" id="form-note"></div>
+
+  <form id="sadmin-login-form" novalidate>
+    <div class="field">
+      <label for="sadmin-email">Email quản trị</label>
+      <input type="email" id="sadmin-email" placeholder="admin@nongsanviet.vn">
+    </div>
+    <div class="field">
+      <label for="sadmin-password">Mật khẩu</label>
+      <input type="password" id="sadmin-password" placeholder="••••••••">
+    </div>
+    <button type="submit" class="btn btn-block">Đăng nhập quản trị</button>
+  </form>
+
+  <div class="auth-foot" style="font-size:.8rem;">
+  <strong>admin@nongsanviet.vn</strong> / admin123
+  </div>
+  <div class="auth-foot"><a href="../index.html">← Về trang chính của sàn</a></div>
+</div>
+
+<script type="module" src="../js/sadmin/auth.js"></script>
+</body>
+</html>

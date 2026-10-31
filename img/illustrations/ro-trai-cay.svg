@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Rổ trái cây tươi</title>
+  <desc id="desc">Minh họa rổ mây đựng táo, cam, nho, chuối và lá xanh.</desc>
+  <defs>
+    <linearGradient id="basket" x1="166" y1="347" x2="478" y2="501" gradientUnits="userSpaceOnUse"><stop stop-color="#D89A4D"/><stop offset=".52" stop-color="#C77D35"/><stop offset="1" stop-color="#A95D28"/></linearGradient>
+    <linearGradient id="rim" x1="157" y1="352" x2="484" y2="375" gradientUnits="userSpaceOnUse"><stop stop-color="#F0BD72"/><stop offset="1" stop-color="#C57A34"/></linearGradient>
+    <linearGradient id="apple" x1="203" y1="196" x2="295" y2="319" gradientUnits="userSpaceOnUse"><stop stop-color="#FF7660"/><stop offset="1" stop-color="#D83E36"/></linearGradient>
+    <linearGradient id="orange" x1="346" y1="216" x2="440" y2="315" gradientUnits="userSpaceOnUse"><stop stop-color="#FFC45A"/><stop offset="1" stop-color="#F08A28"/></linearGradient>
+    <linearGradient id="grape" x1="270" y1="241" x2="341" y2="329" gradientUnits="userSpaceOnUse"><stop stop-color="#9870D8"/><stop offset="1" stop-color="#6546A8"/></linearGradient>
+    <filter id="shadow" x="95" y="54" width="457" height="471" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="13"/></filter>
+  </defs>
+  <ellipse cx="321" cy="469" fill="#214D2E" fill-opacity=".13" rx="206" ry="28" filter="url(#shadow)"/>
+  <!-- foliage -->
+  <path d="M197 267c-48-10-68-53-59-97 42 7 70 38 59 97Z" fill="#58A945"/>
+  <path d="M201 272c-8-37-27-65-52-89" stroke="#9BD47A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M432 261c4-48 38-77 83-75 1 43-27 76-83 75Z" fill="#4D9B3D"/>
+  <path d="M431 267c24-33 48-52 72-66" stroke="#9BD47A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M279 232c-28-42-16-87 20-113 31 31 32 74-20 113Z" fill="#398F47"/>
+  <path d="M282 234c2-34 10-65 22-91" stroke="#83C76E" stroke-width="4" stroke-linecap="round"/>
+  <path d="M355 220c-4-44 23-74 65-77 9 39-11 71-65 77Z" fill="#6CB94B"/>
+  <path d="M355 224c19-31 37-49 57-65" stroke="#B3DE7D" stroke-width="4" stroke-linecap="round"/>
+  <!-- banana -->
+  <path d="M186 292c-18-29-11-65 17-91 24 7 47 39 53 72 6 31-14 52-37 48-14-2-24-13-33-29Z" fill="#F7C94F" stroke="#DDAA34" stroke-width="4"/>
+  <path d="M193 284c21 10 40 7 56-10" stroke="#FFE68A" stroke-width="8" stroke-linecap="round"/>
+  <path d="m188 294-10 5m76-26 8-9" stroke="#8D6332" stroke-width="6" stroke-linecap="round"/>
+  <!-- apple -->
+  <path d="M247 208c-16-15-43-14-58 0-21 19-19 60-4 86 13 23 30 31 51 18 21 13 40 5 52-19 13-27 12-65-8-84-14-13-32-15-46-1Z" fill="url(#apple)"/>
+  <path d="M244 207c-2-18 5-29 18-36" stroke="#75502F" stroke-width="8" stroke-linecap="round"/>
+  <path d="M247 185c20-17 38-14 46 1-18 10-34 10-46-1Z" fill="#60A947"/>
+  <path d="M204 235c-5 13-5 26-1 35" stroke="#FFB08E" stroke-width="6" stroke-linecap="round" opacity=".75"/>
+  <!-- orange -->
+  <circle cx="393" cy="267" r="52" fill="url(#orange)"/>
+  <path d="M393 215c-3-11 1-19 10-24" stroke="#75502F" stroke-width="7" stroke-linecap="round"/>
+  <path d="M398 201c17-14 33-11 39 2-15 9-29 8-39-2Z" fill="#5AAB43"/>
+  <path d="M365 247c-4 10-5 18-3 27" stroke="#FFE29A" stroke-width="6" stroke-linecap="round" opacity=".85"/>
+  <!-- grapes -->
+  <path d="M299 222c5-18 27-25 40-10 14-10 33-1 31 16 13 10 7 29-7 34 3 17-16 29-30 20-13 12-34 3-32-14-16-8-15-30-2-37Z" fill="url(#grape)"/>
+  <circle cx="303" cy="241" r="13" fill="#8862C4"/><circle cx="327" cy="224" r="13" fill="#A286E1"/><circle cx="350" cy="240" r="13" fill="#8E6CCF"/><circle cx="316" cy="263" r="13" fill="#7554B8"/><circle cx="340" cy="264" r="13" fill="#9877D6"/><circle cx="329" cy="286" r="12" fill="#7352B6"/>
+  <path d="M325 216c-3-12 0-22 9-29" stroke="#75502F" stroke-width="6" stroke-linecap="round"/>
+  <path d="M330 197c15-15 30-12 36-1-13 9-25 10-36 1Z" fill="#59A746"/>
+  <!-- basket body -->
+  <path d="M165 365c6 74 24 121 52 141h208c28-20 46-67 52-141H165Z" fill="url(#basket)"/>
+  <path d="M189 390h262M197 420h246M205 450h230M218 480h204" stroke="#F2C17B" stroke-opacity=".7" stroke-width="8" stroke-linecap="round"/>
+  <path d="m232 374 22 128m51-128 10 132m53-132-8 132m55-132-21 128" stroke="#8F4F29" stroke-opacity=".45" stroke-width="7"/>
+  <path d="M157 354c0-12 10-21 22-21h316c12 0 22 9 22 21v15c0 11-10 20-22 20H179c-12 0-22-9-22-20v-15Z" fill="url(#rim)" stroke="#A85F2A" stroke-width="5"/>
+  <path d="M172 357h330" stroke="#FFE0A1" stroke-width="6" stroke-linecap="round" opacity=".75"/>
+</svg>

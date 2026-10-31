@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Danh sách sản phẩm — Nông Sản Việt</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/product.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
+
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<section class="section">
+  <div class="wrap wrap-narrow">
+    <div class="breadcrumb" id="cat-breadcrumb"></div>
+    <div class="cat-intro" id="cat-intro"></div>
+
+    <div class="cat-toolbar">
+      <h2 class="cat-heading" id="cat-heading"></h2>
+      <select class="sort-select" id="sort-select">
+        <option value="">Sắp xếp mặc định</option>
+        <option value="price-asc">Giá thấp đến cao</option>
+        <option value="price-desc">Giá cao đến thấp</option>
+        <option value="name-asc">Tên A-Z</option>
+        <option value="name-desc">Tên Z-A</option>
+      </select>
+    </div>
+    <div class="product-grid shop-grid" id="product-grid"></div>
+  </div>
+</section>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script type="module" src="js/pages/category.js"></script>
+</body>
+</html>

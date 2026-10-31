@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tài khoản — Nông Sản Việt</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
+
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Trang chủ</a> / Tài khoản</div>
+    <div class="section-head"><div><h2 id="acc-name">Tài khoản của tôi</h2><p id="acc-type"></p></div></div>
+
+    <div class="account-layout">
+      <aside class="account-nav">
+        <a href="tai-khoan.html" class="active">Thông tin cá nhân</a>
+        <a href="lich-su-don-hang.html">Lịch sử đơn hàng</a>
+        <a href="admin/index.html" id="farm-admin-link" style="display:none;">Khu vực nhà vườn/HTX</a>
+      </aside>
+
+      <div>
+        <div class="account-card">
+          <h3>Thông tin cá nhân</h3>
+          <div class="info-row"><span>Email</span><span id="info-email"></span></div>
+          <div class="info-row"><span>Số điện thoại</span><span id="info-phone"></span></div>
+          <div class="info-row"><span>Địa chỉ</span><span id="info-address"></span></div>
+        </div>
+
+        <div class="account-card">
+          <h3>Đơn hàng gần đây</h3>
+          <div id="recent-orders"></div>
+          <a href="lich-su-don-hang.html" class="btn btn-outline btn-sm" style="margin-top:14px;">Xem toàn bộ lịch sử</a>
+        </div>
+
+        <button type="button" id="logout-btn" class="btn btn-outline">Đăng xuất</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script type="module" src="js/pages/account.js"></script>
+</body>
+</html>

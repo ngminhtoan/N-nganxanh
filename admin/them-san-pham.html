@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thêm sản phẩm — Nông Sản Xanh</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="icon" type="image/png" href="../img/logo-nong-san-xanh.png">
+
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="logo"><img class="logo-img" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Việt"> Nông Sản Xanh</div>
+    <nav>
+      <a href="index.html">📊 Bảng điều khiển</a>
+      <a href="san-pham.html" class="active">🌿 Sản phẩm</a>
+      <a href="don-hang.html">📦 Đơn hàng</a>
+      <a href="doanh-thu.html">💰 Doanh thu</a>
+      <a href="thong-tin-htx.html">🏢 Thông tin HTX</a>
+    </nav>
+    <a href="../index.html" class="back-link">← Về trang khách hàng</a>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1 id="form-title">Thêm sản phẩm mới</h1>
+      <div class="admin-user-chip">
+        Xin chào, <strong id="admin-user-name"></strong> ·
+        <button type="button" id="admin-logout" style="color:var(--color-danger); font-weight:600;">Đăng xuất</button>
+      </div>
+    </div>
+
+    <div class="admin-panel">
+      <form id="product-form" class="admin-form-grid">
+        <div class="field field-full">
+          <label for="pf-name">Tên sản phẩm</label>
+          <input type="text" id="pf-name" placeholder="Ví dụ: Xoài Cát Hòa Lộc">
+        </div>
+
+        <div class="field">
+          <label for="pf-category">Danh mục</label>
+          <select id="pf-category"></select>
+        </div>
+        <div class="field">
+          <label for="pf-origin">Nguồn gốc (tỉnh/thành)</label>
+          <input type="text" id="pf-origin" placeholder="Ví dụ: Tiền Giang">
+        </div>
+
+        <div class="field">
+          <label for="pf-priceType">Loại giá</label>
+          <select id="pf-priceType">
+            <option value="fixed">Giá cố định</option>
+            <option value="market">Giá thị trường</option>
+            <option value="negotiable">Giá thỏa thuận</option>
+            <option value="contact">Liên hệ nhà vườn</option>
+          </select>
+          <div style="font-size:.78rem; color:var(--color-ink-soft); margin-top:6px;">Nếu chọn "Liên hệ nhà vườn", trang sản phẩm sẽ hiển thị số điện thoại gian hàng thay vì giá.</div>
+        </div>
+        <div class="field">
+          <label for="pf-price">Giá (đ)</label>
+          <input type="number" id="pf-price" min="0" placeholder="Ví dụ: 85000">
+        </div>
+
+        <div class="field">
+          <label for="pf-unit">Đơn vị tính</label>
+          <input type="text" id="pf-unit" placeholder="kg, gói 500g, hũ 500g...">
+        </div>
+        <div class="field">
+          <label for="pf-stock">Tồn kho</label>
+          <input type="number" id="pf-stock" min="0" placeholder="Ví dụ: 120">
+        </div>
+
+        <div class="field">
+          <label for="pf-season">Tình trạng mùa vụ hiện tại</label>
+          <select id="pf-season">
+            <option value="in-season">Đang vào mùa</option>
+            <option value="limited">Nguồn cung hạn chế</option>
+            <option value="pre-order">Đặt trước</option>
+            <option value="out-of-season">Đã hết mùa</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="pf-harvest">Mùa vụ thu hoạch (thông tin tham khảo)</label>
+          <input type="text" id="pf-harvest" placeholder="Ví dụ: Tháng 3 - Tháng 5, hoặc Quanh năm">
+        </div>
+
+        <div class="field field-full">
+          <label>Chứng nhận (nếu có)</label>
+          <div class="chip-select" id="pf-standards"></div>
+        </div>
+
+        <div class="field">
+          <label for="pf-glyph">Biểu tượng hiển thị (emoji, placeholder cho hình ảnh)</label>
+          <input type="text" id="pf-glyph" placeholder="🥭">
+        </div>
+
+        <div class="field field-full">
+          <label for="pf-description">Mô tả sản phẩm</label>
+          <textarea id="pf-description" rows="4"></textarea>
+        </div>
+
+        <div class="field-full" style="display:flex; gap:12px; margin-top:8px;">
+          <button type="submit" class="btn">Lưu sản phẩm</button>
+          <a href="san-pham.html" class="btn btn-outline">Hủy</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="../js/admin/product-form.js"></script>
+</body>
+</html>

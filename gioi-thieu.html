@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giới thiệu — Nông Sản Xanh</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/gioi-thieu.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
+
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<section class="section bg-section bg-section--banner">
+  <div class="wrap about-hero">
+    <div class="reveal">
+      <div class="logo-text">
+                   <h2>
+            <span style="
+                font-family: Georgia, 'Times New Roman', serif;
+                font-size: clamp(28px, 3vw, 40px);
+                font-weight: 400;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                background: linear-gradient(135deg, #0b7040, #21a366, #075b35);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            "></span>NÔNG SẢN
+
+            <span style="
+                font-family: 'Brush Script MT', 'Segoe Script', cursive;
+                font-size: clamp(32px, 3.5vw, 46px);
+                font-weight: 600;
+                font-style: italic;
+                color: #d5a653;
+                line-height: 1.2;
+            ">xanh</span>
+        </h2>
+      </div>
+      <h1>Sàn thương mại điện tử nông sản tại Việt Nam</h1>
+      <p>Nông Sản Xanh là sàn thương mại điện tử kết nối trực tiếp <strong>khách hàng</strong> với <strong>nhà vườn, hợp tác xã và cơ sở sản xuất</strong> trên khắp Việt Nam. Chúng tôi tin rằng nông sản ngon nhất là nông sản đến tay người dùng nhanh nhất, với nguồn gốc rõ ràng và giá cả minh bạch.</p>
+    </div>
+    <div class="about-gallery reveal" id="about-gallery">
+      <div class="about-gallery-track" id="about-gallery-track">
+        <div class="about-gallery-slide"><img src="img/banners/Hành trình thương mại điện tử xanh.png" alt="van chuyen">
+        </div>
+        <div class="about-gallery-slide"><img src="img/banners/Chuỗi cung ứng xanh giữa bình minh (1).png" alt="dong goi"></div>
+        <div class="about-gallery-slide"><img src="img/banners/Kết nối mua sắm trực tuyến tin cậy.png" alt="ket noi"></div>
+        <div class="about-gallery-slide"><img src="img/banners/Chất lượng nông sản từ tâm huyết đến bàn ăn.png" alt="chat luong">
+        </div>
+      </div>
+      <button type="button" class="slider-arrow prev" id="about-gallery-prev" aria-label="Ảnh trước">‹</button>
+      <button type="button" class="slider-arrow next" id="about-gallery-next" aria-label="Ảnh sau">›</button>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt mv-section">
+  <div class="wrap mv-grid" data-stagger>
+    <div class="mv-card reveal">
+      <div class="mv-head"><img class="about-icon about-icon--compact" src="img/about-icons/muc-tieu.png" alt="" aria-hidden="true"><h3>Sứ mệnh</h3></div>
+      <p>Kết nối trực tiếp nhà vườn, hợp tác xã với người tiêu dùng — loại bỏ khâu trung gian, mang lại nông sản tươi ngon, giá hợp lý và nguồn gốc rõ ràng đến mọi gia đình Việt.</p>
+    </div>
+    <div class="mv-card reveal">
+      <div class="mv-head"><img class="about-icon about-icon--compact" src="img/about-icons/tang-truong.png" alt="" aria-hidden="true"><h3>Tầm nhìn</h3></div>
+      <p>Trở thành sàn thương mại nông sản Việt Nam uy tín hàng đầu, nơi mọi nhà vườn nhỏ đều có cơ hội tiếp cận thị trường rộng lớn hơn bằng chính chất lượng sản phẩm của mình.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Giá trị cốt lõi: khung full-width, nền là 1 hình ảnh, chữ tự chạy hoặc nhấn giữ chuột và kéo -->
+<section class="values-full section bg-section bg-section--values" id="values-full" aria-label="Giá trị cốt lõi">
+  <div class="values-full-inner">
+    <h2 class="full-title" id="values-title"></h2>
+    <div class="values-viewport" id="values-viewport">
+      <div class="values-track" id="values-track"></div>
+    </div>
+    <div class="values-dots" id="values-dots"></div>
+  </div>
+</section>
+
+<!-- Hành trình phát triển: khung full-width, nền là 1 hình ảnh, 1 thẻ chữ (sửa trong js/data/about.js) -->
+<section class="journey-full section bg-section bg-section--journey" id="journey-full" aria-label="Hành trình phát triển">
+  <div class="journey-inner">
+    <div class="journey-card">
+      <h2 class="full-title" id="journey-title"></h2>
+      <p id="journey-text"></p>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-section bg-section--wrap">
+  <div class="wrap">
+    <div class="qc-intro reveal">
+      <h2>Kiểm soát chất lượng từ nguồn nguyên liệu đến tay khách hàng</h2>
+      <p>Nông Sản Xanh phối hợp cùng nhà vườn/HTX để đảm bảo sản phẩm được kiểm soát chặt chẽ ở từng bước trước khi đến tay người tiêu dùng.</p>
+    </div>
+    <div class="qc-grid" data-stagger>
+      <div class="qc-card reveal">
+        <img class="about-icon" src="img/about-icons/lua-chon-nguyen-lieu.png" alt="Cây non mọc từ đất">
+        <h4>Lựa chọn nguyên liệu</h4>
+        <p>Chọn lọc nhà vườn, HTX có vùng nguyên liệu rõ ràng, phù hợp từng địa phương.</p>
+      </div>
+      <div class="qc-card reveal">
+        <img class="about-icon" src="img/about-icons/kiem-soat-dau-vao.png" alt="Kính lúp kiểm tra">
+        <h4>Kiểm soát đầu vào</h4>
+        <p>Đối chiếu thông tin sản phẩm, chứng nhận và tình trạng mùa vụ và các sản phẩm trước khi đăng bán trên sàn.</p>
+      </div>
+      <div class="qc-card reveal">
+        <img class="about-icon" src="img/about-icons/dong-goi-san-pham.png" alt="Thùng hàng nông sản">
+        <h4>Đóng gói sản phẩm</h4>
+        <p>Các nhà vườn/HTX đóng gói đúng quy cách, ghi rõ khối lượng và hạn sử dụng cho tất cả các sản phẩm có trên sàn.</p>
+      </div>
+      <div class="qc-card reveal">
+        <img class="about-icon" src="img/about-icons/kiem-tra-thanh-pham.png" alt="Khiên xác nhận chất lượng">
+        <h4>Kiểm tra thành phẩm</h4>
+        <p>Rà soát thông tin sản phẩm định kỳ, ghi nhận phản hồi khách hàng để cải thiện chất lượng liên tục cập nhật.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script type="module" src="js/pages/gioi-thieu.js"></script>
+</body>
+</html>

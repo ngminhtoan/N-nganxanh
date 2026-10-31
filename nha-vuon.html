@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nhà vườn &amp; HTX — Nông Sản Việt</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/product.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
+
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Trang chủ</a> / Nhà vườn/HTX</div>
+    <div class="section-head">
+      <div>
+        <h2>
+          <span style="
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: clamp(28px, 3vw, 40px);
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        background: linear-gradient(135deg, #0b7040, #21a366, #075b35);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    ">Nhà Vường</span>
+
+    <span style="
+        font-family: 'Brush Script MT', 'Segoe Script', cursive;
+        font-size: clamp(32px, 3.5vw, 46px);
+        font-weight: 600;
+        font-style: italic;
+        color: #d5a653;
+        line-height: 1.2;
+    "> Hợp Tác Xã</span>
+        </h2>
+      
+      </div>
+      <select id="farm-type-filter" class="sort-select">
+        <option value="all">Tất cả loại hình</option>
+        <option value="Nhà vườn">Nhà vườn</option>
+        <option value="Hợp tác xã">Hợp tác xã</option>
+        <option value="Cơ sở sản xuất">Cơ sở sản xuất</option>
+      </select>
+    </div>
+    <div class="farm-grid" id="farm-grid-full"></div>
+  </div>
+</section>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script type="module" src="js/pages/farms.js"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nông Sản Xanh — Sàn thương mại nông sản Việt Nam</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/product.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
+
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<!-- Hero: chỉ ảnh chạy full bề ngang, không chữ lớn -->
+<div class="hero-slider" id="hero-slider">
+  <div class="hero-slide-track" id="hero-slide-track">
+    <div class="hero-slide"><img class="hero-slide-img" src="img/hero/nongsanxanh_banner_1920x400.png" ></div>
+    <div class="hero-slide"><img class="hero-slide-img" src="img/hero/preview (1).webp"></div>
+    <div class="hero-slide"><img class="hero-slide-img" src="img/hero/preview.webp"></div>
+    <div class="hero-slide"><img class="hero-slide-img" src="img/hero/preview (2).webp"></div>
+    <div class="hero-slide"><img class="hero-slide-img" src="img/hero/banner_1_1920x400_vua_khung (1).png"></div>
+  </div>
+  <button type="button" class="slider-arrow prev" id="hero-prev" aria-label="Ảnh trước">‹</button>
+  <button type="button" class="slider-arrow next" id="hero-next" aria-label="Ảnh sau">›</button>
+  <div class="slider-dots" id="hero-dots"></div>
+</div>
+<!-- them hinh vao-->
+<section class="fullscreen-image reveal" aria-label="Toàn cảnh vùng nguyên liệu" 
+style = "min-height: 400px;">
+  <img src="img/banners/Từ cánh đồng đến bàn ăn.png" alt="Toàn cảnh cánh đồng và vườn cây nông sản Việt Nam" loading="lazy">
+</section>
+
+<section class="section bg-section bg-section--cat" id="gioi-thieu">
+    <div class="wrap">
+        <div class="section-head category-heading">
+            <div class="category-title">
+                <h2>
+                    <span class="title-main">Danh Mục</span>
+                    <span class="title-script">Sản Phẩm</span>
+                </h2>
+            </div>
+        </div>
+
+        <div class="category-grid" id="category-grid" data-stagger></div>
+    </div>
+</section>
+
+
+<section class="section bg-section bg-section--feat">
+
+    <div class="wrap">
+        <!-- Thanh thống kê -->
+        <div class="stats-bar-wrap reveal">
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="num" id="stat-products">0+</div>
+                    <div class="label">Sản phẩm nông sản</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="num" id="stat-farms">0+</div>
+                    <div class="label">Nhà vườn &amp; HTX hợp tác</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="num" id="stat-categories">0</div>
+                    <div class="label">Danh mục nông sản</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap">
+
+        <div class="section-head">
+            <div>
+                   <h2>
+            <span style="
+                font-family: Georgia, 'Times New Roman', serif;
+                font-size: clamp(28px, 3vw, 40px);
+                font-weight: 400;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                background: linear-gradient(135deg, #0b7040, #21a366, #075b35);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            ">SẢN PHẨM</span>
+
+            <span style="
+                font-family: 'Brush Script MT', 'Segoe Script', cursive;
+                font-size: clamp(32px, 3.5vw, 46px);
+                font-weight: 600;
+                font-style: italic;
+                color: #d5a653;
+                line-height: 1.2;
+            ">Nổi Bật</span>
+        </h2>
+            </div>
+
+            <div class="quote-buttons">
+                <button type="button" class="btn btn-accent js-open-lead-modal" data-lead-mode="quote">
+                    📋 Nhận báo giá
+                </button>
+                <button type="button" class="btn js-open-lead-modal" data-lead-mode="contact">
+                    📞 Liên hệ ngay
+                </button>
+            </div>
+        </div>
+
+        <div class="feature-slider-wrap">
+            <div class="feature-slider" id="feature-slider">
+                <div class="feature-slide-track" id="feature-slide-track"></div>
+            </div>
+
+            <button type="button" class="slider-arrow prev"
+                id="feature-prev" aria-label="Sản phẩm trước">‹</button>
+
+            <button type="button" class="slider-arrow next"
+                id="feature-next" aria-label="Sản phẩm sau">›</button>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="san-pham.html" class="btn btn-outline btn-sm">
+                Xem tất cả sản phẩm
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Nhận báo giá / Liên hệ -->
+<div class="lead-modal-overlay" id="lead-modal-overlay">
+  <div class="lead-modal">
+    <button type="button" class="lead-modal-close" id="lead-modal-close" aria-label="Đóng">✕</button>
+    <div class="lead-modal-info">
+      <div class="modal-logo"><img src="img/logo-nong-san-xanh.png" alt="Logo Nông Sản Việt"></div>
+      <h3>Nhận báo giá ngay hôm nay</h3>
+      <p>Đội ngũ Nông Sản Việt sẽ phản hồi trong vòng <strong>24 giờ</strong> làm việc.</p>
+      <ul>
+        <li>Nguồn gốc rõ ràng, đạt chuẩn OCOP</li>
+        <li>Sản xuất theo tiêu chuẩn HACCP</li>
+        <li>Kết nối trực tiếp nhà vườn, HTX</li>
+        <li>Giao hàng toàn quốc</li>
+      </ul>
+      <span class="lead-modal-badge">1.000+ khách hàng tin dùng</span>
+    </div>
+    <div class="lead-modal-form">
+      <span class="lead-modal-tag" id="modal-lead-tag">YÊU CẦU BÁO GIÁ</span>
+      <h3 id="modal-lead-heading">Điền thông tin để nhận ưu đãi</h3>
+      <div class="lead-success" id="modal-lead-success">Cảm ơn bạn! Thông tin đã được ghi nhận, chúng tôi sẽ liên hệ sớm nhất.</div>
+      <form id="modal-lead-form">
+        <div class="field">
+          <input type="text" id="modal-lead-name" placeholder="Họ và tên">
+        </div>
+        <div class="field">
+          <input type="tel" id="modal-lead-phone" placeholder="Số điện thoại">
+        </div>
+        <div class="field" id="modal-lead-category-field">
+          <select id="modal-lead-category"></select>
+        </div>
+        <div class="field" id="modal-lead-message-field">
+          <textarea id="modal-lead-message" rows="3" placeholder="Mô tả nhu cầu, số lượng cần báo giá..."></textarea>
+        </div>
+        <div class="field" id="modal-lead-email-field" hidden>
+          <input type="email" id="modal-lead-email" placeholder="Email">
+        </div>
+        <button type="submit" class="btn btn-block" id="modal-lead-submit">Gửi yêu cầu báo giá</button>
+        <div style="font-size:.78rem; color:var(--color-ink-soft); margin-top:10px; text-align:center;">🔒 Thông tin của bạn được bảo mật tuyệt đối</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<section class="section bg-section bg-section--season" id="season-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div> 
+        <h2>
+    <span style="
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: clamp(28px, 3vw, 40px);
+        font-weight: 400;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #0b7040, #21a366, #075b35);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    ">SẢN PHẨM</span>
+
+    <span style="
+        font-family: 'Brush Script MT', 'Segoe Script', cursive;
+        font-size: clamp(32px, 3.5vw, 46px);
+        font-weight: 600;
+        font-style: italic;
+        color: #d5a653;
+        line-height: 1.2;
+    ">Đang vào mùa</span>
+</h2>
+      </div>
+      <a href="san-pham.html?season=in-season" class="btn btn-outline btn-sm">Xem tất cả</a>
+    </div>
+    <div class="product-grid" id="season-grid"></div>
+  </div>
+</section>
+
+<section class="bg-section bg-section--map">
+  <div class="wrap vn-map-section" style="width: 100%; max-width: 1200px; margin: 0 auto;">
+    <div class="reveal">
+      <div class="section-head map-heading">
+        <div class="map-intro">
+          <h2>
+            <span style="
+              font-family: Georgia, 'Times New Roman', serif;
+              font-size: clamp(28px, 3vw, 40px);
+              font-weight: 400;
+              letter-spacing: 1.5px;
+              text-transform: uppercase;
+              background: linear-gradient(135deg, #0b7040, #21a366, #075b35);
+              -webkit-background-clip: text;
+              background-clip: text;
+              -webkit-text-fill-color: transparent;
+            ">BẢN ĐỒ</span>
+
+            <span style="
+              font-family: 'Brush Script MT', 'Segoe Script', cursive;
+              font-size: clamp(32px, 3.5vw, 46px);
+              font-weight: 600;
+              font-style: italic;
+              color: #d5a653;
+              line-height: 1.2;
+            ">Vùng nguyên liệu</span>
+          </h2>
+
+          <p>
+            Từ miền núi phía Bắc đến đồng bằng sông Cửu Long, mỗi vùng đất mang đến một đặc sản riêng.
+            Nông Sản Xanh kết nối trực tiếp với nhà vườn và hợp tác xã tại các địa phương này
+            để mang nông sản tươi ngon nhất đến tay người tiêu dùng.
+          </p>
+        </div>
+      </div>
+
+      <a href="nha-vuon.html" class="btn btn-outline btn-sm">
+        Khám phá nhà vườn theo vùng
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-section bg-section--farm">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>
+    <span style="
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: clamp(28px, 3vw, 40px);
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        background: linear-gradient(135deg, #0b7040, #21a366, #075b35);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    ">NHÀ VƯỜN</span>
+
+    <span style="
+        font-family: 'Brush Script MT', 'Segoe Script', cursive;
+        font-size: clamp(32px, 3.5vw, 46px);
+        font-weight: 600;
+        font-style: italic;
+        color: #d5a653;
+        line-height: 1.2;
+    ">&amp; Hợp tác xã</span>
+</h2>
+      </div>
+      <a href="nha-vuon.html" class="btn btn-outline btn-sm">Xem tất cả</a>
+    </div>
+    <div class="feature-slider-wrap">
+      <div class="farm-carousel" id="farm-carousel">
+        <div class="farm-carousel-track" id="farm-carousel-track"></div>
+      </div>
+      <button type="button" class="slider-arrow prev" id="farm-prev" aria-label="HTX trước">‹</button>
+      <button type="button" class="slider-arrow next" id="farm-next" aria-label="HTX sau">›</button>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-section bg-section--cert">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+   <span style="
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: clamp(28px, 3vw, 40px);
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        background: linear-gradient(135deg, #0b7040, #21a366, #075b35);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    ">Chứng Nhận</span>
+
+    <span style="
+        font-family: 'Brush Script MT', 'Segoe Script', cursive;
+        font-size: clamp(32px, 3.5vw, 46px);
+        font-weight: 600;
+        font-style: italic;
+        color: #d5a653;
+        line-height: 1.2;
+    ">&amp; Giải Thưởng</span>
+</h2>
+      </div>
+    </div>
+    <div class="cert-badges-row" data-stagger>
+      <div class="cert-badge reveal"><div class="ring"><img src="img/farms/images.png" alt="Logo chứng nhận OCOP" loading="lazy"></div><div class="name">OCOP</div><div class="sub">Mỗi xã một sản phẩm</div></div>
+      <div class="cert-badge reveal"><div class="ring"><img src="img/farms/images.jpg" alt="Logo chứng nhận VietGAP" loading="lazy"></div><div class="name">VietGAP</div><div class="sub">Thực hành nông nghiệp tốt</div></div>
+      <div class="cert-badge reveal"><div class="ring"><img src="img/farms/images (1).png" alt="Logo chứng nhận GlobalGAP" loading="lazy"></div><div class="name">GlobalGAP</div><div class="sub">Tiêu chuẩn toàn cầu</div></div>
+      <div class="cert-badge reveal"><div class="ring"><img src="img/farms/file-vector-logo-chung-chi-ocop-halal-haccp_1754623097.jpg" alt="Logo chứng nhận HACCP" loading="lazy"></div><div class="name">HACCP</div><div class="sub">An toàn vệ sinh thực phẩm</div></div>
+      <div class="cert-badge reveal"><div class="ring"><img src="img/farms/images (1).jpg" alt="Logo chứng nhận Hữu cơ" loading="lazy"></div><div class="name">Hữu cơ</div><div class="sub">Không hóa chất tổng hợp</div></div>
+    </div>
+  </div>
+</section>
+<footer class="site-footer"><div id="site-footer"></div></footer>
+<script type="module" src="js/pages/home.js"></script>
+</body>
+</html>

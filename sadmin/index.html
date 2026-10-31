@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quản lý gian hàng — Quản trị hệ thống</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../css/cart.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="icon" type="image/png" href="../img/logo-nong-san-xanh.png">
+
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="logo"><img class="logo-img" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Việt"> Quản trị hệ thống</div>
+    <nav>
+      <a href="index.html" class="active">Gian hàng &amp; HTX</a>
+    </nav>
+    <a href="../index.html" class="back-link">← Về trang chính của sàn</a>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+            <h1>
+            <span style="
+                font-family: Georgia, 'Times New Roman', serif;
+                font-size: clamp(28px, 3vw, 40px);
+                font-weight: 400;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                background: linear-gradient(135deg, #0b7040, #21a366, #075b35);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            ">QUẢN LÝ </span>
+
+            <span style="
+                font-family: 'Brush Script MT', 'Segoe Script', cursive;
+                font-size: clamp(32px, 3.5vw, 46px);
+                font-weight: 600;
+                font-style: italic;
+                color: #d5a653;
+                line-height: 1.2;
+            ">GIAN HÀNG</span>
+        </h1>
+      <div class="admin-user-chip">
+        Xin chào, <strong id="sadmin-name"></strong> ·
+        <button type="button" id="sadmin-logout" style="color:var(--color-danger); font-weight:600;">Đăng xuất</button>
+      </div>
+    </div>
+
+    <div class="stat-grid" style="grid-template-columns: repeat(3,1fr);">
+      <div class="stat-card"><div class="label">Tổng số gian hàng/HTX</div><div class="value" id="stat-total-farms">0</div></div>
+      <div class="stat-card"><div class="label">Tổng số sản phẩm toàn sàn</div><div class="value" id="stat-total-products-all">0</div></div>
+      <div class="stat-card warn"><div class="label">Tổng số cảnh báo đã gửi</div><div class="value" id="stat-total-warnings">0</div></div>
+    </div>
+
+    <div class="admin-panel">
+      <div class="admin-toolbar">
+        <input type="search" id="sadmin-search" class="admin-search" placeholder="Tìm theo tên gian hàng hoặc tỉnh/thành...">
+      </div>
+      <table class="admin-table">
+        <thead>
+          <tr><th>Gian hàng/HTX</th><th>Liên hệ</th><th>Sản phẩm</th><th>Cảnh báo</th><th>Thuế suất</th><th></th></tr>
+        </thead>
+        <tbody id="sadmin-farms-body"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="../js/sadmin/dashboard.js"></script>
+</body>
+</html>

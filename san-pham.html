@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cửa hàng — Nông Sản Việt</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/product.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
+
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<section class="section products-catalog-section">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Trang chủ</a> / Cửa hàng</div>
+    <div class="section-head"><div><h2><span style="
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: clamp(28px, 3vw, 40px);
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        background: linear-gradient(135deg, #0b7040, #21a366, #075b35);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    ">Sản Phẩm</span>
+
+    <span style="
+        font-family: 'Brush Script MT', 'Segoe Script', cursive;
+        font-size: clamp(32px, 3.5vw, 46px);
+        font-weight: 600;
+        font-style: italic;
+        color: #d5a653;
+        line-height: 1.2;
+    ">Trên Sàn</span></h2></div></div>
+
+    <div class="catalog-layout">
+      <aside>
+        <div class="filter-reset-standalone-wrap">
+          <span>Bộ lọc đang chọn</span>
+          <a href="#" id="filter-reset" class="filter-reset-standalone">↺ Xóa bộ lọc</a>
+        </div>
+
+        <nav class="filter-accordion" id="filter-panel">
+          <div class="filter-accordion-item is-open" data-filter-item>
+            <button type="button" class="filter-accordion-head">Danh mục <span class="chevron">▾</span></button>
+            <div class="filter-accordion-body" id="filter-category"></div>
+          </div>
+          <div class="filter-accordion-item" data-filter-item>
+            <button type="button" class="filter-accordion-head">Tỉnh/thành <span class="chevron">▾</span></button>
+            <div class="filter-accordion-body" id="filter-province"></div>
+          </div>
+          <div class="filter-accordion-item" data-filter-item>
+            <button type="button" class="filter-accordion-head">Nhà vườn/HTX <span class="chevron">▾</span></button>
+            <div class="filter-accordion-body" id="filter-farm"></div>
+          </div>
+          <div class="filter-accordion-item" data-filter-item>
+            <button type="button" class="filter-accordion-head">Chứng nhận <span class="chevron">▾</span></button>
+            <div class="filter-accordion-body" id="filter-standard"></div>
+          </div>
+          <div class="filter-accordion-item" data-filter-item>
+            <button type="button" class="filter-accordion-head">Mùa vụ <span class="chevron">▾</span></button>
+            <div class="filter-accordion-body" id="filter-season"></div>
+          </div>
+          <div class="filter-accordion-item" data-filter-item>
+            <button type="button" class="filter-accordion-head">Mức giá (đ) <span class="chevron">▾</span></button>
+            <div class="filter-accordion-body">
+              <div class="filter-price-row">
+                <input type="number" id="price-min" placeholder="Từ">
+                <span>—</span>
+                <input type="number" id="price-max" placeholder="Đến">
+              </div>
+            </div>
+          </div>
+        </nav>
+      </aside>
+
+      <div>
+        <div class="toolbar">
+          <span class="result-count" id="result-count">— sản phẩm</span>
+          <select class="sort-select" id="sort-select">
+            <option value="">Sắp xếp mặc định</option>
+            <option value="price-asc">Giá thấp đến cao</option>
+            <option value="price-desc">Giá cao đến thấp</option>
+            <option value="name-asc">Tên A-Z</option>
+            <option value="name-desc">Tên Z-A</option>
+          </select>
+        </div>
+        <div class="product-grid" id="product-grid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script type="module" src="js/pages/products.js"></script>
+</body>
+</html>

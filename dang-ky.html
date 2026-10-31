@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng ký — Nông Sản Việt</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
+
+</head>
+<body class="auth-page">
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<div class="auth-shell">
+  <img class="auth-logo auth-logo-full" src="img/logo-nong-san-xanh.png" alt="Logo Nông Sản Xanh">
+  <h1 style="text-align:center;">Tạo tài khoản</h1>
+  <p class="sub">Đăng ký để mua sắm hoặc để bán nông sản trên sàn</p>
+
+  <div class="role-toggle">
+    <button type="button" class="is-active" data-role="customer">Khách hàng</button>
+    <button type="button" data-role="farm">Nhà vườn/HTX</button>
+  </div>
+
+  <div class="form-note" id="form-note"></div>
+
+  <form id="register-form" novalidate>
+    <div class="field">
+      <label for="reg-name">Họ tên / Tên nhà vườn/HTX</label>
+      <input type="text" id="reg-name" placeholder="Nguyễn Văn A hoặc HTX ABC">
+      <div class="field-error"></div>
+    </div>
+    <div class="field">
+      <label for="reg-email">Email</label>
+      <input type="email" id="reg-email" placeholder="ban@email.com">
+      <div class="field-error"></div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="reg-password">Mật khẩu</label>
+        <input type="password" id="reg-password" placeholder="Tối thiểu 6 ký tự">
+        <div class="field-error"></div>
+      </div>
+      <div class="field">
+        <label for="reg-confirm">Nhập lại mật khẩu</label>
+        <input type="password" id="reg-confirm">
+        <div class="field-error"></div>
+      </div>
+    </div>
+    <div class="field">
+      <label for="reg-phone">Số điện thoại</label>
+      <input type="tel" id="reg-phone" placeholder="09xxxxxxxx">
+      <div class="field-error"></div>
+    </div>
+    <div class="field">
+      <label for="reg-address">Địa chỉ</label>
+      <input type="text" id="reg-address" placeholder="Số nhà, đường, phường/xã, tỉnh/thành">
+      <div class="field-error"></div>
+    </div>
+
+    <div id="farm-only-fields" style="display:none;">
+      <div class="field">
+        <label for="reg-description">Giới thiệu về nhà vườn/HTX</label>
+        <textarea id="reg-description" rows="3" placeholder="Mô tả ngắn về sản phẩm, quy mô, vùng canh tác..."></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-block">Đăng ký</button>
+  </form>
+
+  <div class="auth-foot">Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a></div>
+</div>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script type="module" src="js/pages/auth.js"></script>
+</body>
+</html>

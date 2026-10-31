@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doanh thu — Nông Sản Việt</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../css/cart.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="icon" type="image/png" href="../img/logo-nong-san-xanh.png">
+
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="logo"><img class="logo-img" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Việt"> Nông Sản Xanh</div>
+    <nav>
+      <a href="index.html">📊 Bảng điều khiển</a>
+      <a href="san-pham.html">🌿 Sản phẩm</a>
+      <a href="don-hang.html">📦 Đơn hàng</a>
+      <a href="doanh-thu.html" class="active">💰 Doanh thu</a>
+      <a href="thong-tin-htx.html">🏢 Thông tin HTX</a>
+    </nav>
+    <a href="../index.html" class="back-link">← Về trang khách hàng</a>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1>Doanh thu gian hàng</h1>
+      <div class="admin-user-chip">
+        Xin chào, <strong id="admin-user-name"></strong> ·
+        <button type="button" id="admin-logout" style="color:var(--color-danger); font-weight:600;">Đăng xuất</button>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card accent"><div class="label">Tổng doanh thu đã bán</div><div class="value" id="rv-gross-revenue">0đ</div></div>
+      <div class="stat-card"><div class="label">Số đơn đã hoàn thành</div><div class="value" id="rv-order-count">0</div></div>
+      <div class="stat-card"><div class="label">Số sản phẩm đã bán chạy</div><div class="value" id="rv-product-sold-count">0</div></div>
+    </div>
+
+    <div class="admin-panel">
+      <h3>Chi tiết sản phẩm đã bán (đơn hoàn thành)</h3>
+      <table class="admin-table">
+        <thead><tr><th>Sản phẩm</th><th>Số lượng đã bán</th><th>Đơn giá</th><th>Doanh thu</th></tr></thead>
+        <tbody id="rv-products-body"></tbody>
+      </table>
+    </div>
+
+    <div class="admin-panel" style="max-width:520px;">
+      <h3>Tính &amp; lưu doanh thu sau thuế</h3>
+      <p style="color:var(--color-ink-soft); font-size:.88rem; margin-bottom:16px;">
+        Nhập thuế suất áp dụng cho gian hàng, hệ thống sẽ tự tính doanh thu sau thuế. Nhấn "Lưu doanh thu" để chốt và ghi lại vào cơ sở dữ liệu (localStorage).
+      </p>
+      <form id="rv-save-form">
+        <div class="field">
+          <label for="rv-tax-rate">Thuế suất (%)</label>
+          <input type="number" id="rv-tax-rate" min="0" max="100" step="0.5" value="10">
+        </div>
+        <div class="summary-card" id="rv-net-preview" style="padding:16px; margin-bottom:18px;"></div>
+        <button type="submit" class="btn btn-block">💾 Lưu doanh thu sau thuế</button>
+      </form>
+    </div>
+
+    <div class="admin-panel">
+      <h3>Lịch sử chốt doanh thu</h3>
+      <table class="admin-table">
+        <thead><tr><th>Ngày lưu</th><th>Doanh thu gộp</th><th>Thuế suất</th><th>Tiền thuế</th><th>Doanh thu sau thuế</th><th>Số đơn</th></tr></thead>
+        <tbody id="rv-history-body"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="../js/admin/revenue.js"></script>
+</body>
+</html>

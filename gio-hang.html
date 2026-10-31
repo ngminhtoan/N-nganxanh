@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giỏ hàng — Nông Sản Việt</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/product.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
+
+</head>
+<body>
+
+<header class="site-header"><div id="site-header"></div></header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Trang chủ</a> / Giỏ hàng</div>
+    <div class="section-head"><div><h2>Giỏ hàng của bạn</h2></div></div>
+
+    <div class="cart-layout" id="cart-table-wrap">
+      <table class="cart-table">
+        <thead>
+          <tr><th>Sản phẩm</th><th>Đơn giá</th><th>Số lượng</th><th>Thành tiền</th></tr>
+        </thead>
+        <tbody id="cart-body"></tbody>
+      </table>
+
+      <div class="summary-card">
+        <div class="summary-row"><span>Tạm tính</span><span id="cart-subtotal">0đ</span></div>
+        <div class="summary-row"><span>Phí vận chuyển</span><span>Tính khi đặt hàng</span></div>
+        <div class="summary-row total"><span>Tổng cộng</span><span id="cart-total">0đ</span></div>
+        <a href="dat-hang.html" class="btn btn-block" style="margin-top:16px;">Tiến hành đặt hàng</a>
+      </div>
+    </div>
+
+    <div class="state-box" id="cart-empty" style="display:none;">
+      <div class="glyph">🛒</div>
+      <p>Giỏ hàng của bạn đang trống.</p>
+      <a href="san-pham.html" class="btn btn-outline">Tiếp tục mua sắm</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div id="site-footer"></div></footer>
+
+<script type="module" src="js/pages/cart.js"></script>
+</body>
+</html>

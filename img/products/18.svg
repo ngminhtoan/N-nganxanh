@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="p18" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4DCC2"/><stop offset="1" stop-color="#C98C5A"/></linearGradient></defs>
+<rect width="400" height="400" fill="url(#p18)"/>
+<circle cx="328" cy="64" r="120" fill="#fff" opacity=".18"/><circle cx="48" cy="380" r="144" fill="#fff" opacity=".14"/>
+<ellipse cx="200" cy="336" rx="104" ry="16" fill="#000" opacity=".14"/>
+<text x="50%" y="264" font-size="184" text-anchor="middle" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🫙</text></svg>
