@@ -33,7 +33,7 @@ function render(){
       <tr>
         <td>
           <div class="cart-item">
-            <div class="cart-thumb">${p.glyph || "🌿"}${imgTag(productImgSrc(p), p.name)}</div>
+            <div class="cart-thumb">${imgTag(productImgSrc(p), p.name)}</div>
             <div class="cart-item-info">
               <div class="name">${p.name}</div>
               <div class="meta">${p.origin} · Còn ${p.stock} ${p.unit}</div>

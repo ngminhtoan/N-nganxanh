@@ -45,7 +45,7 @@ export function registerFarm({ name, email, password, phone, address, descriptio
   const farms = getFarms();
   const newFarmId = farms.length ? Math.max(...farms.map(f => f.id)) + 1 : 1;
   const newFarm = {
-    id: newFarmId, name, type: "Hợp tác xã", province: "", glyph: "🌱",
+    id: newFarmId, name, type: "Hợp tác xã", province: "",
     description, address, phone, standards: [], taxRate: 10,
   };
   farms.push(newFarm);

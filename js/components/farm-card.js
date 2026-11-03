@@ -13,7 +13,7 @@ export function farmCardHtml(farm, productCount, basePath = ""){
   return `
     <div class="farm-card">
       <div class="farm-card-top">
-        <div class="farm-logo">${farm.glyph || "🌱"}${imgTag(farmImgSrc(farm, basePath), "Logo " + farm.name)}<img class="farm-logo-badge" src="${logoMarkSrc(basePath)}" alt="Logo Nông Sản Xanh"></div>
+        <div class="farm-logo">${imgTag(farmImgSrc(farm, basePath), "Logo " + farm.name)}<img class="farm-logo-badge" src="${logoMarkSrc(basePath)}" alt="Logo Nông Sản Xanh"></div>
         <div>
           <h3 title="${farm.name}">${farm.name}</h3>
           <div class="farm-meta">${farm.type} · ${farm.province}</div>

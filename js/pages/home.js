@@ -3,7 +3,7 @@ import { initStorage, getProducts, getFarms, getLeads, saveLeads } from "../util
 import { addToCart } from "../utils/cart.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
-import { productCardHtml, bindAddToCartButtons } from "../components/product-card.js";
+import { productCardHtml, bindAddToCartButtons, showCartNotice } from "../components/product-card.js";
 import { farmCardHtml } from "../components/farm-card.js";
 import { CATEGORIES } from "../data/products.js";
 import { formatPriceShort } from "../utils/format.js";
@@ -38,7 +38,7 @@ if(inSeason.length === 0){
   document.getElementById("season-section").style.display = "none";
 }else{
   seasonGrid.innerHTML = inSeason.map(p => `<div class="reveal">${productCardHtml(p, farms.find(f => f.id === p.farmId))}</div>`).join("");
-  bindAddToCartButtons(seasonGrid, addToCart, (result) => alert(result.message));
+  bindAddToCartButtons(seasonGrid, addToCart, showCartNotice);
 }
 
 /* ---------- Sản phẩm nổi bật: khung CHỈ chứa ảnh, ảnh phủ vừa khít khung ---------- */
@@ -46,7 +46,7 @@ const featureTrack = document.getElementById("feature-slide-track");
 const featured = products.filter(p => p.stock > 0).slice(0, 10);
 featureTrack.innerHTML = featured.map(p => `
   <div class="feature-slide reveal">
-    <div class="feature-slide-image">${p.glyph || "🌿"}${imgTag(productImgSrc(p), p.name)}${logoStamp()}</div>
+    <div class="feature-slide-image">${imgTag(productImgSrc(p), p.name)}${logoStamp()}</div>
     <div class="feature-slide-caption">
       <div class="cat">${p.category}</div>
       <h3>${p.name}</h3>

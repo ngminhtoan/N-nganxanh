@@ -50,7 +50,6 @@ if(user){
     document.getElementById("pf-season").value = p.seasonStatus;
     document.getElementById("pf-harvest").value = p.harvestSeason || "";
     document.getElementById("pf-origin").value = p.origin;
-    document.getElementById("pf-glyph").value = p.glyph || "";
     document.getElementById("pf-description").value = p.description || "";
     document.querySelectorAll('input[name="standard"]').forEach(cb => {
       cb.checked = (p.standards || []).includes(cb.value);
@@ -83,7 +82,6 @@ if(user){
       harvestSeason: document.getElementById("pf-harvest").value.trim(),
       standards,
       origin: document.getElementById("pf-origin").value.trim(),
-      glyph: document.getElementById("pf-glyph").value.trim() || "🌿",
       description: document.getElementById("pf-description").value.trim(),
     };
 

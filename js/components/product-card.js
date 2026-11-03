@@ -4,6 +4,46 @@
 import { formatPriceShort, seasonLabel, isPurchasable } from "../utils/format.js";
 import { productImgSrc, imgTag, logoStamp } from "../utils/images.js";
 
+let cartNoticeTimer;
+
+export function showCartNotice(result){
+  let notice = document.getElementById("cart-notice");
+  if(!notice){
+    notice = document.createElement("div");
+    notice.id = "cart-notice";
+    notice.className = "cart-notice";
+    notice.innerHTML = `
+      <div class="cart-notice-dialog" role="dialog" aria-modal="true" aria-labelledby="cart-notice-title" aria-describedby="cart-notice-message">
+        <div class="cart-notice-icon" aria-hidden="true">✓</div>
+        <h2 id="cart-notice-title"></h2>
+        <p id="cart-notice-message"></p>
+      </div>`;
+    notice.addEventListener("click", (event) => {
+      if(event.target === notice) closeCartNotice();
+    });
+    document.body.appendChild(notice);
+  }
+
+  notice.querySelector("#cart-notice-title").textContent = result.ok ? "Đã thêm vào giỏ hàng!" : "Chưa thể thêm sản phẩm";
+  const message = notice.querySelector("#cart-notice-message");
+  message.textContent = result.ok ? "" : result.message;
+  message.hidden = result.ok;
+  notice.classList.toggle("is-error", !result.ok);
+  notice.classList.add("is-visible");
+  window.clearTimeout(cartNoticeTimer);
+  cartNoticeTimer = window.setTimeout(closeCartNotice, 2600);
+  document.addEventListener("keydown", handleCartNoticeKeydown);
+}
+
+function closeCartNotice(){
+  document.getElementById("cart-notice")?.classList.remove("is-visible");
+  document.removeEventListener("keydown", handleCartNoticeKeydown);
+}
+
+function handleCartNoticeKeydown(event){
+  if(event.key === "Escape") closeCartNotice();
+}
+
 export function productCardHtml(product, farm, basePath = "", options = {}){
   const season = seasonLabel(product.seasonStatus);
   const standardsHtml = (product.standards || [])
@@ -33,7 +73,6 @@ export function productCardHtml(product, farm, basePath = "", options = {}){
           ${product.stock <= 0 ? '<span class="badge badge-stock-out">Tạm hết hàng</span>' : ""}
           ${product.seasonStatus !== "in-season" ? `<span class="badge ${season.badgeClass}">${season.text}</span>` : ""}
         </div>
-        ${product.glyph || "🌿"}
         ${imgTag(productImgSrc(product, basePath), product.name)}
         ${logoStamp(basePath)}
       </div>
@@ -72,7 +111,6 @@ export function shopCardHtml(product, farm, basePath = ""){
     <a class="shop-card" href="${basePath}chi-tiet-san-pham.html?id=${product.id}&from=shop">
       <div class="shop-card-thumb">
         <div class="thumb-badges">${out}</div>
-        <span class="shop-card-glyph">${product.glyph || "🌿"}</span>
         ${imgTag(productImgSrc(product, basePath), product.name)}
         <div class="shop-card-tags">${(product.standards || []).map(s => `<span>${s}</span>`).join("")}</div>
       </div>

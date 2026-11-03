@@ -1,8 +1,7 @@
 // js/utils/images.js
 // Đường dẫn + thẻ <img> dùng chung cho ảnh sản phẩm / nhà vườn / danh mục / logo.
 // Ảnh nằm trong thư mục img/. Khi có ảnh thật, chỉ cần thay file cùng tên (hoặc sửa đường dẫn ở đây).
-// Nếu ảnh không tồn tại (ví dụ sản phẩm mới thêm từ trang quản trị) thì thẻ <img> tự gỡ bỏ
-// và biểu tượng emoji (glyph) phía sau sẽ hiện ra thay thế.
+// Nếu ảnh không tồn tại (ví dụ sản phẩm mới thêm từ trang quản trị) thì thẻ <img> tự gỡ bỏ.
 
 import { PRODUCT_IMAGE_SOURCES } from "../data/product-image-sources.js";
 

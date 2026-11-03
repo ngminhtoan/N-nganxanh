@@ -48,7 +48,7 @@ if(user){
   }else{
     body.innerHTML = soldList.map(e => `
       <tr>
-        <td>${e.product.glyph || "🌿"} ${e.product.name}</td>
+        <td>${e.product.name}</td>
         <td>${e.qty} ${e.product.unit}</td>
         <td>${formatVND(e.product.price)}/${e.product.unit}</td>
         <td><strong>${formatVND(e.revenue)}</strong></td>

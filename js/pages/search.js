@@ -3,7 +3,7 @@ import { initStorage, getProducts, getFarms } from "../utils/storage.js";
 import { addToCart } from "../utils/cart.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
-import { productCardHtml, bindAddToCartButtons } from "../components/product-card.js";
+import { productCardHtml, bindAddToCartButtons, showCartNotice } from "../components/product-card.js";
 import { searchProducts } from "../utils/search.js";
 
 initStorage();
@@ -54,5 +54,5 @@ function runSearch(q){
   }
   document.getElementById("search-empty").style.display = "none";
   grid.innerHTML = results.map(p => productCardHtml(p, farms.find(f => f.id === p.farmId))).join("");
-  bindAddToCartButtons(grid, addToCart, (result) => alert(result.message));
+  bindAddToCartButtons(grid, addToCart, showCartNotice);
 }

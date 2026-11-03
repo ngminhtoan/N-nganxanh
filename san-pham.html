@@ -19,28 +19,15 @@
 <section class="section products-catalog-section">
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">Trang chủ</a> / Cửa hàng</div>
-    <div class="section-head"><div><h2><span style="
-        font-family: Georgia, 'Times New Roman', serif;
-        font-size: clamp(28px, 3vw, 40px);
-        font-weight: 400;
-        letter-spacing: 1.5px;
-        background: linear-gradient(135deg, #0b7040, #21a366, #075b35);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    ">Sản Phẩm</span>
-
-    <span style="
-        font-family: 'Brush Script MT', 'Segoe Script', cursive;
-        font-size: clamp(32px, 3.5vw, 46px);
-        font-weight: 600;
-        font-style: italic;
-        color: #d5a653;
-        line-height: 1.2;
-    ">Trên Sàn</span></h2></div></div>
+    <div class="section-head"><div><h2><span class="section-title-green">Sản Phẩm</span>
+    <span class="section-title-gold">Trên Sàn</span></h2></div></div>
 
     <div class="catalog-layout">
       <aside>
+        <button type="button" class="filter-mobile-toggle" id="filter-mobile-toggle" aria-expanded="false" aria-controls="filter-mobile-content">
+          <span>Bộ lọc sản phẩm</span><span class="filter-mobile-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div id="filter-mobile-content" class="filter-mobile-content">
         <div class="filter-reset-standalone-wrap">
           <span>Bộ lọc đang chọn</span>
           <a href="#" id="filter-reset" class="filter-reset-standalone">↺ Xóa bộ lọc</a>
@@ -48,16 +35,16 @@
 
         <nav class="filter-accordion" id="filter-panel">
           <div class="filter-accordion-item is-open" data-filter-item>
+            <button type="button" class="filter-accordion-head">Nhà vườn/HTX <span class="chevron">▾</span></button>
+            <div class="filter-accordion-body" id="filter-farm"></div>
+          </div>
+          <div class="filter-accordion-item" data-filter-item>
             <button type="button" class="filter-accordion-head">Danh mục <span class="chevron">▾</span></button>
             <div class="filter-accordion-body" id="filter-category"></div>
           </div>
           <div class="filter-accordion-item" data-filter-item>
             <button type="button" class="filter-accordion-head">Tỉnh/thành <span class="chevron">▾</span></button>
             <div class="filter-accordion-body" id="filter-province"></div>
-          </div>
-          <div class="filter-accordion-item" data-filter-item>
-            <button type="button" class="filter-accordion-head">Nhà vườn/HTX <span class="chevron">▾</span></button>
-            <div class="filter-accordion-body" id="filter-farm"></div>
           </div>
           <div class="filter-accordion-item" data-filter-item>
             <button type="button" class="filter-accordion-head">Chứng nhận <span class="chevron">▾</span></button>
@@ -78,6 +65,7 @@
             </div>
           </div>
         </nav>
+        </div>
       </aside>
 
       <div>

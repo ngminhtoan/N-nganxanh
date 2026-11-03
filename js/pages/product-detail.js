@@ -3,7 +3,7 @@ import { initStorage, getProducts, getFarms } from "../utils/storage.js";
 import { addToCart } from "../utils/cart.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
-import { productCardHtml, shopCardHtml, bindAddToCartButtons } from "../components/product-card.js";
+import { productCardHtml, shopCardHtml, bindAddToCartButtons, showCartNotice } from "../components/product-card.js";
 import { formatPrice, formatDate, seasonLabel, isPurchasable } from "../utils/format.js";
 import { productImgSrc, farmImgSrc, imgTag, logoStamp } from "../utils/images.js";
 import { PRODUCT_IMAGE_SOURCES } from "../data/product-image-sources.js";
@@ -41,7 +41,7 @@ function renderDetail(p){
         : `<a href="san-pham.html">Cửa hàng</a>`} / ${p.name}
     </div>
     <div class="detail-grid">
-      <div class="detail-visual">${p.glyph || "🌿"}${imgTag(productImgSrc(p), p.name)}${logoStamp()}</div>
+      <div class="detail-visual">${imgTag(productImgSrc(p), p.name)}${logoStamp()}</div>
       <div>
         <span class="product-cat">${p.category}</span>
         <h1>${p.name}</h1>
@@ -108,7 +108,7 @@ function renderDetail(p){
     });
     document.getElementById("add-to-cart-btn").addEventListener("click", () => {
       const result = addToCart(p.id, qty);
-      alert(result.message);
+      showCartNotice(result);
     });
   }
 
@@ -132,7 +132,7 @@ function renderDetail(p){
       relatedGrid.innerHTML = related.map(rp => shopCardHtml(rp, farms.find(f => f.id === rp.farmId))).join("");
     }else{
       relatedGrid.innerHTML = related.map(rp => productCardHtml(rp, farm)).join("");
-      bindAddToCartButtons(relatedGrid, addToCart, (result) => alert(result.message));
+      bindAddToCartButtons(relatedGrid, addToCart, showCartNotice);
     }
   }
 }

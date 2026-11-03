@@ -3,7 +3,7 @@ import { initStorage, getProducts, getFarms } from "../utils/storage.js";
 import { addToCart } from "../utils/cart.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
-import { productCardHtml, bindAddToCartButtons } from "../components/product-card.js";
+import { productCardHtml, bindAddToCartButtons, showCartNotice } from "../components/product-card.js";
 import { filterProducts, sortProducts } from "../utils/filter.js";
 import { CATEGORIES } from "../data/products.js";
 
@@ -19,11 +19,34 @@ const standards = [...new Set(products.flatMap(p => p.standards || []))].sort();
 const grid = document.getElementById("product-grid");
 const resultCount = document.getElementById("result-count");
 const sortSelect = document.getElementById("sort-select");
+const filterMobileToggle = document.getElementById("filter-mobile-toggle");
+const filterMobileContent = document.getElementById("filter-mobile-content");
+const filterMobileMedia = window.matchMedia("(max-width: 1100px)");
+
+function syncMobileFilterMenu(){
+  const isSmallScreen = filterMobileMedia.matches;
+  filterMobileContent.hidden = isSmallScreen;
+  filterMobileToggle.setAttribute("aria-expanded", String(!isSmallScreen));
+}
+
+syncMobileFilterMenu();
+filterMobileMedia.addEventListener("change", syncMobileFilterMenu);
+
+filterMobileToggle.addEventListener("click", () => {
+  const expanded = filterMobileToggle.getAttribute("aria-expanded") === "true";
+  filterMobileToggle.setAttribute("aria-expanded", String(!expanded));
+  filterMobileContent.hidden = expanded;
+});
 
 /* ---------- Sinh bộ lọc động ---------- */
 document.getElementById("filter-category").innerHTML = radioGroup("category", "all", "Tất cả", CATEGORIES.map(c => ({ value: c.key, label: c.key })));
 document.getElementById("filter-province").innerHTML = radioGroup("province", "all", "Tất cả", provinces.map(p => ({ value: p, label: p })));
-document.getElementById("filter-farm").innerHTML = radioGroup("farm", "all", "Tất cả", farms.map(f => ({ value: f.id, label: f.name })));
+const farmsForFilter = [...farms].sort((a, b) => {
+  const aPriority = a.type === "Hợp tác xã" ? 0 : 1;
+  const bPriority = b.type === "Hợp tác xã" ? 0 : 1;
+  return aPriority - bPriority || a.name.localeCompare(b.name, "vi");
+});
+document.getElementById("filter-farm").innerHTML = radioGroup("farm", "all", "Tất cả", farmsForFilter.map(f => ({ value: f.id, label: f.name })));
 document.getElementById("filter-standard").innerHTML = radioGroup("standard", "all", "Tất cả", standards.map(s => ({ value: s, label: s })));
 document.getElementById("filter-season").innerHTML = radioGroup("season", "all", "Tất cả", [
   { value: "in-season", label: "Đang vào mùa" },
@@ -69,7 +92,7 @@ function applyAndRender(){
     return;
   }
   grid.innerHTML = list.map(p => productCardHtml(p, farms.find(f => f.id === p.farmId), "", { showOrigin: false })).join("");
-  bindAddToCartButtons(grid, addToCart, (result) => alert(result.message));
+  bindAddToCartButtons(grid, addToCart, showCartNotice);
 }
 
 /* ---------- Áp dụng ?cat= và ?season= từ URL (link từ trang chủ/footer) ---------- */

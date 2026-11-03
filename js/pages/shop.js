@@ -20,7 +20,6 @@ root.innerHTML = CATEGORIES.map((c, i) => {
       <a class="shop-visual" href="${href}" aria-label="Sản phẩm ${c.key}">
         <div class="shop-visual-title">Sản phẩm ${c.key}</div>
         <div class="shop-visual-tag">${c.tagline}</div>
-        <div class="shop-visual-glyph">${c.glyph}</div>
         <img class="shop-visual-img" src="${categoryImgSrc(c.key)}" alt="Hình ${c.key}" loading="lazy" onerror="this.remove()">
         <img class="shop-visual-logo" src="${logoSrc()}" alt="Logo Nông Sản Việt">
       </a>

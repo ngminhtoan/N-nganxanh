@@ -3,7 +3,7 @@ import { initStorage, getProducts, getFarms } from "../utils/storage.js";
 import { addToCart } from "../utils/cart.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
-import { productCardHtml, bindAddToCartButtons } from "../components/product-card.js";
+import { productCardHtml, bindAddToCartButtons, showCartNotice } from "../components/product-card.js";
 import { productImgSrc, farmImgSrc, imgTag, logoStamp } from "../utils/images.js";
 
 
@@ -28,7 +28,7 @@ if(!farm){
 
     <div class="farm-card" style="margin-bottom:36px;">
       <div class="farm-card-top">
-        <div class="farm-logo" style="width:72px;height:72px;font-size:2.2rem;">${farm.glyph}${imgTag(farmImgSrc(farm), "Logo " + farm.name)}</div>
+        <div class="farm-logo" style="width:72px;height:72px;font-size:2.2rem;">${imgTag(farmImgSrc(farm), "Logo " + farm.name)}</div>
         <div>
           <h1 style="margin-bottom:2px;">${farm.name}</h1>
           <div class="farm-meta">${farm.type} · ${farm.province}</div>
@@ -51,6 +51,6 @@ if(!farm){
     grid.innerHTML = `<div class="state-box" style="grid-column:1/-1;"><div class="glyph">🌾</div><p>Chưa có sản phẩm.</p></div>`;
   }else{
     grid.innerHTML = farmProducts.map(p => productCardHtml(p, farm)).join("");
-    bindAddToCartButtons(grid, addToCart, (result) => alert(result.message));
+    bindAddToCartButtons(grid, addToCart, showCartNotice);
   }
 }

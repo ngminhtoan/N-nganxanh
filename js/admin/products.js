@@ -32,7 +32,7 @@ if(user){
       const season = seasonLabel(p.seasonStatus);
       return `
         <tr>
-          <td>${p.glyph || "🌿"} ${p.name}</td>
+          <td>${p.name}</td>
           <td>${p.category}</td>
           <td>${p.priceType === "fixed" ? formatVND(p.price) + "/" + p.unit : p.priceType}</td>
           <td>${p.stock <= 0 ? '<span class="badge badge-stock-out">Hết hàng</span>' : p.stock + " " + p.unit}</td>
