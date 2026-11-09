@@ -84,6 +84,13 @@ export function initStorage(){
 }
 
 export function getProducts(){ return getItem(KEYS.PRODUCTS, []); }
+/** Sản phẩm cũ chưa có trạng thái được xem là đã duyệt để tương thích với catalog hiện hữu. */
+export function isProductApproved(product){
+  return !product?.approvalStatus || product.approvalStatus === "approved";
+}
+export function getPublicProducts(){
+  return getProducts().filter(isProductApproved);
+}
 export function saveProducts(list){ setItem(KEYS.PRODUCTS, list); }
 
 export function getFarms(){ return getItem(KEYS.FARMS, []); }

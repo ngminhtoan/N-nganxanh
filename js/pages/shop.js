@@ -1,5 +1,5 @@
 // js/pages/shop.js — Trang "Cửa hàng": mỗi loại sản phẩm là 1 khung riêng
-import { initStorage, getProducts } from "../utils/storage.js";
+import { initStorage, getPublicProducts } from "../utils/storage.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
 import { CATEGORIES } from "../data/products.js";
@@ -9,7 +9,7 @@ initStorage();
 renderHeader("shop");
 renderFooter();
 
-const products = getProducts();
+const products = getPublicProducts();
 const root = document.getElementById("shop-sections");
 
 root.innerHTML = CATEGORIES.map((c, i) => {
@@ -21,7 +21,7 @@ root.innerHTML = CATEGORIES.map((c, i) => {
         <div class="shop-visual-title">Sản phẩm ${c.key}</div>
         <div class="shop-visual-tag">${c.tagline}</div>
         <img class="shop-visual-img" src="${categoryImgSrc(c.key)}" alt="Hình ${c.key}" loading="lazy" onerror="this.remove()">
-        <img class="shop-visual-logo" src="${logoSrc()}" alt="Logo Nông Sản Việt">
+        <img class="shop-visual-logo" src="${logoSrc()}" alt="Logo Nông Sản Xanh">
       </a>
       <div class="shop-info">
         <h2 class="shop-title">Sản phẩm ${c.key}</h2>

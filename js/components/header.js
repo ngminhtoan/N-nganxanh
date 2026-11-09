@@ -4,6 +4,7 @@
 
 import { getCurrentUser, logout } from "../utils/auth.js";
 import { refreshCartBadge } from "../utils/cart.js";
+import { getUsers, saveUsers, KEYS, setItem } from "../utils/storage.js";
 
 const NAV_ITEMS = [
   { key: "home", href: "index.html", label: "Trang chủ" },
@@ -23,8 +24,19 @@ export function renderHeader(activeKey = "", basePath = ""){
     `<a href="${basePath}${item.href}" class="${item.key === activeKey ? 'active' : ''}">${item.label}</a>`
   ).join("");
 
-  const accountHtml = user
-    ? `<a href="${basePath}tai-khoan.html" class="account-btn">👤 ${user.name.split(" ").slice(-1)[0]}</a>`
+  const safeAvatar = /^data:image\/(?:jpeg|png|webp);base64,/i.test(user?.avatar || "") ? user.avatar : "";
+  const initials = user ? user.name.trim().split(/\s+/).slice(-2).map(part => part[0]).join("").toLocaleUpperCase("vi").replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char])) : "";
+  const accountHtml = user?.type === "admin"
+    ? `<div class="account-profile-control account-profile-control-admin">
+        <a href="${basePath}sadmin/index.html" class="account-btn account-btn-profile" aria-label="Mở quản trị hệ thống" title="Mở quản trị hệ thống"><span class="account-avatar-menu account-avatar-menu-fallback" aria-hidden="true">${initials}</span></a><a class="account-admin-label" href="${basePath}sadmin/index.html">Quản trị hệ thống</a>
+      </div>`
+    : user
+    ? `<div class="account-profile-control">
+        <a href="${basePath}tai-khoan.html" class="account-btn account-btn-profile" aria-label="Tài khoản của tôi" title="Tài khoản của tôi">${safeAvatar ? `<img class="account-avatar-menu" src="${safeAvatar}" alt="">` : `<span class="account-avatar-menu account-avatar-menu-fallback" aria-hidden="true">${initials}</span>`}</a>
+        <button type="button" class="account-avatar-edit-menu" id="header-avatar-edit" aria-label="Thay đổi ảnh đại diện" title="Thay đổi ảnh đại diện">+</button>
+        <input type="file" class="account-avatar-file" id="header-avatar-file" accept="image/*" aria-label="Chọn ảnh đại diện">
+        <span class="visually-hidden" id="header-avatar-status" role="status" aria-live="polite"></span>
+      </div>`
     : `<a href="${basePath}dang-nhap.html" class="account-btn login-link">Đăng nhập</a>`;
 
   root.innerHTML = `
@@ -45,8 +57,11 @@ export function renderHeader(activeKey = "", basePath = ""){
     </div>
     <div class="mobile-menu" id="mobile-menu">
       ${nav}
+      ${user?.type === "admin" ? `<a href="${basePath}sadmin/index.html">Quản trị hệ thống</a>` : ""}
       ${user ? `<a href="#" id="mobile-logout">Đăng xuất (${user.name})</a>` : ""}
     </div>`;
+
+  if(user && user.type !== "admin") bindAvatarUpload(user);
 
   document.getElementById("header-search-form").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -68,4 +83,74 @@ export function renderHeader(activeKey = "", basePath = ""){
   }
 
   refreshCartBadge();
+}
+
+function bindAvatarUpload(user){
+  const trigger = document.getElementById("header-avatar-edit");
+  const input = document.getElementById("header-avatar-file");
+  const status = document.getElementById("header-avatar-status");
+  trigger.addEventListener("click", () => input.click());
+  input.addEventListener("change", async () => {
+    const file = input.files?.[0];
+    if(!file) return;
+    if(!file.type.startsWith("image/")){
+      status.textContent = "Vui lòng chọn một tệp ảnh.";
+      input.value = "";
+      return;
+    }
+    if(file.size > 8 * 1024 * 1024){
+      status.textContent = "Ảnh quá lớn. Hãy chọn ảnh dưới 8 MB.";
+      input.value = "";
+      return;
+    }
+    try{
+      const avatar = await compressAvatar(file);
+      const users = getUsers();
+      const userIndex = users.findIndex(savedUser => savedUser.id === user.id);
+      if(userIndex !== -1){
+        users[userIndex].avatar = avatar;
+        saveUsers(users);
+      }
+      user.avatar = avatar;
+      setItem(KEYS.CURRENT_USER, user);
+      const profileLink = document.querySelector(".account-btn-profile");
+      let photo = profileLink.querySelector("img");
+      if(!photo){
+        photo = document.createElement("img");
+        photo.className = "account-avatar-menu";
+        photo.alt = "";
+        profileLink.replaceChildren(photo);
+      }
+      photo.src = avatar;
+      status.textContent = "Ảnh đại diện đã được cập nhật.";
+    }catch(error){
+      status.textContent = "Không thể lưu ảnh. Vui lòng thử ảnh khác.";
+    }
+    input.value = "";
+  });
+}
+
+function compressAvatar(file){
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("Image read failed"));
+    reader.onload = () => {
+      const image = new Image();
+      image.onerror = () => reject(new Error("Invalid image"));
+      image.onload = () => {
+        const maxSize = 512;
+        const scale = Math.min(1, maxSize / Math.max(image.naturalWidth, image.naturalHeight));
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
+        canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+        const context = canvas.getContext("2d");
+        if(!context){ reject(new Error("Canvas unavailable")); return; }
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        try{ resolve(canvas.toDataURL("image/jpeg", .82)); }
+        catch(error){ reject(error); }
+      };
+      image.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
 }

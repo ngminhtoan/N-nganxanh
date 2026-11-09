@@ -17,7 +17,7 @@ export const PRODUCT_IMAGE_SOURCES = {
   14: { image: "img/products/14.jpg", source: "https://www.puurenfit.nl/biologische-oolong-thee.html", sourceName: "Puur&Fit — Oolong tea" },
   15: { image: "img/products/15.jpg", source: "https://khimfood.com/blogs/news/chuoi-say-deo-la-gi-loi-ich-khi-an-chuoi-say-deo", sourceName: "KHIMFOOD — Chuối sấy dẻo" },
   16: { image: "img/products/16.jpg", source: "https://www.etsy.com/listing/1586336757/kho-ca-loc-4-nng-dried-snakehead-fish", sourceName: "Etsy — Khô cá lóc 4 nắng" },
-  17: { image: "img/products/17.png", source: "https://thnotstore.com/blogs/news/phan-loai-duong-thot-not-nguyen-chat", sourceName: "Trần Gia / THNOT — Đường thốt nốt" },
+  17: { image: "img/products/17-card.png", source: "https://thnotstore.com/blogs/news/phan-loai-duong-thot-not-nguyen-chat", sourceName: "Trần Gia / THNOT — Đường thốt nốt (ảnh gốc: img/products/17.png)" },
   18: { image: "img/products/18.webp", source: "https://cuisinevietnams.com/product/mam-ca-linh-song-huong-400g/", sourceName: "CuisineVietnams — Mắm cá linh" },
   19: { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Packaged_thin_rice_noodles.jpg/500px-Packaged_thin_rice_noodles.jpg", source: "https://commons.wikimedia.org/wiki/File:Packaged_thin_rice_noodles.jpg", sourceName: "François Nguyen, Wikimedia Commons — CC BY 2.0 (ảnh minh họa)" },
   20: { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Rice_Grains_.png/500px-Rice_Grains_.png", source: "https://commons.wikimedia.org/wiki/File:Rice_Grains_.png", sourceName: "Hpannu7, Wikimedia Commons — CC BY-SA 4.0 (ảnh minh họa hạt gạo)" },

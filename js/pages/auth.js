@@ -1,6 +1,6 @@
 // js/pages/auth.js
 import { initStorage } from "../utils/storage.js";
-import { login, registerCustomer, registerFarm, isLoggedIn } from "../utils/auth.js";
+import { login, logout, registerCustomer, registerFarm, isLoggedIn, getCurrentUser } from "../utils/auth.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
 
@@ -11,7 +11,19 @@ renderFooter();
 /* ---------- Trang đăng nhập ---------- */
 const loginForm = document.getElementById("login-form");
 if(loginForm){
-  if(isLoggedIn()) window.location.href = "tai-khoan.html";
+  if(isLoggedIn()) window.location.href = getSignedInLandingPage();
+
+  let loginRole = "customer";
+  document.querySelectorAll("[data-login-role]").forEach(button => {
+    button.addEventListener("click", () => {
+      loginRole = button.dataset.loginRole;
+      document.querySelectorAll("[data-login-role]").forEach(item => item.classList.toggle("is-active", item === button));
+      const heading = document.querySelector(".auth-panel h2");
+      const subtitle = document.querySelector(".auth-panel .sub");
+      if(heading) heading.textContent = loginRole === "farm" ? "Không gian nhà vườn" : "Đăng nhập";
+      if(subtitle) subtitle.textContent = loginRole === "farm" ? "Đăng nhập để quản lý gian hàng và mùa vụ" : "Đăng nhập để mua sắm và theo dõi đơn hàng";
+    });
+  });
 
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -30,9 +42,15 @@ if(loginForm){
       showNote(note, result.message, false);
       return;
     }
+    const expectedType = loginRole;
+    if(result.user.type !== expectedType){
+      logout();
+      showNote(note, loginRole === "farm" ? "Tài khoản này không thuộc HTX / Nhà vườn. Hãy chọn Khách hàng hoặc kiểm tra lại email." : "Tài khoản này không thuộc Khách hàng. Nếu bạn là HTX / Nhà vườn, hãy chọn đúng không gian đăng nhập.", false);
+      return;
+    }
     showNote(note, `Đăng nhập thành công! Xin chào ${result.user.name}.`, true);
     setTimeout(() => {
-      window.location.href = result.user.type === "farm" ? "admin/index.html" : "tai-khoan.html";
+      window.location.href = result.user.type === "admin" ? "sadmin/index.html" : result.user.type === "farm" ? "admin/index.html" : "tai-khoan.html";
     }, 700);
   });
 }
@@ -40,7 +58,7 @@ if(loginForm){
 /* ---------- Trang đăng ký ---------- */
 const registerForm = document.getElementById("register-form");
 if(registerForm){
-  if(isLoggedIn()) window.location.href = "tai-khoan.html";
+  if(isLoggedIn()) window.location.href = getSignedInLandingPage();
 
   let role = "customer";
   const roleButtons = document.querySelectorAll(".role-toggle button");
@@ -91,6 +109,12 @@ if(registerForm){
 }
 
 function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+function getSignedInLandingPage(){
+  const user = getCurrentUser();
+  if(user?.type === "admin") return "sadmin/index.html";
+  return user?.type === "farm" ? "admin/index.html" : "tai-khoan.html";
+}
 
 function showFieldError(fieldId, message){
   const field = document.getElementById(fieldId).closest(".field");

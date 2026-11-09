@@ -9,11 +9,12 @@ initStorage();
 renderHeader("");
 renderFooter();
 
-if(requireLogin("dang-nhap.html")){
+if(getCurrentUser()?.type === "admin"){
+  window.location.replace("sadmin/index.html");
+}else if(requireLogin("dang-nhap.html")){
   const user = getCurrentUser();
 
   document.getElementById("acc-name").textContent = user.name;
-  document.getElementById("acc-type").textContent = user.type === "farm" ? "Tài khoản Nhà vườn/HTX" : "Tài khoản khách hàng";
   document.getElementById("info-email").textContent = user.email;
   document.getElementById("info-phone").textContent = user.phone || "—";
   document.getElementById("info-address").textContent = user.address || "—";

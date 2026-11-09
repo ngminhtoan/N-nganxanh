@@ -83,6 +83,8 @@ if(user){
       standards,
       origin: document.getElementById("pf-origin").value.trim(),
       description: document.getElementById("pf-description").value.trim(),
+      approvalStatus: "pending",
+      approvalNote: "",
     };
 
     const all = getProducts();
@@ -95,7 +97,9 @@ if(user){
     }
     saveProducts(all);
 
-    alert(isEdit ? "Đã cập nhật sản phẩm." : "Đã thêm sản phẩm mới.");
+    alert(isEdit
+      ? "Đã gửi thay đổi để quản trị viên duyệt. Sản phẩm sẽ hiển thị lại sau khi được duyệt."
+      : "Đã gửi sản phẩm để quản trị viên duyệt. Sản phẩm sẽ xuất hiện trên sàn sau khi được duyệt.");
     window.location.href = "san-pham.html";
   });
 }

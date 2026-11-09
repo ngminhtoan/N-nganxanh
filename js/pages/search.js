@@ -1,5 +1,5 @@
 // js/pages/search.js
-import { initStorage, getProducts, getFarms } from "../utils/storage.js";
+import { initStorage, getPublicProducts, getFarms } from "../utils/storage.js";
 import { addToCart } from "../utils/cart.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
@@ -10,7 +10,7 @@ initStorage();
 renderHeader("");
 renderFooter();
 
-const products = getProducts();
+const products = getPublicProducts();
 const farms = getFarms();
 const query = new URLSearchParams(window.location.search).get("q") || "";
 

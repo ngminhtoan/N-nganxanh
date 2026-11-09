@@ -1,5 +1,5 @@
 // js/pages/category.js — Danh sách sản phẩm theo loại (?cat=) hoặc theo mùa vụ (?season=)
-import { initStorage, getProducts, getFarms } from "../utils/storage.js";
+import { initStorage, getPublicProducts, getFarms } from "../utils/storage.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
 import { shopCardHtml } from "../components/product-card.js";
@@ -12,7 +12,7 @@ initStorage();
 renderHeader("shop");
 renderFooter();
 
-const products = getProducts();
+const products = getPublicProducts();
 const farms = getFarms();
 const params = new URLSearchParams(window.location.search);
 const catKey = params.get("cat");

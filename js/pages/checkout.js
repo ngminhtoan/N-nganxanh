@@ -1,5 +1,5 @@
 // js/pages/checkout.js
-import { initStorage, getProducts, saveProducts, getOrders, saveOrders } from "../utils/storage.js";
+import { initStorage, getProducts, saveProducts, getOrders, saveOrders, isProductApproved } from "../utils/storage.js";
 import { getCartWithProducts, cartTotal, clearCart } from "../utils/cart.js";
 import { getCurrentUser, isLoggedIn } from "../utils/auth.js";
 import { renderHeader } from "../components/header.js";
@@ -60,8 +60,8 @@ function initCheckout(){
     const products = getProducts();
     for(const item of cart){
       const p = products.find(pp => pp.id === item.productId);
-      if(!p || p.stock < item.quantity){
-        alert(`Sản phẩm "${item.product.name}" không đủ tồn kho. Vui lòng cập nhật giỏ hàng.`);
+      if(!p || !isProductApproved(p) || p.stock < item.quantity){
+        alert(`Sản phẩm "${item.product.name}" hiện không thể đặt hàng. Vui lòng cập nhật giỏ hàng.`);
         return;
       }
     }

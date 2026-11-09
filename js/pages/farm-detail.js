@@ -1,5 +1,5 @@
 // js/pages/farm-detail.js
-import { initStorage, getProducts, getFarms } from "../utils/storage.js";
+import { initStorage, getPublicProducts, getFarms } from "../utils/storage.js";
 import { addToCart } from "../utils/cart.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
@@ -11,7 +11,7 @@ initStorage();
 renderHeader("farms");
 renderFooter();
 
-const products = getProducts();
+const products = getPublicProducts();
 const farms = getFarms();
 const id = Number(new URLSearchParams(window.location.search).get("id"));
 const farm = farms.find(f => f.id === id);

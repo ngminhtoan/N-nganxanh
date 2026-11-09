@@ -1,5 +1,5 @@
 // js/pages/home.js
-import { initStorage, getProducts, getFarms, getLeads, saveLeads } from "../utils/storage.js";
+import { initStorage, getPublicProducts, getFarms, getLeads, saveLeads } from "../utils/storage.js";
 import { addToCart } from "../utils/cart.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
@@ -15,7 +15,7 @@ initStorage();
 renderHeader("home");
 renderFooter();
 
-const products = getProducts();
+const products = getPublicProducts();
 const farms = getFarms();
 
 /* ---------- Danh mục sản phẩm ---------- */

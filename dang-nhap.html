@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Đăng nhập — Nông Sản Việt</title>
+<title>Đăng nhập — Nông Sản Xanh</title>
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/header.css">
@@ -16,10 +16,20 @@
 
 <header class="site-header"><div id="site-header"></div></header>
 
-<div class="auth-shell">
-  <img class="auth-logo auth-logo-full" src="img/logo-nong-san-xanh.png" alt="Logo Nông Sản Xanh">
-  <h1 style="text-align:center;">Đăng nhập</h1>
-  <p class="sub">Đăng nhập để mua sắm và theo dõi đơn hàng</p>
+<main class="auth-layout customer-auth">
+  <section class="auth-story">
+    <span class="auth-kicker">NÔNG SẢN TƯƠI NGON CHỌN LỌC MỖI NGÀY</span>
+    <h1>Nông sản chất lượng,<br><span class="auth-title-accent">an tâm chọn lựa.</span></h1>
+    <p>Kết nối trực tiếp với nhà vườn và HTX, khám phá nông sản chất lượng từ khắp mọi miền Việt Nam.</p>
+    <a class="auth-back-link" href="index.html">← Khám phá sản phẩm</a>
+  </section>
+  <section class="auth-panel">
+    <a class="auth-panel-brand" href="index.html"><img src="img/logo-nong-san-xanh.png" alt="Nông Sản Xanh"></a>
+    <h2>Đăng nhập</h2>
+    <div class="auth-role-picker" role="group" aria-label="Chọn loại tài khoản">
+      <button type="button" class="is-active" data-login-role="customer">Khách hàng</button>
+      <button type="button" data-login-role="farm">HTX / Nhà vườn</button>
+    </div>
 
   <div class="form-note" id="form-note"></div>
 
@@ -38,8 +48,8 @@
   </form>
 
   <div class="auth-foot">Chưa có tài khoản? <a href="dang-ky.html">Đăng ký ngay</a></div>
-  <div class="auth-foot auth-home-link"><a href="index.html">← Về trang chủ</a></div>
-</div>
+  </section>
+</main>
 
 <footer class="site-footer"><div id="site-footer"></div></footer>
 

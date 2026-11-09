@@ -2,7 +2,7 @@
 // Giỏ hàng lưu trong localStorage dạng [{ productId, quantity }].
 // Không cho phép số lượng mua vượt quá tồn kho (stock) của sản phẩm.
 
-import { KEYS, getItem, setItem, getProducts } from "./storage.js";
+import { KEYS, getItem, setItem, getProducts, isProductApproved } from "./storage.js";
 
 export function getCart(){
   return getItem(KEYS.CART, []);
@@ -20,6 +20,7 @@ function saveCart(cart){
 export function addToCart(productId, quantity = 1){
   const product = getProducts().find(p => p.id === Number(productId));
   if(!product) return { ok: false, message: "Sản phẩm không tồn tại." };
+  if(!isProductApproved(product)) return { ok: false, message: "Sản phẩm đang chờ quản trị viên duyệt." };
   if(product.stock <= 0) return { ok: false, message: "Sản phẩm tạm hết hàng." };
   if(product.seasonStatus === "out-of-season") return { ok: false, message: "Sản phẩm đã hết mùa." };
   if(product.priceType === "contact") return { ok: false, message: "Vui lòng liên hệ nhà vườn để đặt sản phẩm này." };
@@ -42,7 +43,7 @@ export function updateCartQuantity(productId, quantity){
   const item = cart.find(i => i.productId === Number(productId));
   if(!item) return;
   let qty = Math.max(1, quantity);
-  if(product) qty = Math.min(qty, product.stock);
+  if(product && isProductApproved(product)) qty = Math.min(qty, product.stock);
   item.quantity = qty;
   saveCart(cart);
 }
@@ -61,11 +62,11 @@ export function getCartWithProducts(){
   const products = getProducts();
   return getCart()
     .map(item => ({ ...item, product: products.find(p => p.id === item.productId) }))
-    .filter(i => i.product);
+    .filter(i => i.product && isProductApproved(i.product));
 }
 
 export function cartCount(){
-  return getCart().reduce((sum, i) => sum + i.quantity, 0);
+  return getCartWithProducts().reduce((sum, i) => sum + i.quantity, 0);
 }
 
 export function cartTotal(){

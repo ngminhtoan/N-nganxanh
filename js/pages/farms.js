@@ -1,5 +1,5 @@
 // js/pages/farms.js
-import { initStorage, getProducts, getFarms } from "../utils/storage.js";
+import { initStorage, getPublicProducts, getFarms } from "../utils/storage.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
 import { farmCardHtml } from "../components/farm-card.js";
@@ -8,7 +8,7 @@ initStorage();
 renderHeader("farms");
 renderFooter();
 
-const products = getProducts();
+const products = getPublicProducts();
 let farms = getFarms();
 const grid = document.getElementById("farm-grid-full");
 const typeFilter = document.getElementById("farm-type-filter");

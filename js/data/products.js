@@ -150,40 +150,40 @@ export const PRODUCTS = [
 export const CATEGORIES = [
   { key: "Trái cây", tagline: "Trái cây tươi theo mùa, trực tiếp từ vườn",
     desc: [
-      "Trái cây Nông Sản Việt được tuyển chọn từ các vùng trồng nổi tiếng như Tiền Giang, Bến Tre hay Hà Giang – nơi thổ nhưỡng và khí hậu tạo nên hương vị đặc trưng cho từng loại quả.",
+      "Trái cây Nông Sản Xanh được tuyển chọn từ các vùng trồng nổi tiếng như Tiền Giang, Bến Tre hay Hà Giang – nơi thổ nhưỡng và khí hậu tạo nên hương vị đặc trưng cho từng loại quả.",
       "Mỗi sản phẩm đều gắn với một nhà vườn hoặc hợp tác xã cụ thể, có thông tin mùa vụ và trạng thái nguồn cung được cập nhật rõ ràng để bạn biết loại quả nào đang vào mùa ngon nhất.",
       "Nhiều sản phẩm đạt tiêu chuẩn VietGAP, được thu hái đúng độ chín và đóng gói cẩn thận để giữ trọn độ tươi khi đến tay người dùng.",
       "Từ xoài, sầu riêng, cam, bưởi đến những loại quả đặc sản theo vùng miền, trái cây tại đây là lựa chọn phù hợp cho bữa ăn gia đình, quà biếu và cả nhu cầu mua sỉ."
     ] },
   { key: "Rau củ", tagline: "Rau củ sạch, tươi mỗi ngày",
     desc: [
-      "Rau củ Nông Sản Việt đến từ các vùng canh tác nổi tiếng như Lâm Đồng, với khí hậu mát mẻ quanh năm rất thích hợp cho rau xanh và củ quả.",
+      "Rau củ Nông Sản Xanh đến từ các vùng canh tác nổi tiếng như Lâm Đồng, với khí hậu mát mẻ quanh năm rất thích hợp cho rau xanh và củ quả.",
       "Nhiều sản phẩm được trồng theo hướng hữu cơ hoặc đạt chứng nhận OCOP, hạn chế tối đa thuốc bảo vệ thực vật hóa học, giúp bữa cơm gia đình thêm an tâm.",
       "Rau củ được thu hái trong ngày, sơ chế và đóng gói cẩn thận để giữ độ giòn ngọt tự nhiên khi đến tay khách hàng.",
       "Từ cải xanh, cà chua bi đến khoai lang mật, mỗi loại đều có thông tin nhà vườn và nguồn gốc rõ ràng để bạn dễ dàng lựa chọn."
     ] },
   { key: "Gạo", tagline: "Gạo ngon từ những cánh đồng lúa Việt",
     desc: [
-      "Gạo Nông Sản Việt được chọn lọc từ những vùng lúa trù phú, cho hạt gạo chắc, thơm và giàu giá trị dinh dưỡng.",
+      "Gạo Nông Sản Xanh được chọn lọc từ những vùng lúa trù phú, cho hạt gạo chắc, thơm và giàu giá trị dinh dưỡng.",
       "Quy trình từ gieo trồng, thu hoạch, xay xát đến đóng gói đều được kiểm soát cẩn thận để giữ trọn mùi thơm dịu đặc trưng của gạo ngon.",
       "Cơm nấu từ gạo tại đây dẻo vừa phải, thơm nhẹ, phù hợp cho bữa ăn hằng ngày của cả gia đình.",
       "Ngoài gạo trắng, cửa hàng còn có các loại gạo đặc sản và gạo lứt dành cho người ưa chuộng lối sống lành mạnh."
     ] },
   { key: "Cà phê", tagline: "Cà phê nguyên chất, đậm vị đất đỏ",
     desc: [
-      "Cà phê Nông Sản Việt được thu mua từ các nhà vườn và hợp tác xã tại vùng Tây Nguyên, nơi đất đỏ bazan và khí hậu cao nguyên tạo nên hương vị đậm đà đặc trưng.",
+      "Cà phê Nông Sản Xanh được thu mua từ các nhà vườn và hợp tác xã tại vùng Tây Nguyên, nơi đất đỏ bazan và khí hậu cao nguyên tạo nên hương vị đậm đà đặc trưng.",
       "Hạt cà phê được thu hái chín kỹ, sơ chế và rang xay theo quy trình rõ ràng, không pha trộn tạp chất để giữ trọn hương thơm tự nhiên.",
       "Sản phẩm phù hợp cho cả pha phin truyền thống lẫn pha máy, mang lại tách cà phê thơm và đậm vị mỗi buổi sáng."
     ] },
   { key: "Trà", tagline: "Trà thơm từ những vùng chè nổi tiếng",
     desc: [
-      "Trà Nông Sản Việt được hái từ những đồi chè xanh mướt ở vùng núi phía Bắc và cao nguyên, nơi sương sớm và khí hậu mát lành cho búp chè thơm ngọt.",
+      "Trà Nông Sản Xanh được hái từ những đồi chè xanh mướt ở vùng núi phía Bắc và cao nguyên, nơi sương sớm và khí hậu mát lành cho búp chè thơm ngọt.",
       "Mỗi loại trà đều được sao sấy theo quy trình thủ công kết hợp kiểm soát chất lượng, giữ lại hương thơm dịu và vị chát nhẹ đặc trưng.",
       "Trà thích hợp để thưởng thức hằng ngày, tiếp khách hoặc làm quà biếu ý nghĩa cho người thân."
     ] },
   { key: "Nông sản khô", tagline: "Nông sản khô tự nhiên, bảo quản lâu dài",
     desc: [
-      "Nông sản khô Nông Sản Việt gồm các sản phẩm như trái cây sấy, nấm, măng, mộc nhĩ và nhiều loại đặc sản được chế biến từ nguồn nguyên liệu tươi tại vùng trồng.",
+      "Nông sản khô Nông Sản Xanh gồm các sản phẩm như trái cây sấy, nấm, măng, mộc nhĩ và nhiều loại đặc sản được chế biến từ nguồn nguyên liệu tươi tại vùng trồng.",
       "Sản phẩm được phơi hoặc sấy khô theo quy trình sạch, hạn chế phụ gia, giúp bảo quản được lâu mà vẫn giữ hương vị tự nhiên.",
       "Dễ sử dụng trong bữa ăn hằng ngày, làm quà biếu hoặc dự trữ cho gia đình, nhất là vào những dịp trái mùa."
     ] },

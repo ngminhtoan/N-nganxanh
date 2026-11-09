@@ -21,6 +21,19 @@ if(user){
 
   const myProducts = getProducts().filter(p => p.farmId === user.farmId);
   const orders = getOrders().filter(o => o.status === SOLD_STATUS && o.items.some(it => myProducts.some(p => p.id === it.productId)));
+  const salesByOrder = orders.map(order => {
+    const date = String(order.createdAt || "");
+    const soldItems = order.items.map(item => ({
+      item,
+      product: myProducts.find(product => product.id === item.productId),
+    })).filter(entry => entry.product);
+    return {
+      year: Number(date.slice(0, 4)),
+      month: Number(date.slice(5, 7)),
+      gross: soldItems.reduce((sum, entry) => sum + entry.item.quantity * entry.product.price, 0),
+      quantity: soldItems.reduce((sum, entry) => sum + entry.item.quantity, 0),
+    };
+  }).filter(sale => sale.year && sale.month >= 1 && sale.month <= 12);
 
   /* ---------- Tổng hợp số lượng & doanh thu theo từng sản phẩm ---------- */
   const soldMap = new Map(); // productId -> { qty, revenue }
@@ -40,6 +53,50 @@ if(user){
   document.getElementById("rv-gross-revenue").textContent = formatVND(grossRevenue);
   document.getElementById("rv-order-count").textContent = orders.length;
   document.getElementById("rv-product-sold-count").textContent = soldList.length;
+
+  /* ---------- Thống kê doanh thu theo tháng và năm ---------- */
+  const yearFilter = document.getElementById("rv-filter-year");
+  const monthFilter = document.getElementById("rv-filter-month");
+  const periodCaption = document.getElementById("rv-period-caption");
+  const yearOptions = [...new Set([new Date().getFullYear(), ...salesByOrder.map(sale => sale.year)])]
+    .sort((a, b) => b - a);
+  yearFilter.innerHTML = yearOptions.map(year => "<option value=\"" + year + "\">" + year + "</option>").join("");
+  const monthlyNames = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+    "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"];
+
+  function renderPeriodStats(){
+    const selectedYear = Number(yearFilter.value);
+    const selectedMonth = monthFilter.value === "all" ? null : Number(monthFilter.value);
+    const yearSales = salesByOrder.filter(sale => sale.year === selectedYear);
+    const periodSales = selectedMonth
+      ? yearSales.filter(sale => sale.month === selectedMonth)
+      : yearSales;
+    const periodGross = periodSales.reduce((sum, sale) => sum + sale.gross, 0);
+    const periodOrderCount = periodSales.length;
+    const periodProductCount = periodSales.reduce((sum, sale) => sum + sale.quantity, 0);
+
+    document.getElementById("rv-period-gross").textContent = formatVND(periodGross);
+    document.getElementById("rv-period-orders").textContent = periodOrderCount;
+    document.getElementById("rv-period-products").textContent = periodProductCount;
+    periodCaption.textContent = selectedMonth
+      ? monthlyNames[selectedMonth - 1] + " năm " + selectedYear
+      : "Cả năm " + selectedYear;
+
+    const monthlyTotals = Array(12).fill(0);
+    yearSales.forEach(sale => { monthlyTotals[sale.month - 1] += sale.gross; });
+    const maxMonthly = Math.max(...monthlyTotals, 0);
+    document.getElementById("rv-month-chart").innerHTML = monthlyTotals.map((total, index) => {
+      const height = maxMonthly ? Math.max(total ? 6 : 0, Math.round(total / maxMonthly * 100)) : 0;
+      const selectedClass = selectedMonth === index + 1 ? " is-selected" : "";
+      return "<div class=\"revenue-month" + selectedClass + "\" title=\"" + monthlyNames[index] + ": " + formatVND(total) + "\">" +
+        "<div class=\"revenue-month-value\">" + (total ? formatVND(total) : "—") + "</div>" +
+        "<div class=\"revenue-month-track\"><span class=\"revenue-month-bar\" style=\"height:" + height + "%\"></span></div>" +
+        "<span class=\"revenue-month-label\">T" + (index + 1) + "</span></div>";
+    }).join("");
+  }
+  yearFilter.addEventListener("change", renderPeriodStats);
+  monthFilter.addEventListener("change", renderPeriodStats);
+  renderPeriodStats();
 
   /* ---------- Bảng chi tiết sản phẩm đã bán ---------- */
   const body = document.getElementById("rv-products-body");

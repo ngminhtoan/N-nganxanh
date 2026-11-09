@@ -15,6 +15,12 @@ if(user){
 
   const body = document.getElementById("admin-products-body");
   const searchInput = document.getElementById("admin-product-search");
+  const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
+  const approvalLabel = product => {
+    if(product.approvalStatus === "pending") return `<span class="product-review-status is-pending">Chờ duyệt</span>${product.approvalNote ? `<small class="product-review-note">${escapeHtml(product.approvalNote)}</small>` : ""}`;
+    if(product.approvalStatus === "rejected") return `<span class="product-review-status is-rejected">Cần chỉnh sửa</span>${product.approvalNote ? `<small class="product-review-note">${escapeHtml(product.approvalNote)}</small>` : ""}`;
+    return `<span class="product-review-status is-approved">Đã duyệt</span>`;
+  };
 
   function render(query = ""){
     let products = getProducts().filter(p => p.farmId === user.farmId);
@@ -24,7 +30,7 @@ if(user){
     }
 
     if(products.length === 0){
-      body.innerHTML = `<tr><td colspan="6">Chưa có sản phẩm nào. Hãy thêm sản phẩm đầu tiên.</td></tr>`;
+      body.innerHTML = `<tr><td colspan="7">Chưa có sản phẩm nào. Hãy thêm sản phẩm đầu tiên.</td></tr>`;
       return;
     }
 
@@ -37,6 +43,7 @@ if(user){
           <td>${p.priceType === "fixed" ? formatVND(p.price) + "/" + p.unit : p.priceType}</td>
           <td>${p.stock <= 0 ? '<span class="badge badge-stock-out">Hết hàng</span>' : p.stock + " " + p.unit}</td>
           <td><span class="badge ${season.badgeClass}">${season.text}</span></td>
+          <td>${approvalLabel(p)}</td>
           <td class="row-actions">
             <a href="sua-san-pham.html?id=${p.id}">Sửa</a>
             <button type="button" class="danger js-delete" data-id="${p.id}">Xóa</button>

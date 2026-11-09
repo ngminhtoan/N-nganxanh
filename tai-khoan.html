@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tài khoản — Nông Sản Việt</title>
+<title>Tài khoản — Nông Sản Xanh</title>
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/header.css">
@@ -12,41 +12,45 @@
 <link rel="icon" type="image/png" href="img/logo-nong-san-xanh.png">
 
 </head>
-<body>
+<body class="account-page">
 
 <header class="site-header"><div id="site-header"></div></header>
 
-<section class="section">
-  <div class="wrap">
+<main class="account-main">
+  <div class="wrap account-wrap">
     <div class="breadcrumb"><a href="index.html">Trang chủ</a> / Tài khoản</div>
-    <div class="section-head"><div><h2 id="acc-name">Tài khoản của tôi</h2><p id="acc-type"></p></div></div>
+    <header class="account-intro">
+      <div>
+        <h1 class="account-greeting"><span class="account-greeting-word">Xin chào</span><span class="account-greeting-name" id="acc-name">bạn</span></h1>
+      </div>
+    </header>
 
     <div class="account-layout">
       <aside class="account-nav">
+        <span class="account-nav-title">Tài khoản</span>
         <a href="tai-khoan.html" class="active">Thông tin cá nhân</a>
         <a href="lich-su-don-hang.html">Lịch sử đơn hàng</a>
         <a href="admin/index.html" id="farm-admin-link" style="display:none;">Khu vực nhà vườn/HTX</a>
+        <button type="button" id="logout-btn" class="account-logout">Đăng xuất <span aria-hidden="true">↗</span></button>
       </aside>
 
-      <div>
+      <div class="account-content">
         <div class="account-card">
-          <h3>Thông tin cá nhân</h3>
+          <div class="account-card-heading"><div><span class="account-card-kicker">HỒ SƠ CỦA BẠN</span><h2>Thông tin cá nhân</h2></div><span class="account-card-icon" aria-hidden="true">✦</span></div>
           <div class="info-row"><span>Email</span><span id="info-email"></span></div>
           <div class="info-row"><span>Số điện thoại</span><span id="info-phone"></span></div>
           <div class="info-row"><span>Địa chỉ</span><span id="info-address"></span></div>
         </div>
 
         <div class="account-card">
-          <h3>Đơn hàng gần đây</h3>
+          <div class="account-card-heading"><div><span class="account-card-kicker">MUA SẮM CỦA BẠN</span><h2>Đơn hàng gần đây</h2></div><span class="account-card-icon" aria-hidden="true">⌑</span></div>
           <div id="recent-orders"></div>
-          <a href="lich-su-don-hang.html" class="btn btn-outline btn-sm" style="margin-top:14px;">Xem toàn bộ lịch sử</a>
+          <a href="lich-su-don-hang.html" class="btn btn-outline btn-sm account-history-link">Xem toàn bộ lịch sử <span aria-hidden="true">→</span></a>
         </div>
-
-        <button type="button" id="logout-btn" class="btn btn-outline">Đăng xuất</button>
       </div>
     </div>
   </div>
-</section>
+</main>
 
 <footer class="site-footer"><div id="site-footer"></div></footer>
 

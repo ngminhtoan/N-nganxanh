@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Đăng nhập Quản trị hệ thống — Nông Sản Việt</title>
+<title>Đăng nhập Quản trị hệ thống — Nông Sản Xanh</title>
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/cart.css">
@@ -11,12 +11,21 @@
 <link rel="icon" type="image/png" href="../img/logo-nong-san-xanh.png">
 
 </head>
-<body class="auth-page">
+<body class="auth-page admin-auth-page">
 
-<div class="auth-shell" style="margin-top:100px;">
-  <img class="auth-logo" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Việt">
-  <h1 style="text-align:center;">Quản trị hệ thống</h1>
-  <p class="sub">Dành riêng cho quản trị viên sàn Nông Sản Xanh</p>
+<main class="auth-layout admin-auth">
+  <section class="auth-story">
+    <a class="auth-brand" href="../index.html"><img src="../img/logo-mark-nong-san-xanh.png" alt=""><span>Nông Sản <b>Xanh</b></span></a>
+    <span class="auth-kicker">KHÔNG GIAN VẬN HÀNH</span>
+    <h1>Vững hệ thống,<br>an tâm mùa vụ.</h1>
+    <p>Cổng quản trị dành riêng cho đội ngũ vận hành sàn Nông Sản Xanh.</p>
+    <div class="auth-story-note"><span>✦</span><span><b>Quản trị an toàn</b><small>Theo dõi hoạt động và vận hành hệ sinh thái</small></span></div>
+    <a class="auth-back-link" href="../index.html">← Trở về trang chính</a>
+  </section>
+  <section class="auth-panel">
+    <span class="auth-panel-kicker">DÀNH CHO QUẢN TRỊ VIÊN</span>
+    <h2>Đăng nhập hệ thống</h2>
+    <p class="sub">Sử dụng tài khoản quản trị được cấp</p>
 
   <div class="form-note" id="form-note"></div>
 
@@ -35,8 +44,8 @@
   <div class="auth-foot" style="font-size:.8rem;">
   <strong>admin@nongsanviet.vn</strong> / admin123
   </div>
-  <div class="auth-foot"><a href="../index.html">← Về trang chính của sàn</a></div>
-</div>
+  </section>
+</main>
 
 <script type="module" src="../js/sadmin/auth.js"></script>
 </body>

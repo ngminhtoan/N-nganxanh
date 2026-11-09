@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Doanh thu — Nông Sản Việt</title>
+<title>Doanh thu — Nông Sản Xanh</title>
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/admin.css">
@@ -16,13 +16,13 @@
 
 <div class="admin-shell">
   <aside class="admin-sidebar">
-    <div class="logo"><img class="logo-img" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Việt"> Nông Sản Xanh</div>
+    <div class="logo"><img class="logo-img" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Xanh"> Nông Sản Xanh</div>
     <nav>
-      <a href="index.html">📊 Bảng điều khiển</a>
-      <a href="san-pham.html">🌿 Sản phẩm</a>
-      <a href="don-hang.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paper-bag" aria-hidden="true"><path d="M5.364 3.848C4 6 3 9.652 3 12.652V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5c0-2.334-1.816-4.668-2.622-7.002"/><path d="M7 3h11.379a2 2 0 0 1 1.789 1.106l.723 1.447A1 1 0 0 1 19.997 7h-8.525a2 2 0 0 1-1.789-1.106L8.79 4.105a1 1 0 1 0-1.789.895l2.261 4.522A5 5 0 0 1 8 12.652V21"/></svg> Đơn hàng</a>
-      <a href="doanh-thu.html" class="active">💰 Doanh thu</a>
-      <a href="thong-tin-htx.html">🏢 Thông tin HTX</a>
+      <a href="index.html">Bảng điều khiển</a>
+      <a href="san-pham.html">Sản phẩm</a>
+      <a href="don-hang.html">Đơn hàng</a>
+      <a href="doanh-thu.html" class="active">Doanh thu</a>
+      <a href="thong-tin-htx.html">Thông tin HTX</a>
     </nav>
     <a href="../index.html" class="back-link">← Về trang khách hàng</a>
   </aside>
@@ -30,10 +30,7 @@
   <main class="admin-main">
     <div class="admin-topbar">
       <h1>Doanh thu gian hàng</h1>
-      <div class="admin-user-chip">
-        Xin chào, <strong id="admin-user-name"></strong> ·
-        <button type="button" id="admin-logout" style="color:var(--color-danger); font-weight:600;">Đăng xuất</button>
-      </div>
+      <div class="admin-user-chip"><span class="admin-greeting">Xin chào, <strong id="admin-user-name"></strong></span><button type="button" id="admin-logout" class="admin-logout-button">Đăng xuất</button></div>
     </div>
 
     <div class="stat-grid">
@@ -50,19 +47,52 @@
       </table>
     </div>
 
-    <div class="admin-panel" style="max-width:520px;">
-      <h3>Tính &amp; lưu doanh thu sau thuế</h3>
-      <p style="color:var(--color-ink-soft); font-size:.88rem; margin-bottom:16px;">
-        Nhập thuế suất áp dụng cho gian hàng, hệ thống sẽ tự tính doanh thu sau thuế. Nhấn "Lưu doanh thu" để chốt và ghi lại vào cơ sở dữ liệu (localStorage).
-      </p>
-      <form id="rv-save-form">
-        <div class="field">
-          <label for="rv-tax-rate">Thuế suất (%)</label>
-          <input type="number" id="rv-tax-rate" min="0" max="100" step="0.5" value="10">
+    <div class="revenue-tools-grid">
+      <div class="admin-panel revenue-tax-panel">
+        <h3>Tính &amp; lưu doanh thu sau thuế</h3>
+        <p class="revenue-help">
+          Nhập thuế suất áp dụng cho gian hàng, hệ thống sẽ tự tính doanh thu sau thuế. Nhấn "Lưu doanh thu" để chốt và ghi lại vào cơ sở dữ liệu (localStorage).
+        </p>
+        <form id="rv-save-form">
+          <div class="field">
+            <label for="rv-tax-rate">Thuế suất (%)</label>
+            <input type="number" id="rv-tax-rate" min="0" max="100" step="0.5" value="10">
+          </div>
+          <div class="summary-card" id="rv-net-preview"></div>
+          <button type="submit" class="btn btn-block">Lưu doanh thu sau thuế</button>
+        </form>
+      </div>
+
+      <section class="admin-panel revenue-stats-panel" aria-labelledby="rv-stats-title">
+        <div class="revenue-stats-heading">
+          <div>
+            <span class="revenue-eyebrow">PHÂN TÍCH BÁN HÀNG</span>
+            <h3 id="rv-stats-title">Thống kê theo tháng, năm</h3>
+          </div>
+          <div class="revenue-period-filters">
+            <label for="rv-filter-year">Năm</label>
+            <select id="rv-filter-year" aria-label="Chọn năm thống kê"></select>
+            <label for="rv-filter-month">Tháng</label>
+            <select id="rv-filter-month" aria-label="Chọn tháng thống kê">
+              <option value="all">Cả năm</option>
+              <option value="1">Tháng 1</option><option value="2">Tháng 2</option>
+              <option value="3">Tháng 3</option><option value="4">Tháng 4</option>
+              <option value="5">Tháng 5</option><option value="6">Tháng 6</option>
+              <option value="7">Tháng 7</option><option value="8">Tháng 8</option>
+              <option value="9">Tháng 9</option><option value="10">Tháng 10</option>
+              <option value="11">Tháng 11</option><option value="12">Tháng 12</option>
+            </select>
+          </div>
         </div>
-        <div class="summary-card" id="rv-net-preview" style="padding:16px; margin-bottom:18px;"></div>
-        <button type="submit" class="btn btn-block">💾 Lưu doanh thu sau thuế</button>
-      </form>
+        <p class="revenue-period-caption" id="rv-period-caption"></p>
+        <div class="revenue-period-stats">
+          <div class="revenue-period-stat revenue-period-stat-primary"><span>Doanh thu gộp</span><strong id="rv-period-gross">0đ</strong></div>
+          <div class="revenue-period-stat"><span>Đơn hoàn thành</span><strong id="rv-period-orders">0</strong></div>
+          <div class="revenue-period-stat"><span>Sản phẩm đã bán</span><strong id="rv-period-products">0</strong></div>
+        </div>
+        <div class="revenue-chart-heading"><strong>Doanh thu theo tháng</strong><span>Đơn hoàn thành</span></div>
+        <div class="revenue-month-chart" id="rv-month-chart" role="img" aria-label="Biểu đồ doanh thu từng tháng"></div>
+      </section>
     </div>
 
     <div class="admin-panel">

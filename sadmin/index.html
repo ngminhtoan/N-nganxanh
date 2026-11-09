@@ -3,76 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quản lý gian hàng — Quản trị hệ thống</title>
+<title>Quản trị hệ thống — Nông Sản Xanh</title>
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/admin.css">
-<link rel="stylesheet" href="../css/cart.css">
 <link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/sadmin.css">
 <link rel="icon" type="image/png" href="../img/logo-nong-san-xanh.png">
-
 </head>
-<body class="admin-body">
-
-<div class="admin-shell">
-  <aside class="admin-sidebar">
-    <div class="logo"><img class="logo-img" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Việt"> Quản trị hệ thống</div>
-    <nav>
-      <a href="index.html" class="active">Gian hàng &amp; HTX</a>
+<body class="admin-body sadmin-page">
+<div class="sadmin-app">
+  <aside class="sadmin-sidebar">
+    <a class="sadmin-brand" href="index.html"><img src="../img/logo-nong-san-xanh.png" alt=""><span>Nông Sản Xanh<small>QUẢN TRỊ HỆ THỐNG</small></span></a>
+    <div class="sadmin-nav-label">KHÔNG GIAN LÀM VIỆC</div>
+    <nav class="sadmin-nav" aria-label="Điều hướng quản trị">
+      <button type="button" class="is-active" data-section="overview"><span>◫</span>Tổng quan</button>
+      <button type="button" data-section="farms"><span>♧</span>Nhà bán nông sản <b id="nav-farm-count">0</b></button>
+      <button type="button" data-section="products"><span>◇</span>Duyệt sản phẩm <b id="nav-product-count">0</b></button>
+      <button type="button" data-section="complaints"><span>♡</span>Quản lý khiếu nại <b id="nav-complaint-count">0</b></button>
+      <button type="button" data-section="reports"><span>▥</span>Báo cáo thống kê</button>
+      <button type="button" data-section="settings"><span>⚙</span>Cấu hình &amp; bảo mật</button>
     </nav>
-    <a href="../index.html" class="back-link">← Về trang chính của sàn</a>
+    <div class="sadmin-sidebar-bottom"><div class="sadmin-online"><span></span>Hệ thống đang hoạt động</div><a href="../index.html">← Về trang chính của sàn</a></div>
   </aside>
-
-  <main class="admin-main">
-    <div class="admin-topbar">
-            <h1>
-            <span style="
-                font-family: Georgia, 'Times New Roman', serif;
-                font-size: clamp(28px, 3vw, 40px);
-                font-weight: 400;
-                letter-spacing: 2px;
-                text-transform: uppercase;
-                background: linear-gradient(135deg, #0b7040, #21a366, #075b35);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-            ">QUẢN LÝ </span>
-
-            <span style="
-                font-family: 'Brush Script MT', 'Segoe Script', cursive;
-                font-size: clamp(32px, 3.5vw, 46px);
-                font-weight: 600;
-                font-style: italic;
-                color: #d5a653;
-                line-height: 1.2;
-            ">GIAN HÀNG</span>
-        </h1>
-      <div class="admin-user-chip">
-        Xin chào, <strong id="sadmin-name"></strong> ·
-        <button type="button" id="sadmin-logout" style="color:var(--color-danger); font-weight:600;">Đăng xuất</button>
-      </div>
-    </div>
-
-    <div class="stat-grid" style="grid-template-columns: repeat(3,1fr);">
-      <div class="stat-card"><div class="label">Tổng số gian hàng/HTX</div><div class="value" id="stat-total-farms">0</div></div>
-      <div class="stat-card"><div class="label">Tổng số sản phẩm toàn sàn</div><div class="value" id="stat-total-products-all">0</div></div>
-      <div class="stat-card warn"><div class="label">Tổng số cảnh báo đã gửi</div><div class="value" id="stat-total-warnings">0</div></div>
-    </div>
-
-    <div class="admin-panel">
-      <div class="admin-toolbar">
-        <input type="search" id="sadmin-search" class="admin-search" placeholder="Tìm theo tên gian hàng hoặc tỉnh/thành...">
-      </div>
-      <table class="admin-table">
-        <thead>
-          <tr><th>Gian hàng/HTX</th><th>Liên hệ</th><th>Sản phẩm</th><th>Cảnh báo</th><th>Thuế suất</th><th></th></tr>
-        </thead>
-        <tbody id="sadmin-farms-body"></tbody>
-      </table>
+  <main class="sadmin-main">
+    <header class="sadmin-topbar"><div class="sadmin-mobile-brand">Nông Sản Xanh <span>· Quản trị</span></div><div class="sadmin-breadcrumb">Trang chủ <span>/</span> <strong id="breadcrumb-current">Tổng quan</strong></div><div class="sadmin-top-user"><span class="sadmin-avatar">QT</span><span class="sadmin-greeting">Xin chào, <strong id="sadmin-name">Quản trị viên</strong><small>Quản trị viên hệ thống</small></span><button type="button" id="sadmin-logout" class="admin-logout-button">Đăng xuất</button></div></header>
+    <div class="sadmin-content">
+      <section class="sadmin-section is-visible" id="section-overview">
+        <div class="sadmin-page-heading"><div><span class="sadmin-eyebrow">BẢNG ĐIỀU KHIỂN</span><h1>Chào buổi sáng, quản trị viên <span>✳</span></h1><p>Theo dõi hoạt động của sàn nông sản trong một nơi.</p></div><div class="sadmin-date-chip" id="today-label"></div></div>
+        <div class="sadmin-stat-grid">
+          <article class="sadmin-stat"><div class="sadmin-stat-top"><span>Tổng nhà bán</span><span class="sadmin-stat-icon green">♧</span></div><strong id="overview-farms">0</strong><small><span>●</span> Tài khoản trên sàn</small></article>
+          <article class="sadmin-stat"><div class="sadmin-stat-top"><span>Sản phẩm nông sản</span><span class="sadmin-stat-icon gold">◇</span></div><strong id="overview-products">0</strong><small><span>●</span> Đang được quản lý</small></article>
+          <article class="sadmin-stat"><div class="sadmin-stat-top"><span>Đơn hàng toàn sàn</span><span class="sadmin-stat-icon blue">▤</span></div><strong id="overview-orders">0</strong><small><span>●</span> Tất cả trạng thái</small></article>
+          <article class="sadmin-stat"><div class="sadmin-stat-top"><span>Doanh thu hoàn tất</span><span class="sadmin-stat-icon green">₫</span></div><strong id="overview-revenue">0 ₫</strong><small><span>●</span> Tính từ đơn đã hoàn thành</small></article>
+        </div>
+        <div class="sadmin-overview-grid"><article class="sadmin-card sadmin-chart-card"><div class="sadmin-card-heading"><div><span class="sadmin-eyebrow">VẬN HÀNH</span><h2>Tổng quan đơn hàng</h2></div><span class="sadmin-period">Dữ liệu hiện có</span></div><div class="sadmin-order-bars" id="overview-order-bars"></div><div class="sadmin-chart-legend"><span><i></i> Số đơn theo trạng thái</span><strong id="overview-order-summary"></strong></div></article><article class="sadmin-card sadmin-attention-card"><div class="sadmin-card-heading"><div><span class="sadmin-eyebrow">CẦN QUAN TÂM</span><h2>Việc cần xử lý</h2></div><span class="sadmin-leaf">✳</span></div><div id="overview-attention"></div></article></div>
+        <article class="sadmin-card"><div class="sadmin-card-heading"><div><span class="sadmin-eyebrow">NHÀ BÁN NỔI BẬT</span><h2>Nhà bán mới trên sàn</h2></div><button class="sadmin-text-button" type="button" data-go="farms">Xem danh sách →</button></div><div class="sadmin-table-wrap"><table class="sadmin-table"><thead><tr><th>Nhà bán</th><th>Khu vực</th><th>Tiêu chuẩn</th><th>Sản phẩm</th><th>Trạng thái</th></tr></thead><tbody id="overview-farm-rows"></tbody></table></div></article>
+      </section>
+      <section class="sadmin-section" id="section-farms"><div class="sadmin-page-heading"><div><span class="sadmin-eyebrow">ĐỐI TÁC SÀN</span><h1>Quản lý nhà bán nông sản</h1><p>Theo dõi hồ sơ, vùng sản xuất, tiêu chuẩn và hoạt động của nhà bán.</p></div><div class="sadmin-heading-mark">♧</div></div><div class="sadmin-stat-grid sadmin-stat-grid-compact"><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Tổng nhà bán</span><span class="sadmin-stat-icon green">♧</span></div><strong id="farm-stat-total">0</strong><small>Hồ sơ đang có trên sàn</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Có chứng nhận</span><span class="sadmin-stat-icon gold">✳</span></div><strong id="farm-stat-certified">0</strong><small>Có VietGAP, OCOP, hữu cơ…</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Đang hoạt động</span><span class="sadmin-stat-icon blue">↗</span></div><strong id="farm-stat-active">0</strong><small>Đang kinh doanh sản phẩm</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Cảnh báo chất lượng</span><span class="sadmin-stat-icon rose">!</span></div><strong id="farm-stat-warnings">0</strong><small>Cảnh báo đã được ghi nhận</small></article></div><article class="sadmin-card"><div class="sadmin-toolbar"><div><span class="sadmin-eyebrow">DANH BẠ ĐỐI TÁC</span><h2>Danh sách nhà bán</h2></div><div class="sadmin-filters"><input id="farm-search" type="search" placeholder="Tìm nhà bán, tỉnh thành…"><select id="farm-filter"><option value="all">Tất cả nhà bán</option><option value="certified">Có chứng nhận</option><option value="warnings">Có cảnh báo</option></select></div></div><div class="sadmin-table-wrap"><table class="sadmin-table"><thead><tr><th>Nhà bán nông sản</th><th>Địa chỉ &amp; liên hệ</th><th>Chứng nhận</th><th>Sản phẩm</th><th>Cảnh báo</th><th></th></tr></thead><tbody id="sadmin-farms-body"></tbody></table></div><div class="sadmin-table-foot" id="farm-table-count"></div></article></section>
+      <section class="sadmin-section" id="section-products"><div class="sadmin-page-heading"><div><span class="sadmin-eyebrow">KIỂM DUYỆT DANH MỤC</span><h1>Duyệt sản phẩm</h1><p>Sản phẩm chỉ được đăng bán sau khi quản trị viên kiểm tra thông tin và chấp thuận.</p></div><div class="sadmin-heading-mark">◇</div></div><div class="sadmin-stat-grid sadmin-stat-grid-compact"><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Chờ duyệt</span><span class="sadmin-stat-icon gold">◷</span></div><strong id="product-stat-pending">0</strong><small>Đang chờ xem xét</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Đã duyệt</span><span class="sadmin-stat-icon green">✓</span></div><strong id="product-stat-approved">0</strong><small>Được đăng trên sàn</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Cần chỉnh sửa</span><span class="sadmin-stat-icon rose">!</span></div><strong id="product-stat-rejected">0</strong><small>Nhà bán cần cập nhật</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Tổng sản phẩm</span><span class="sadmin-stat-icon blue">◇</span></div><strong id="product-stat-total">0</strong><small>Tất cả trạng thái kiểm duyệt</small></article></div><article class="sadmin-card"><div class="sadmin-toolbar"><div><span class="sadmin-eyebrow">HỒ SƠ SẢN PHẨM</span><h2>Danh sách chờ kiểm duyệt</h2></div><div class="sadmin-filters"><input id="product-review-search" type="search" placeholder="Tìm tên sản phẩm hoặc nhà bán…"><select id="product-review-filter"><option value="pending">Chờ duyệt</option><option value="all">Tất cả trạng thái</option><option value="approved">Đã duyệt</option><option value="rejected">Cần chỉnh sửa</option></select></div></div><div class="sadmin-table-wrap"><table class="sadmin-table"><thead><tr><th>Sản phẩm</th><th>Nhà bán</th><th>Nguồn gốc / tiêu chuẩn</th><th>Giá &amp; tồn kho</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody id="sadmin-products-body"></tbody></table></div><div class="sadmin-table-foot" id="product-review-count"></div></article></section>
+      <section class="sadmin-section" id="section-complaints"><div class="sadmin-page-heading"><div><span class="sadmin-eyebrow">CHĂM SÓC CỘNG ĐỒNG</span><h1>Quản lý khiếu nại</h1><p>Tiếp nhận và theo dõi phản ánh về sản phẩm, giao nhận và nhà bán.</p></div><div class="sadmin-heading-mark">♡</div></div><div class="sadmin-stat-grid sadmin-stat-grid-compact"><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Tổng phản ánh</span><span class="sadmin-stat-icon blue">♡</span></div><strong id="complaint-stat-total">0</strong><small>Được ghi nhận trên hệ thống</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Chờ xử lý</span><span class="sadmin-stat-icon gold">◷</span></div><strong id="complaint-stat-open">0</strong><small>Cần quản trị viên xem xét</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Đang xác minh</span><span class="sadmin-stat-icon blue">⌕</span></div><strong id="complaint-stat-review">0</strong><small>Đang làm việc với các bên</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Đã giải quyết</span><span class="sadmin-stat-icon green">✓</span></div><strong id="complaint-stat-done">0</strong><small>Đã hoàn tất xử lý</small></article></div><article class="sadmin-card"><div class="sadmin-toolbar"><div><span class="sadmin-eyebrow">HỖ TRỢ NGƯỜI DÙNG</span><h2>Danh sách khiếu nại</h2></div><div class="sadmin-filters"><input id="complaint-search" type="search" placeholder="Tìm mã, khách hàng, nội dung…"><select id="complaint-filter"><option value="all">Tất cả trạng thái</option><option value="open">Chờ xử lý</option><option value="reviewing">Đang xác minh</option><option value="resolved">Đã giải quyết</option></select></div></div><div id="complaints-list" class="sadmin-complaints-list"></div><div class="sadmin-empty-note" id="complaint-empty">Chưa có khiếu nại nào. Quản trị viên có thể ghi nhận phản ánh mới.</div></article><article class="sadmin-card"><div class="sadmin-card-heading"><div><span class="sadmin-eyebrow">GHI NHẬN PHẢN ÁNH</span><h2>Tạo khiếu nại mới</h2></div></div><form id="complaint-form" class="sadmin-complaint-form"><label>Mã đơn hàng (nếu có)<input name="orderId" placeholder="VD: 1004"></label><label>Khách hàng<input name="customer" required placeholder="Tên người phản ánh"></label><label>Loại khiếu nại<select name="category"><option>Sản phẩm / chất lượng</option><option>Đóng gói / vận chuyển</option><option>Nhà bán / dịch vụ</option><option>Thanh toán / hoàn tiền</option><option>Khác</option></select></label><label class="sadmin-form-wide">Nội dung phản ánh<textarea name="message" required rows="3" placeholder="Mô tả phản ánh và thông tin cần theo dõi…"></textarea></label><div class="sadmin-form-wide"><button class="sadmin-primary-button" type="submit">+ Ghi nhận khiếu nại</button></div></form></article></section>
+      <section class="sadmin-section" id="section-reports"><div class="sadmin-page-heading"><div><span class="sadmin-eyebrow">BỨC TRANH KINH DOANH</span><h1>Báo cáo thống kê</h1><p>Tổng hợp doanh số, đơn hàng và mặt hàng nông sản theo dữ liệu sàn.</p></div><div class="sadmin-heading-mark">▥</div></div><div class="sadmin-report-filters"><label>Kỳ báo cáo<select id="report-period"><option value="all">Toàn bộ thời gian</option><option value="year">Theo năm hiện tại</option><option value="month">Tháng hiện tại</option></select></label><span id="report-period-label"></span></div><div class="sadmin-stat-grid sadmin-stat-grid-compact"><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Doanh thu hoàn tất</span><span class="sadmin-stat-icon green">₫</span></div><strong id="report-revenue">0 ₫</strong><small>Giá trị đơn hàng hoàn thành</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Đơn hoàn tất</span><span class="sadmin-stat-icon blue">✓</span></div><strong id="report-orders">0</strong><small>Đơn giao dịch thành công</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Sản lượng đã bán</span><span class="sadmin-stat-icon gold">◇</span></div><strong id="report-quantity">0</strong><small>Đơn vị sản phẩm theo đơn hàng</small></article><article class="sadmin-stat"><div class="sadmin-stat-top"><span>Giá trị trung bình</span><span class="sadmin-stat-icon rose">↗</span></div><strong id="report-average">0 ₫</strong><small>Trên mỗi đơn hoàn tất</small></article></div><div class="sadmin-overview-grid"><article class="sadmin-card sadmin-chart-card"><div class="sadmin-card-heading"><div><span class="sadmin-eyebrow">TÌNH HÌNH ĐƠN HÀNG</span><h2>Đơn hàng theo trạng thái</h2></div></div><div class="sadmin-order-bars" id="report-order-bars"></div></article><article class="sadmin-card"><div class="sadmin-card-heading"><div><span class="sadmin-eyebrow">DANH MỤC SẢN PHẨM</span><h2>Nhóm sản phẩm nổi bật</h2></div></div><div class="sadmin-category-list" id="report-categories"></div></article></div><article class="sadmin-card"><div class="sadmin-card-heading"><div><span class="sadmin-eyebrow">THÀNH TÍCH NHÀ VƯỜN</span><h2>Nhà bán theo doanh số hoàn tất</h2></div></div><div class="sadmin-table-wrap"><table class="sadmin-table"><thead><tr><th>Nhà bán</th><th>Khu vực</th><th>Số sản phẩm</th><th>Sản lượng</th><th>Doanh thu</th></tr></thead><tbody id="report-farm-rows"></tbody></table></div></article></section>
+      <section class="sadmin-section" id="section-settings"><div class="sadmin-page-heading"><div><span class="sadmin-eyebrow">QUYỀN TRUY CẬP &amp; HỆ THỐNG</span><h1>Cấu hình &amp; bảo mật</h1><p>Quản lý hồ sơ quản trị, thông tin vận hành và hoạt động bảo mật.</p></div><div class="sadmin-heading-mark">⚙</div></div><div class="sadmin-settings-grid"><article class="sadmin-card"><div class="sadmin-card-heading"><div><span class="sadmin-eyebrow">TÀI KHOẢN</span><h2>Hồ sơ quản trị</h2></div><span class="sadmin-leaf">♙</span></div><form id="settings-profile-form" class="sadmin-settings-form"><label>Họ và tên<input name="name" id="setting-admin-name" required></label><label>Email quản trị<input name="email" id="setting-admin-email" type="email" required></label><label>Số điện thoại<input name="phone" id="setting-admin-phone" placeholder="Chưa cập nhật"></label><div><button type="submit" class="sadmin-primary-button">Lưu thông tin</button><span id="settings-profile-message" class="sadmin-inline-message"></span></div></form></article><article class="sadmin-card"><div class="sadmin-card-heading"><div><span class="sadmin-eyebrow">ĐỔI MẬT KHẨU</span><h2>Bảo vệ tài khoản</h2></div><span class="sadmin-leaf">♧</span></div><form id="settings-password-form" class="sadmin-settings-form"><label>Mật khẩu hiện tại<input name="currentPassword" type="password" required autocomplete="current-password"></label><label>Mật khẩu mới<input name="newPassword" type="password" minlength="6" required autocomplete="new-password"></label><label>Nhập lại mật khẩu mới<input name="confirmPassword" type="password" minlength="6" required autocomplete="new-password"></label><div><button type="submit" class="sadmin-primary-button">Cập nhật mật khẩu</button><span id="settings-password-message" class="sadmin-inline-message"></span></div></form></article></div><article class="sadmin-card"><div class="sadmin-card-heading"><div><span class="sadmin-eyebrow">CẤU HÌNH SÀN</span><h2>Thông tin vận hành</h2></div></div><form id="settings-system-form" class="sadmin-complaint-form"><label>Tên sàn<input name="siteName" id="setting-site-name" required></label><label>Email hỗ trợ<input name="supportEmail" id="setting-support-email" type="email" required></label><label>Tỷ lệ phí mặc định (%)<input name="feeRate" id="setting-fee-rate" type="number" min="0" max="100" step="0.1" required></label><label>Múi giờ<select name="timezone"><option value="Asia/Ho_Chi_Minh">Việt Nam (GMT+7)</option></select></label><div class="sadmin-form-wide"><button class="sadmin-primary-button" type="submit">Lưu cấu hình</button><span id="settings-system-message" class="sadmin-inline-message"></span></div></form></article><article class="sadmin-card sadmin-security-card"><div class="sadmin-card-heading"><div><span class="sadmin-eyebrow">PHIÊN ĐĂNG NHẬP</span><h2>Trạng thái bảo mật</h2></div><span class="sadmin-status sadmin-status-active"><i></i>Đang hoạt động</span></div><div class="sadmin-security-details"><div><span>Vai trò tài khoản</span><strong>Quản trị viên hệ thống</strong></div><div><span>Phiên hiện tại</span><strong id="setting-session-email">—</strong></div><div><span>Cơ chế lưu trữ</span><strong>Mô phỏng trên trình duyệt</strong></div></div><p class="sadmin-security-note">Lưu ý: tài khoản và dữ liệu của đồ án hiện dùng localStorage trên trình duyệt. Cần máy chủ xác thực để bảo vệ mật khẩu và phiên đăng nhập thực tế.</p></article></section>
+      <footer class="sadmin-footer">© <span id="footer-year"></span> Nông Sản Xanh <span>·</span> Nền tảng kết nối nông sản Việt.</footer>
     </div>
   </main>
 </div>
-
 <script type="module" src="../js/sadmin/dashboard.js"></script>
 </body>
 </html>
