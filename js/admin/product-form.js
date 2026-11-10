@@ -4,7 +4,7 @@ import { requireFarmLogin, logout } from "../utils/auth.js";
 import { CATEGORIES } from "../data/products.js";
 
 initStorage();
-const user = requireFarmLogin("../dang-nhap.html");
+const user = requireFarmLogin("../dang-nhap.html?role=farm");
 
 const ALL_STANDARDS = ["VietGAP", "GlobalGAP", "OCOP", "Hữu cơ"];
 
@@ -12,7 +12,7 @@ if(user){
   document.getElementById("admin-user-name").textContent = user.name;
   document.getElementById("admin-logout").addEventListener("click", () => {
     logout();
-    window.location.href = "../index.html";
+    window.location.href = "../dang-nhap.html?role=farm";
   });
 
   const form = document.getElementById("product-form");

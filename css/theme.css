@@ -202,6 +202,23 @@ body.account-page{ min-height:100vh; background:linear-gradient(135deg,#eaf3e4 0
 .account-history-link{ display:inline-flex; gap:10px; align-items:center; margin-top:18px; border-radius:7px; }
 .account-content #recent-orders>p{ padding:10px 0 4px; color:#68796b; font-size:.9rem; }
 .account-content #recent-orders>p a{ color:#2f6b3c; font-weight:600; text-decoration:underline; text-underline-offset:3px; }
+.customer-complaint-help{ margin:-4px 0 18px; color:#6e7e70; font-size:.86rem; line-height:1.55; }
+.customer-complaint-form .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.customer-complaint-form .field label{ display:block; margin-bottom:7px; color:#465d49; font-size:.82rem; font-weight:600; }
+.customer-complaint-form .field input,.customer-complaint-form .field select,.customer-complaint-form .field textarea{ width:100%; min-height:43px; padding:10px 12px; border:1px solid #d5dfd0; border-radius:8px; background:#fbfcf8; color:#173c26; font:inherit; }
+.customer-complaint-form .field textarea{ resize:vertical; }
+.customer-complaint-note{ min-height:1.3em; margin:0 0 10px; color:#2f6b3c; font-size:.82rem; }
+.customer-complaint-note.is-error{ color:#a43c34; }
+.customer-complaint-history{ margin-top:22px; }
+.customer-complaint-history h3{ margin:0 0 10px; color:#294733; font-size:.95rem; }
+.customer-complaint-history-empty{ color:#788679; font-size:.85rem; }
+.customer-complaint-item{ margin-top:10px; padding:13px 14px; border:1px solid #e1e9dd; border-radius:9px; background:#fbfdf9; }
+.customer-complaint-item>div:first-child{ display:flex; justify-content:space-between; gap:12px; color:#35523a; font-size:.84rem; }
+.customer-complaint-item>div:first-child span{ color:#788679; text-align:right; font-size:.75rem; }
+.customer-complaint-item>p{ margin:8px 0 0; color:#58695a; font-size:.84rem; line-height:1.5; }
+.customer-complaint-responses{ margin-top:10px; padding:8px 11px; border-left:3px solid #78a86b; background:#f2f7ee; }
+.customer-complaint-responses p{ margin:4px 0; color:#49634c; font-size:.8rem; line-height:1.5; }
+@media(max-width:560px){ .customer-complaint-form .field-row{ grid-template-columns:1fr; gap:0; }.customer-complaint-item>div:first-child{ flex-direction:column; }.customer-complaint-item>div:first-child span{ text-align:left; } }
 @media(max-width:760px){
   .account-main{ padding:28px 0 52px; }
   .account-layout{ grid-template-columns:1fr; gap:18px; }
@@ -297,6 +314,9 @@ body.auth-page::before{ content:""; position:fixed; z-index:-1; inset:0; backgro
 .auth-panel-brand{ display:flex; align-items:center; justify-content:center; width:100%; margin:0 auto 22px; }
 .auth-panel-brand img{ display:block; width:220px; height:100px; object-fit:contain; object-position:center; }
 .auth-panel .auth-panel-kicker{ display:block; }
+.admin-auth .auth-panel-kicker{ margin-bottom:8px; text-align:center; }
+.admin-auth .auth-panel h2{ margin:12px 0 28px; text-align:center; }
+.admin-auth .auth-panel .field{ margin-bottom:22px; }
 .login-page .auth-panel h2{ text-align:center; }
 .login-page .auth-panel h2{ margin:14px 0 20px; font-size:clamp(1.55rem,3.2vw,2rem); letter-spacing:0; white-space:nowrap; }
 .login-page .auth-role-picker{ width:100%; min-height:66px; gap:12px; margin-bottom:32px; padding:8px; }
@@ -324,5 +344,16 @@ body.auth-page::before{ content:""; position:fixed; z-index:-1; inset:0; backgro
 .register-panel .auth-foot{ margin-top:14px; color:#738074; font-size:.8rem; }
 .register-panel .auth-foot a{ color:#2f6b3c; }
 .register-page .site-footer{ border-top:1px solid rgba(255,255,255,.18); }
+.admin-auth-page .auth-story{ animation:sadmin-auth-rise .65s cubic-bezier(.2,.7,.25,1) both; }
+.admin-auth-page .auth-panel{ animation:sadmin-auth-rise .65s .1s cubic-bezier(.2,.7,.25,1) both; }
+.admin-auth-page .auth-panel-brand{ animation:sadmin-auth-rise .5s .18s both; }
+.admin-auth-page .auth-panel-kicker,.admin-auth-page .auth-panel h2,.admin-auth-page .auth-panel .sub{ animation:sadmin-auth-rise .5s .24s both; }
+.admin-auth-page #sadmin-login-form .field{ animation:sadmin-auth-rise .5s both; }
+.admin-auth-page #sadmin-login-form .field:nth-of-type(1){ animation-delay:.32s; }
+.admin-auth-page #sadmin-login-form .field:nth-of-type(2){ animation-delay:.4s; }
+.admin-auth-page #sadmin-login-form button[type=submit]{ animation:sadmin-auth-rise .5s .48s both; transition:transform .2s ease,box-shadow .2s ease,background .2s ease; }
+.admin-auth-page #sadmin-login-form button[type=submit]:hover{ transform:translateY(-2px); box-shadow:0 11px 22px rgba(47,107,60,.24); }
+@keyframes sadmin-auth-rise{ from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+@media(prefers-reduced-motion:reduce){ .admin-auth-page *, .admin-auth-page *::before, .admin-auth-page *::after{ animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
 @media(max-width:800px){ .register-layout{ grid-template-columns:minmax(0,1fr) minmax(360px,440px); } .register-panel{ padding:32px 28px; } }
 @media(max-width:660px){ .register-layout{ grid-template-columns:1fr; } .register-panel{ padding:30px 26px 34px; } }

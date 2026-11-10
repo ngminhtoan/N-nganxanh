@@ -30,6 +30,7 @@
         <span class="account-nav-title">Tài khoản</span>
         <a href="tai-khoan.html" class="active">Thông tin cá nhân</a>
         <a href="lich-su-don-hang.html">Lịch sử đơn hàng</a>
+        <a href="#customer-complaint">Gửi khiếu nại</a>
         <a href="admin/index.html" id="farm-admin-link" style="display:none;">Khu vực nhà vườn/HTX</a>
         <button type="button" id="logout-btn" class="account-logout">Đăng xuất <span aria-hidden="true">↗</span></button>
       </aside>
@@ -46,6 +47,22 @@
           <div class="account-card-heading"><div><span class="account-card-kicker">MUA SẮM CỦA BẠN</span><h2>Đơn hàng gần đây</h2></div><span class="account-card-icon" aria-hidden="true">⌑</span></div>
           <div id="recent-orders"></div>
           <a href="lich-su-don-hang.html" class="btn btn-outline btn-sm account-history-link">Xem toàn bộ lịch sử <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="account-card" id="customer-complaint">
+          <div class="account-card-heading"><div><span class="account-card-kicker">HỖ TRỢ KHÁCH HÀNG</span><h2>Gửi khiếu nại</h2></div><span class="account-card-icon" aria-hidden="true">♡</span></div>
+          <p class="customer-complaint-help">Khiếu nại sẽ được gửi đến HTX/nhà vườn liên quan và quản trị viên sàn.</p>
+          <form id="customer-complaint-form" class="customer-complaint-form">
+            <div class="field-row">
+              <div class="field"><label for="customer-complaint-order">Mã đơn hàng (nếu có)</label><select id="customer-complaint-order" name="orderId"><option value="">Không gắn với đơn hàng</option></select></div>
+              <div class="field"><label for="customer-complaint-farm">HTX / nhà vườn liên quan</label><select id="customer-complaint-farm" name="farmId" required><option value="">Chọn HTX / nhà vườn</option></select></div>
+            </div>
+            <div class="field"><label for="customer-complaint-category">Loại khiếu nại</label><select id="customer-complaint-category" name="category"><option>Sản phẩm / chất lượng</option><option>Đóng gói / vận chuyển</option><option>Nhà bán / dịch vụ</option><option>Thanh toán / hoàn tiền</option><option>Khác</option></select></div>
+            <div class="field"><label for="customer-complaint-message">Nội dung phản ánh</label><textarea id="customer-complaint-message" name="message" rows="4" required placeholder="Mô tả vấn đề bạn gặp phải…"></textarea></div>
+            <p id="customer-complaint-note" class="customer-complaint-note" role="status" aria-live="polite"></p>
+            <button type="submit" class="btn">Gửi khiếu nại</button>
+          </form>
+          <div id="customer-complaint-history" class="customer-complaint-history"></div>
         </div>
       </div>
     </div>

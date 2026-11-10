@@ -139,3 +139,89 @@
 .farm-profile-page #farm-profile-form input,.farm-profile-page #farm-profile-form select,.farm-profile-page #farm-profile-form textarea{ border-radius:9px; }
 @media(max-width:980px){ .farm-profile-page .admin-main{ padding:24px 18px 44px; } }
 @media(max-width:560px){ .farm-profile-page #farm-profile-form .field-row{ grid-template-columns:1fr; gap:0; } }
+
+/* Dashboard HTX: nhẹ nhàng nhấn mạnh thẻ, bảng và trạng thái điều hướng. */
+.dashboard-page .admin-main{
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(ellipse at 88% 0%,rgba(196,222,177,.36),transparent 32%),
+    linear-gradient(145deg,#f5f8f1 0%,#edf4e8 54%,#f7f9f4 100%);
+}
+.dashboard-page .admin-topbar h1{ animation:dashboard-enter .5s both; }
+.dashboard-page .admin-sidebar nav a{ position:relative; transition:background .2s ease,color .2s ease,transform .2s ease; }
+.dashboard-page .admin-sidebar nav a:hover{ transform:translateX(4px); background:rgba(255,255,255,.14); }
+.dashboard-page .admin-sidebar nav a.active{ background:linear-gradient(100deg,rgba(255,255,255,.17),rgba(255,255,255,.07)); box-shadow:inset 3px 0 #c7df8d; }
+.dashboard-page .stat-card{
+  position:relative;
+  overflow:hidden;
+  border-color:#d6e3cf;
+  border-radius:14px;
+  box-shadow:0 5px 16px rgba(39,75,42,.045);
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+  animation:dashboard-enter .5s both;
+}
+.dashboard-page .stat-card::after{ position:absolute; top:-22px; right:-20px; width:78px; height:78px; border:12px solid rgba(93,143,76,.08); border-radius:50%; content:""; pointer-events:none; }
+.dashboard-page .stat-card:hover{ transform:translateY(-5px); border-color:#a8c99c; box-shadow:0 14px 28px rgba(39,75,42,.12); }
+.dashboard-page .stat-card .label{ position:relative; z-index:1; }
+.dashboard-page .stat-card .value{ position:relative; z-index:1; }
+.dashboard-page .stat-card:nth-child(2){animation-delay:.05s}.dashboard-page .stat-card:nth-child(3){animation-delay:.1s}.dashboard-page .stat-card:nth-child(4){animation-delay:.15s}.dashboard-page .stat-card:nth-child(5){animation-delay:.2s}.dashboard-page .stat-card:nth-child(6){animation-delay:.25s}.dashboard-page .stat-card:nth-child(7){animation-delay:.3s}
+.dashboard-page .admin-panel{ border-color:#d5e2ce; border-radius:15px; box-shadow:0 7px 22px rgba(39,75,42,.055); animation:dashboard-enter .55s .18s both; }
+.dashboard-page .admin-panel h3{ display:flex; align-items:center; gap:10px; }
+.dashboard-page .admin-panel h3::before{ width:4px; height:21px; border-radius:4px; background:linear-gradient(#8eb96d,#39764a); content:""; }
+.dashboard-page .admin-table tbody tr{ transition:background .18s ease; }
+.dashboard-page .admin-table tbody tr:hover{ background:#f3f8ef; }
+.dashboard-page .admin-table tbody td{ transition:color .18s ease; }
+@keyframes dashboard-enter{ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+@media(prefers-reduced-motion:reduce){ .dashboard-page *, .dashboard-page *::before, .dashboard-page *::after{ animation-duration:.01ms!important; animation-iteration-count:1!important; scroll-behavior:auto!important; transition-duration:.01ms!important; } }
+
+/* Hệ thống HTX: thống nhất giao diện và hiệu ứng cho mọi trang quản trị. */
+.admin-body:not(.sadmin-body){ background:#edf4e8; }
+.admin-body:not(.sadmin-body) .admin-main{
+  min-width:0;
+  background:
+    radial-gradient(ellipse at 90% 0%,rgba(196,222,177,.32),transparent 31%),
+    linear-gradient(145deg,#f5f8f1 0%,#edf4e8 54%,#f8faf6 100%);
+}
+.admin-body:not(.sadmin-body) .admin-sidebar{ box-shadow:8px 0 30px rgba(23,57,32,.10); }
+.admin-body:not(.sadmin-body) .admin-sidebar nav a{
+  position:relative;
+  transition:background .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.admin-body:not(.sadmin-body) .admin-sidebar nav a:hover{ transform:translateX(4px); background:rgba(255,255,255,.13); }
+.admin-body:not(.sadmin-body) .admin-sidebar nav a.active{ background:linear-gradient(100deg,rgba(255,255,255,.18),rgba(255,255,255,.07)); box-shadow:inset 3px 0 #c7df8d; }
+.admin-body:not(.sadmin-body) .admin-topbar{ animation:htx-rise-in .48s both; }
+.admin-body:not(.sadmin-body) .stat-card,
+.admin-body:not(.sadmin-body) .admin-panel{
+  border-color:#d5e2ce;
+  border-radius:14px;
+  box-shadow:0 6px 20px rgba(39,75,42,.055);
+  animation:htx-rise-in .52s both;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+}
+.admin-body:not(.sadmin-body) .stat-card:nth-child(2){animation-delay:.05s}
+.admin-body:not(.sadmin-body) .stat-card:nth-child(3){animation-delay:.1s}
+.admin-body:not(.sadmin-body) .stat-card:nth-child(4){animation-delay:.15s}
+.admin-body:not(.sadmin-body) .stat-card:nth-child(5){animation-delay:.2s}
+.admin-body:not(.sadmin-body) .stat-card:nth-child(6){animation-delay:.25s}
+.admin-body:not(.sadmin-body) .stat-card:nth-child(7){animation-delay:.3s}
+.admin-body:not(.sadmin-body) .admin-panel:nth-of-type(2){animation-delay:.08s}
+.admin-body:not(.sadmin-body) .admin-panel:nth-of-type(3){animation-delay:.16s}
+.admin-body:not(.sadmin-body) .admin-panel:nth-of-type(4){animation-delay:.24s}
+.admin-body:not(.sadmin-body) .stat-card:hover,
+.admin-body:not(.sadmin-body) .admin-panel:hover{ transform:translateY(-3px); border-color:#b7cfad; box-shadow:0 13px 28px rgba(39,75,42,.10); }
+.admin-body:not(.sadmin-body) .admin-table tbody tr{ transition:background .18s ease; }
+.admin-body:not(.sadmin-body) .admin-table tbody tr:hover{ background:#f2f8ef; }
+.admin-body:not(.sadmin-body) .admin-main .btn,
+.admin-body:not(.sadmin-body) .admin-main button,
+.admin-body:not(.sadmin-body) .admin-main input,
+.admin-body:not(.sadmin-body) .admin-main select,
+.admin-body:not(.sadmin-body) .admin-main textarea{ transition:box-shadow .2s ease,border-color .2s ease,transform .2s ease; }
+.admin-body:not(.sadmin-body) .admin-main input:focus,
+.admin-body:not(.sadmin-body) .admin-main select:focus,
+.admin-body:not(.sadmin-body) .admin-main textarea:focus{ border-color:#78a86b; box-shadow:0 0 0 3px rgba(83,139,71,.14); outline:0; }
+.admin-body:not(.sadmin-body) .admin-main .btn:hover{ transform:translateY(-1px); box-shadow:0 7px 16px rgba(39,75,42,.16); }
+@keyframes htx-rise-in{ from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+@media(prefers-reduced-motion:reduce){ .admin-body:not(.sadmin-body) *, .admin-body:not(.sadmin-body) *::before, .admin-body:not(.sadmin-body) *::after{ animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
+.farm-complaint-help{margin:0 0 16px;color:#718073;font-size:.88rem;line-height:1.55}.farm-complaints-list{display:grid;gap:14px}.farm-complaints-empty{padding:26px 12px;color:#819083;text-align:center}.farm-complaint-card{padding:17px;border:1px solid #dfe8da;border-radius:12px;background:#fcfdfb}.farm-complaint-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.farm-complaint-id{color:#7c8a7d;font-size:.7rem;font-weight:700}.farm-complaint-head h2{margin:5px 0;color:#2d4733;font-size:1rem}.farm-complaint-head small{color:#839083;font-size:.72rem}.farm-complaint-status{display:grid;gap:5px;color:#728073;font-size:.68rem;font-weight:600}.farm-complaint-status select{min-width:140px;min-height:34px;padding:6px 9px;border:1px solid #dce6d8;border-radius:7px;background:#fff;color:#405644;font:inherit}.farm-complaint-message{margin:14px 0;color:#536653;font-size:.88rem;line-height:1.55;white-space:pre-wrap}.farm-complaint-response{margin:9px 0;padding:10px 12px;border-left:3px solid #7da874;border-radius:0 7px 7px 0;background:#f2f7ee;color:#536653;font-size:.8rem}.farm-complaint-response p{margin:5px 0 0;line-height:1.5;white-space:pre-wrap}.farm-complaint-reply-form{display:grid;gap:8px;margin-top:14px;padding-top:13px;border-top:1px solid #edf1e9}.farm-complaint-reply-form label{color:#526653;font-size:.75rem;font-weight:700}.farm-complaint-reply-form textarea{width:100%;min-height:72px;padding:10px 12px;border:1px solid #dfe7dc;border-radius:8px;background:#fff;color:#344a38;font:inherit;font-size:.84rem;resize:vertical}.farm-complaint-reply-form button{justify-self:start}.farm-complaint-reply-form textarea:focus{outline:3px solid rgba(66,121,69,.12);border-color:#79a578}
+@media(max-width:620px){.farm-complaint-head{flex-direction:column}.farm-complaint-status,.farm-complaint-status select{width:100%}.farm-complaint-reply-form button{width:100%}}

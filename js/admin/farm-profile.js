@@ -4,13 +4,13 @@ import { requireFarmLogin, logout, getCurrentUser } from "../utils/auth.js";
 import { KEYS, setItem } from "../utils/storage.js";
 
 initStorage();
-const user = requireFarmLogin("../dang-nhap.html");
+const user = requireFarmLogin("../dang-nhap.html?role=farm");
 
 if(user){
   document.getElementById("admin-user-name").textContent = user.name;
   document.getElementById("admin-logout").addEventListener("click", () => {
     logout();
-    window.location.href = "../index.html";
+    window.location.href = "../dang-nhap.html?role=farm";
   });
 
   const farm = getFarms().find(f => Number(f.id) === Number(user.farmId));
@@ -18,7 +18,7 @@ if(user){
 
   if(!farm){
     alert("Không tìm thấy hồ sơ nhà vườn/HTX được liên kết với tài khoản này.");
-    window.location.href = "../dang-nhap.html";
+    window.location.href = "../dang-nhap.html?role=farm";
   } else {
 
   document.getElementById("fp-name").value = farm.name;
@@ -26,7 +26,6 @@ if(user){
   document.getElementById("fp-province").value = farm.province || "";
   document.getElementById("fp-address").value = farm.address || "";
   document.getElementById("fp-phone").value = farm.phone || "";
-  document.getElementById("fp-taxrate").value = farm.taxRate ?? 10;
   document.getElementById("fp-description").value = farm.description || "";
 
   form.addEventListener("submit", (e) => {
@@ -37,11 +36,10 @@ if(user){
     farm.province = document.getElementById("fp-province").value.trim();
     farm.address = document.getElementById("fp-address").value.trim();
     farm.phone = document.getElementById("fp-phone").value.trim();
-    const taxInput = Number(document.getElementById("fp-taxrate").value);
-    farm.taxRate = isNaN(taxInput) ? 0 : Math.min(100, Math.max(0, taxInput));
+    farm.taxRate = 10;
     farm.description = document.getElementById("fp-description").value.trim();
 
-    // Lưu toàn bộ thông tin (bao gồm SĐT và thuế suất) vào cơ sở dữ liệu mô phỏng (localStorage)
+    // Lưu toàn bộ thông tin (bao gồm SĐT) vào cơ sở dữ liệu mô phỏng (localStorage)
     const farms = getFarms().map(f => f.id === farm.id ? farm : f);
     saveFarms(farms);
 

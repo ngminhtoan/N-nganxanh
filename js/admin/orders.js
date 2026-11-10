@@ -4,7 +4,7 @@ import { requireFarmLogin, logout } from "../utils/auth.js";
 import { formatVND, formatDate, orderStatusLabel } from "../utils/format.js";
 
 initStorage();
-const user = requireFarmLogin("../dang-nhap.html");
+const user = requireFarmLogin("../dang-nhap.html?role=farm");
 
 const NEXT_STATUS = {
   pending: ["confirmed", "cancelled"],
@@ -18,7 +18,7 @@ if(user){
   document.getElementById("admin-user-name").textContent = user.name;
   document.getElementById("admin-logout").addEventListener("click", () => {
     logout();
-    window.location.href = "../index.html";
+    window.location.href = "../dang-nhap.html?role=farm";
   });
 
   const myProducts = getProducts().filter(p => p.farmId === user.farmId);

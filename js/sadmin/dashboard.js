@@ -178,7 +178,7 @@ if(admin){
     });
     document.getElementById("complaints-list").innerHTML = shown.map(item => {
       const status = statuses[item.status] || statuses.pending;
-      return `<article class="sadmin-complaint"><div class="sadmin-complaint-top"><div><span class="sadmin-complaint-id">${esc(item.id)} · Đơn #${esc(item.orderId || "—")}</span><h3>${esc(item.category)} — ${esc(item.customer)}</h3><div class="sadmin-complaint-meta"><span>Tiếp nhận: ${esc(formatDate(item.date))}</span><span>Phản ánh về đơn hàng / dịch vụ</span></div></div><div class="sadmin-complaint-actions"><span class="sadmin-status ${status.className}"><i></i>${status.label}</span><select class="js-complaint-status" data-id="${esc(item.id)}" aria-label="Cập nhật trạng thái khiếu nại"><option value="pending" ${item.status === "pending" ? "selected" : ""}>Chờ xử lý</option><option value="reviewing" ${item.status === "reviewing" ? "selected" : ""}>Đang xác minh</option><option value="resolved" ${item.status === "resolved" ? "selected" : ""}>Đã giải quyết</option></select></div></div><p>${esc(item.message)}</p></article>`;
+      return `<article class="sadmin-complaint"><div class="sadmin-complaint-top"><div><span class="sadmin-complaint-id">${esc(item.id)} · Đơn #${esc(item.orderId || "—")}</span><h3>${esc(item.category)} — ${esc(item.customer)}</h3><div class="sadmin-complaint-meta"><span>Tiếp nhận: ${esc(formatDate(item.date))}</span><span>HTX/nhà vườn: ${esc(item.targetFarmName || "Chưa xác định")}</span></div></div><div class="sadmin-complaint-actions"><span class="sadmin-status ${status.className}"><i></i>${status.label}</span><select class="js-complaint-status" data-id="${esc(item.id)}" aria-label="Cập nhật trạng thái khiếu nại"><option value="pending" ${item.status === "pending" ? "selected" : ""}>Chờ xử lý</option><option value="reviewing" ${item.status === "reviewing" ? "selected" : ""}>Đang xác minh</option><option value="resolved" ${item.status === "resolved" ? "selected" : ""}>Đã giải quyết</option></select></div></div><p>${esc(item.message)}</p>${item.farmReply ? `<div class="sadmin-complaint-reply"><strong>Phản hồi HTX/nhà vườn</strong><p>${esc(item.farmReply)}</p></div>` : ""}${item.reply ? `<div class="sadmin-complaint-reply"><strong>Phản hồi của quản trị viên</strong><p>${esc(item.reply)}</p></div>` : ""}<form class="sadmin-complaint-reply-form" data-id="${esc(item.id)}"><label for="reply-${esc(item.id)}">${item.reply ? "Cập nhật phản hồi" : "Trả lời khiếu nại"}</label><textarea id="reply-${esc(item.id)}" name="reply" rows="2" required placeholder="Nhập nội dung phản hồi…">${esc(item.reply || "")}</textarea><button class="sadmin-primary-button" type="submit">${item.reply ? "Lưu phản hồi" : "Gửi phản hồi"}</button></form></article>`;
     }).join("");
     document.getElementById("complaint-empty").style.display = shown.length ? "none" : "block";
     document.querySelectorAll(".js-complaint-status").forEach(select => select.addEventListener("change", () => {
@@ -186,7 +186,24 @@ if(admin){
       if(!complaint) return;
       complaint.status = select.value; setItem(COMPLAINTS_KEY, complaints); renderComplaints(); renderOverview();
     }));
+    document.querySelectorAll(".sadmin-complaint-reply-form").forEach(form => form.addEventListener("submit", event => {
+      event.preventDefault();
+      const complaint = complaints.find(item => item.id === form.dataset.id);
+      const reply = String(new FormData(form).get("reply") || "").trim();
+      if(!complaint || !reply) return;
+      complaint.reply = reply;
+      complaint.repliedAt = new Date().toISOString().slice(0, 10);
+      setItem(COMPLAINTS_KEY, complaints);
+      renderComplaints();
+    }));
   }
+
+  window.addEventListener("storage", event => {
+    if(event.key !== COMPLAINTS_KEY) return;
+    complaints = getItem(COMPLAINTS_KEY, []);
+    renderComplaints();
+    renderOverview();
+  });
 
   function filteredOrders(){
     const period = document.getElementById("report-period").value;
@@ -265,12 +282,6 @@ if(admin){
     setItem(SETTINGS_KEY, settings);
     const message = document.getElementById("settings-system-message"); message.textContent = "Đã lưu cấu hình."; setTimeout(() => { if(message.isConnected) message.textContent = ""; }, 2000);
   });
-  document.getElementById("complaint-form").addEventListener("submit", event => {
-    event.preventDefault(); const form = new FormData(event.currentTarget);
-    const complaint = { id:`KN-${String(Date.now()).slice(-6)}`, orderId:String(form.get("orderId")).trim() || "—", customer:String(form.get("customer")).trim(), category:String(form.get("category")), message:String(form.get("message")).trim(), date:new Date().toISOString().slice(0,10), status:"pending" };
-    complaints = [complaint, ...complaints]; setItem(COMPLAINTS_KEY, complaints); event.currentTarget.reset(); renderComplaints(); renderOverview();
-  });
-
   const sections = { overview:"Tổng quan", farms:"Nhà bán nông sản", products:"Duyệt sản phẩm", complaints:"Quản lý khiếu nại", reports:"Báo cáo thống kê", settings:"Cấu hình & bảo mật" };
   document.querySelectorAll(".sadmin-nav [data-section]").forEach(button => button.addEventListener("click", () => {
     const key = button.dataset.section;

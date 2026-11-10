@@ -1,16 +1,16 @@
 // js/admin/dashboard.js
-import { initStorage, getProducts, getOrders, getFarms } from "../utils/storage.js";
+import { initStorage, getProducts, getOrders } from "../utils/storage.js";
 import { requireFarmLogin, logout } from "../utils/auth.js";
 import { formatVND, formatDate, orderStatusLabel } from "../utils/format.js";
 
 initStorage();
-const user = requireFarmLogin("../dang-nhap.html");
+const user = requireFarmLogin("../dang-nhap.html?role=farm");
 
 if(user){
   document.getElementById("admin-user-name").textContent = user.name;
   document.getElementById("admin-logout").addEventListener("click", () => {
     logout();
-    window.location.href = "../index.html";
+    window.location.href = "../dang-nhap.html?role=farm";
   });
 
   const products = getProducts().filter(p => p.farmId === user.farmId);
@@ -38,10 +38,8 @@ if(user){
     }, 0);
   document.getElementById("stat-revenue").textContent = formatVND(revenue);
 
-  // Doanh thu sau thuế = doanh thu gian hàng - thuế suất do nhà vườn/HTX tự khai báo
-  // (lấy từ hồ sơ HTX, xem admin/thong-tin-htx.html — lưu trong localStorage cùng dữ liệu farms).
-  const farm = getFarms().find(f => f.id === user.farmId);
-  const taxRate = farm ? (farm.taxRate ?? 0) : 0;
+  // Thuế suất cố định 10% cho mọi gian hàng.
+  const taxRate = 10;
   const netRevenue = revenue * (1 - taxRate / 100);
   document.getElementById("stat-taxrate-label").textContent = `Doanh thu sau thuế (${taxRate}%)`;
   document.getElementById("stat-net-revenue").textContent = formatVND(netRevenue);

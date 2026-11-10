@@ -9,7 +9,9 @@ initStorage();
 renderHeader("");
 renderFooter();
 
-if(requireLogin("dang-nhap.html")){
+if(getCurrentUser()?.type === "farm"){
+  window.location.replace("admin/index.html");
+}else if(requireLogin("dang-nhap.html")){
   const user = getCurrentUser();
   const products = getProducts();
   const orders = getOrders().filter(o => o.userId === user.id).reverse();

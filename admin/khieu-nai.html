@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khiếu nại — Nông Sản Xanh</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../css/cart.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="icon" type="image/png" href="../img/logo-nong-san-xanh.png">
+</head>
+<body class="admin-body">
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="logo"><img class="logo-img" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Xanh"> Nông Sản Xanh</div>
+    <nav>
+      <a href="index.html">Bảng điều khiển</a>
+      <a href="san-pham.html">Sản phẩm</a>
+      <a href="don-hang.html">Đơn hàng</a>
+      <a href="khieu-nai.html" class="active">Khiếu nại</a>
+      <a href="doanh-thu.html">Doanh thu</a>
+      <a href="thong-tin-htx.html">Thông tin HTX</a>
+    </nav>
+    <a href="index.html" class="back-link">← Về bảng điều khiển HTX</a>
+  </aside>
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1>Khiếu nại khách hàng</h1>
+      <div class="admin-user-chip"><span class="admin-greeting">Xin chào, <strong id="admin-user-name"></strong></span><button type="button" id="admin-logout" class="admin-logout-button">Đăng xuất</button></div>
+    </div>
+    <section class="admin-panel">
+      <p class="farm-complaint-help">Các phản ánh gửi đến gian hàng của bạn cũng được chuyển đến quản trị viên sàn.</p>
+      <div id="farm-complaints-list" class="farm-complaints-list"></div>
+      <p id="farm-complaints-empty" class="farm-complaints-empty" hidden>Chưa có khiếu nại nào gửi đến gian hàng của bạn.</p>
+    </section>
+  </main>
+</div>
+<script type="module" src="../js/admin/complaints.js"></script>
+</body>
+</html>

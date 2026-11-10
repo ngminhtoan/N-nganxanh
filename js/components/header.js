@@ -30,6 +30,10 @@ export function renderHeader(activeKey = "", basePath = ""){
     ? `<div class="account-profile-control account-profile-control-admin">
         <a href="${basePath}sadmin/index.html" class="account-btn account-btn-profile" aria-label="Mở quản trị hệ thống" title="Mở quản trị hệ thống"><span class="account-avatar-menu account-avatar-menu-fallback" aria-hidden="true">${initials}</span></a><a class="account-admin-label" href="${basePath}sadmin/index.html">Quản trị hệ thống</a>
       </div>`
+    : user?.type === "farm"
+    ? `<div class="account-profile-control account-profile-control-farm">
+        <a href="${basePath}admin/index.html" class="account-btn account-btn-profile" aria-label="Mở khu vực HTX / Nhà vườn" title="Mở khu vực HTX / Nhà vườn">${safeAvatar ? `<img class="account-avatar-menu" src="${safeAvatar}" alt="">` : `<span class="account-avatar-menu account-avatar-menu-fallback" aria-hidden="true">${initials}</span>`}</a>
+      </div>`
     : user
     ? `<div class="account-profile-control">
         <a href="${basePath}tai-khoan.html" class="account-btn account-btn-profile" aria-label="Tài khoản của tôi" title="Tài khoản của tôi">${safeAvatar ? `<img class="account-avatar-menu" src="${safeAvatar}" alt="">` : `<span class="account-avatar-menu account-avatar-menu-fallback" aria-hidden="true">${initials}</span>`}</a>
@@ -61,7 +65,7 @@ export function renderHeader(activeKey = "", basePath = ""){
       ${user ? `<a href="#" id="mobile-logout">Đăng xuất (${user.name})</a>` : ""}
     </div>`;
 
-  if(user && user.type !== "admin") bindAvatarUpload(user);
+  if(user?.type === "customer") bindAvatarUpload(user);
 
   document.getElementById("header-search-form").addEventListener("submit", (e) => {
     e.preventDefault();

@@ -21,10 +21,11 @@
       <a href="index.html">Bảng điều khiển</a>
       <a href="san-pham.html">Sản phẩm</a>
       <a href="don-hang.html">Đơn hàng</a>
+      <a href="khieu-nai.html">Khiếu nại</a>
       <a href="doanh-thu.html" class="active">Doanh thu</a>
       <a href="thong-tin-htx.html">Thông tin HTX</a>
     </nav>
-    <a href="../index.html" class="back-link">← Về trang khách hàng</a>
+    <a href="index.html" class="back-link">← Về bảng điều khiển HTX</a>
   </aside>
 
   <main class="admin-main">
@@ -49,15 +50,11 @@
 
     <div class="revenue-tools-grid">
       <div class="admin-panel revenue-tax-panel">
-        <h3>Tính &amp; lưu doanh thu sau thuế</h3>
+        <h3>Doanh thu sản phẩm đã bán sau thuế</h3>
         <p class="revenue-help">
-          Nhập thuế suất áp dụng cho gian hàng, hệ thống sẽ tự tính doanh thu sau thuế. Nhấn "Lưu doanh thu" để chốt và ghi lại vào cơ sở dữ liệu (localStorage).
+          Hệ thống tự động áp dụng thuế suất cố định 10%. Nhấn "Lưu doanh thu" để chốt và ghi lại vào cơ sở dữ liệu (localStorage).
         </p>
         <form id="rv-save-form">
-          <div class="field">
-            <label for="rv-tax-rate">Thuế suất (%)</label>
-            <input type="number" id="rv-tax-rate" min="0" max="100" step="0.5" value="10">
-          </div>
           <div class="summary-card" id="rv-net-preview"></div>
           <button type="submit" class="btn btn-block">Lưu doanh thu sau thuế</button>
         </form>

@@ -39,5 +39,5 @@ export function renderFooter(basePath = ""){
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">© 2026 Nông Sản Xanh.</div>`;
+    <div class="footer-bottom">110124190_Nguyễn Minh Toàn_DA24TTD_Lập trình front-end cho sàn thương mại nông sản dựa trên mô hình Client-side và ES6 Modules. © 2026 Nông Sản Xanh.</div>`;
 }

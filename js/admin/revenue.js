@@ -7,7 +7,7 @@ import { requireFarmLogin, logout } from "../utils/auth.js";
 import { formatVND, formatDate, orderStatusLabel } from "../utils/format.js";
 
 initStorage();
-const user = requireFarmLogin("../dang-nhap.html");
+const user = requireFarmLogin("../dang-nhap.html?role=farm");
 
 // Trạng thái được tính là "đã bán" — đơn đã hoàn tất, tiền chắc chắn về gian hàng.
 const SOLD_STATUS = "completed";
@@ -16,7 +16,7 @@ if(user){
   document.getElementById("admin-user-name").textContent = user.name;
   document.getElementById("admin-logout").addEventListener("click", () => {
     logout();
-    window.location.href = "../index.html";
+    window.location.href = "../dang-nhap.html?role=farm";
   });
 
   const myProducts = getProducts().filter(p => p.farmId === user.farmId);
@@ -113,11 +113,10 @@ if(user){
   }
 
   /* ---------- Tính & lưu doanh thu sau thuế ---------- */
-  const taxInput = document.getElementById("rv-tax-rate");
   const netPreview = document.getElementById("rv-net-preview");
 
   function computeNet(){
-    const rate = Math.min(100, Math.max(0, Number(taxInput.value) || 0));
+    const rate = 10;
     const tax = Math.round(grossRevenue * rate / 100);
     const net = grossRevenue - tax;
     netPreview.innerHTML = `
@@ -126,7 +125,6 @@ if(user){
       <div class="summary-row total"><span>Doanh thu sau thuế</span><span>${formatVND(net)}</span></div>`;
     return { rate, tax, net };
   }
-  taxInput.addEventListener("input", computeNet);
   computeNet();
 
   document.getElementById("rv-save-form").addEventListener("submit", (e) => {

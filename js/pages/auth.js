@@ -11,17 +11,43 @@ renderFooter();
 /* ---------- Trang đăng nhập ---------- */
 const loginForm = document.getElementById("login-form");
 if(loginForm){
-  if(isLoggedIn()) window.location.href = getSignedInLandingPage();
-
-  let loginRole = "customer";
+  const farmAuthMode = new URLSearchParams(window.location.search).get("role") === "farm";
+  const currentUser = getCurrentUser();
+  if(farmAuthMode && currentUser?.type === "farm"){
+    window.location.replace("admin/index.html");
+  }
+  let loginRole = farmAuthMode ? "farm" : "customer";
+  if(farmAuthMode){
+    document.body.classList.add("farm-auth-mode");
+    const brandLink = document.querySelector(".auth-panel-brand");
+    if(brandLink) brandLink.href = "admin/index.html";
+    document.querySelectorAll("[data-login-role]").forEach(button => {
+      button.classList.toggle("is-active", button.dataset.loginRole === "farm");
+    });
+    const heading = document.querySelector(".auth-panel h2");
+    if(heading) heading.textContent = "Đăng nhập HTX";
+    const storyTitle = document.querySelector(".auth-story h1");
+    if(storyTitle) storyTitle.innerHTML = "Không gian quản lý,<br><span class=\"auth-title-accent\">dành cho HTX.</span>";
+    const storyText = document.querySelector(".auth-story p");
+    if(storyText) storyText.textContent = "Đăng nhập để quản lý sản phẩm, đơn hàng và doanh thu của hợp tác xã.";
+  }
   document.querySelectorAll("[data-login-role]").forEach(button => {
     button.addEventListener("click", () => {
+      if(button.dataset.loginRole === "farm" && getCurrentUser()?.type === "farm"){
+        window.location.replace("admin/index.html");
+        return;
+      }
       loginRole = button.dataset.loginRole;
+      document.body.classList.toggle("farm-auth-mode", loginRole === "farm");
       document.querySelectorAll("[data-login-role]").forEach(item => item.classList.toggle("is-active", item === button));
       const heading = document.querySelector(".auth-panel h2");
       const subtitle = document.querySelector(".auth-panel .sub");
-      if(heading) heading.textContent = loginRole === "farm" ? "Không gian nhà vườn" : "Đăng nhập";
+      if(heading) heading.textContent = loginRole === "farm" ? "Đăng nhập HTX" : "Đăng nhập";
       if(subtitle) subtitle.textContent = loginRole === "farm" ? "Đăng nhập để quản lý gian hàng và mùa vụ" : "Đăng nhập để mua sắm và theo dõi đơn hàng";
+      const storyTitle = document.querySelector(".auth-story h1");
+      const storyText = document.querySelector(".auth-story p");
+      if(storyTitle) storyTitle.innerHTML = loginRole === "farm" ? "Không gian quản lý,<br><span class=\"auth-title-accent\">dành cho HTX.</span>" : "Nông sản chất lượng,<br><span class=\"auth-title-accent\">an tâm chọn lựa.</span>";
+      if(storyText) storyText.textContent = loginRole === "farm" ? "Đăng nhập để quản lý sản phẩm, đơn hàng và doanh thu của hợp tác xã." : "Kết nối trực tiếp với nhà vườn và hợp tác xã, khám phá nông sản chất lượng từ khắp mọi miền Việt Nam.";
     });
   });
 
@@ -50,15 +76,15 @@ if(loginForm){
     }
     showNote(note, `Đăng nhập thành công! Xin chào ${result.user.name}.`, true);
     setTimeout(() => {
-      window.location.href = result.user.type === "admin" ? "sadmin/index.html" : result.user.type === "farm" ? "admin/index.html" : "tai-khoan.html";
-    }, 700);
+      window.location.replace(result.user.type === "admin" ? "sadmin/index.html" : result.user.type === "farm" ? "admin/index.html" : "tai-khoan.html");
+    }, 350);
   });
 }
 
 /* ---------- Trang đăng ký ---------- */
 const registerForm = document.getElementById("register-form");
 if(registerForm){
-  if(isLoggedIn()) window.location.href = getSignedInLandingPage();
+  if(isLoggedIn()) window.location.replace(getSignedInLandingPage());
 
   let role = "customer";
   const roleButtons = document.querySelectorAll(".role-toggle button");

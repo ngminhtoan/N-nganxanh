@@ -69,7 +69,7 @@ export function requireLogin(redirectTo = "dang-nhap.html"){
 }
 
 /** Dùng cho các trang admin: yêu cầu đăng nhập bằng tài khoản loại "farm". */
-export function requireFarmLogin(loginPage = "../dang-nhap.html"){
+export function requireFarmLogin(loginPage = "../dang-nhap.html?role=farm"){
   const user = getCurrentUser();
   if(!user || user.type !== "farm"){
     window.location.href = loginPage;
