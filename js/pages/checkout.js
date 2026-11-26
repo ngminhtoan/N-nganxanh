@@ -5,6 +5,7 @@ import { getCurrentUser, isLoggedIn } from "../utils/auth.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
 import { formatVND } from "../utils/format.js";
+import { validateVoucher, recordVoucherUse } from "../utils/voucher.js";
 
 initStorage();
 renderHeader("");
@@ -36,13 +37,29 @@ function initCheckout(){
   document.getElementById("co-address").value = user.address || "";
 
   const reviewBox = document.getElementById("order-review");
-  reviewBox.innerHTML = cart.map(item => `
+  reviewBox.innerHTML = `<div class="checkout-card-heading checkout-review-heading"><span class="checkout-card-icon" aria-hidden="true">▤</span><div><h2>Đơn hàng của bạn</h2><p>${cart.length} sản phẩm · Nông sản từ nhà vườn</p></div></div><div class="checkout-review-list">${cart.map(item => `
     <div class="order-review-item">
-      <span>${item.product.name} × ${item.quantity}</span>
-      <span>${formatVND(item.product.price * item.quantity)}</span>
-    </div>`).join("");
+      <span><strong>${item.product.name}</strong><small>Số lượng: ${item.quantity}</small></span>
+      <b>${formatVND(item.product.price * item.quantity)}</b>
+    </div>`).join("")}</div>`;
 
-  document.getElementById("checkout-total").textContent = formatVND(cartTotal());
+  const subtotal=cartTotal();
+  const shippingFee=30000;
+  let appliedVoucher=null, discount=0;
+  const renderTotal=()=>{
+    document.getElementById("checkout-subtotal").textContent=formatVND(subtotal);
+    document.getElementById("checkout-shipping").textContent=formatVND(shippingFee);
+    document.getElementById("checkout-discount").textContent=`−${formatVND(discount)}`;
+    document.getElementById("checkout-total").textContent=formatVND(Math.max(0,subtotal+shippingFee-discount));
+  };
+  renderTotal();
+  document.getElementById("apply-voucher").addEventListener("click",()=>{
+    const result=validateVoucher(document.getElementById("voucher-code").value,cart,{shippingFee});
+    const message=document.getElementById("voucher-message");
+    message.textContent=result.message;
+    message.style.color=result.ok?"var(--color-primary)":"var(--color-danger)";
+    appliedVoucher=result.ok?result.voucher:null; discount=result.ok?result.discount:0; renderTotal();
+  });
 
   document.getElementById("checkout-form").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -80,12 +97,13 @@ function initCheckout(){
       userId: user.id,
       customerName: name, phone, address, note,
       items: cart.map(i => ({ productId: i.productId, quantity: i.quantity })),
-      total: cartTotal(),
+      subtotal, shippingFee, discount, voucherCode:appliedVoucher?.code||null, total: Math.max(0,subtotal+shippingFee-discount),
       status: "pending",
       createdAt: new Date().toISOString().slice(0, 10),
     };
     orders.push(newOrder);
     saveOrders(orders);
+    if(appliedVoucher) recordVoucherUse(appliedVoucher.code);
     clearCart();
 
     alert(`Đặt hàng thành công! Mã đơn hàng #${newOrder.id}.`);

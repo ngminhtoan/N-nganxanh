@@ -25,7 +25,7 @@ export const SEED_USERS = [
     // Tài khoản Quản trị hệ thống (Super Admin) — quản lý toàn bộ gian hàng/HTX trên sàn.
     // Đăng nhập tại sadmin/dang-nhap.html (khác với đăng nhập nhà vườn/khách hàng).
     id: 100, type: "admin",
-    name: "Quản trị hệ thống", email: "admin@nongsanviet.vn", password: "admin123",
+    name: "Quản trị hệ thống", email: "admin@nongsanviet.vn", password: "admin@nongsanviet.vn",
     phone: "", address: "",
   },
 ];

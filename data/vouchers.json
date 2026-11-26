@@ -1,0 +1,8 @@
+[
+  {"code":"CUOITUAN10","name":"Cuối tuần tươi ngon","type":"percent","value":10,"maxDiscount":50000,"minOrder":200000,"startAt":"2026-01-01T00:00:00+07:00","endAt":"2027-12-31T23:59:59+07:00","daysOfWeek":[0,6],"usageLimit":500,"usedCount":0,"category":null},
+  {"code":"TET2027","name":"Chào Xuân Đinh Mùi","type":"fixed","value":50000,"minOrder":300000,"startAt":"2027-02-01T00:00:00+07:00","endAt":"2027-02-20T23:59:59+07:00","usageLimit":1000,"usedCount":0,"category":null},
+  {"code":"GIOVANG","name":"Xả hàng tươi giờ vàng","type":"percent","value":15,"maxDiscount":40000,"minOrder":100000,"startAt":"2026-01-01T00:00:00+07:00","endAt":"2027-12-31T23:59:59+07:00","timeStart":"16:00","timeEnd":"18:30","usageLimit":300,"usedCount":0,"category":"Rau củ"},
+  {"code":"FREESHIPNANG","name":"Miễn phí vận chuyển hàng nặng","type":"freeship","value":30000,"minOrder":250000,"minWeight":10,"startAt":"2026-01-01T00:00:00+07:00","endAt":"2027-12-31T23:59:59+07:00","usageLimit":500,"usedCount":0,"category":null},
+  {"code":"RAUXANH","name":"Ưu đãi rau củ","type":"percent","value":12,"maxDiscount":30000,"minOrder":100000,"startAt":"2026-01-01T00:00:00+07:00","endAt":"2027-12-31T23:59:59+07:00","usageLimit":500,"usedCount":0,"category":"Rau củ"},
+  {"code":"TRAICAY","name":"Ưu đãi trái cây","type":"percent","value":10,"maxDiscount":50000,"minOrder":150000,"startAt":"2026-01-01T00:00:00+07:00","endAt":"2027-12-31T23:59:59+07:00","usageLimit":500,"usedCount":0,"category":"Trái cây"}
+]

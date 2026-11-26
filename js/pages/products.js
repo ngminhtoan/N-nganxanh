@@ -1,5 +1,5 @@
 // js/pages/products.js
-import { initStorage, getPublicProducts, getFarms } from "../utils/storage.js";
+import { initStorage, getPublicProducts, getFarms, getVouchers } from "../utils/storage.js";
 import { addToCart } from "../utils/cart.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
@@ -22,6 +22,27 @@ const sortSelect = document.getElementById("sort-select");
 const filterMobileToggle = document.getElementById("filter-mobile-toggle");
 const filterMobileContent = document.getElementById("filter-mobile-content");
 const filterMobileMedia = window.matchMedia("(max-width: 1100px)");
+
+function renderVouchers(){
+  const box=document.getElementById("catalog-voucher-list");
+  const now=new Date();
+  const available=getVouchers().filter(v=>now<=new Date(v.endAt) && (v.usageLimit==null || v.usedCount<v.usageLimit));
+  if(!available.length){box.innerHTML='<p class="catalog-voucher-empty">Hiện chưa có mã giảm giá.</p>';return;}
+  const dateText=date=>new Date(date).toLocaleDateString("vi-VN");
+  box.innerHTML=available.map(v=>{
+    const offer=v.type==="freeship"?`Giảm phí vận chuyển đến ${Number(v.value).toLocaleString("vi-VN")}đ`:v.type==="percent"?`Giảm ${v.value}%${v.maxDiscount?`, tối đa ${Number(v.maxDiscount).toLocaleString("vi-VN")}đ`:""}`:`Giảm ${Number(v.value).toLocaleString("vi-VN")}đ`;
+    const rules=[v.minOrder?`Đơn từ ${Number(v.minOrder).toLocaleString("vi-VN")}đ`:"",v.farmName?`Sản phẩm của ${v.farmName}`:"",v.category?`Danh mục ${v.category}`:"",v.minWeight?`Từ ${v.minWeight} kg hàng`:"",v.daysOfWeek?"Chỉ Thứ 7, Chủ Nhật":"",v.timeStart?`${v.timeStart}–${v.timeEnd}`:"",`HSD ${dateText(v.endAt)}`].filter(Boolean).join(" · ");
+    return `<article class="catalog-voucher"><div class="catalog-voucher-cut" aria-hidden="true"></div><div class="catalog-voucher-offer">${offer}</div><strong class="catalog-voucher-name">${v.name}</strong><p>${rules}</p><div class="catalog-voucher-code-row"><code>${v.code}</code><button type="button" class="catalog-voucher-copy" data-voucher-code="${v.code}">Sao chép mã</button></div></article>`;
+  }).join("");
+}
+renderVouchers();
+document.getElementById("catalog-voucher-list").addEventListener("click",async event=>{
+  const button=event.target.closest("[data-voucher-code]");if(!button)return;
+  const code=button.dataset.voucherCode;
+  try{await navigator.clipboard.writeText(code);button.textContent="Đã sao chép ✓";}
+  catch{window.prompt("Sao chép mã giảm giá:",code);}
+  window.setTimeout(()=>{button.textContent="Sao chép mã";},1800);
+});
 
 function syncMobileFilterMenu(){
   const isSmallScreen = filterMobileMedia.matches;

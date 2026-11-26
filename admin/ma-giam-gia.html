@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mã giảm giá — Nông Sản Xanh</title>
+<link rel="stylesheet" href="../css/reset.css"><link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/admin.css"><link rel="stylesheet" href="../css/theme.css">
+</head>
+<body class="admin-body"><div class="admin-shell">
+  <aside class="admin-sidebar"><div class="logo"><img class="logo-img" src="../img/logo-nong-san-xanh.png" alt="Logo Nông Sản Xanh"> Nông Sản Xanh</div><nav>
+    <a href="index.html">Bảng điều khiển</a><a href="san-pham.html">Sản phẩm</a><a href="ma-giam-gia.html" class="active">Mã giảm giá</a><a href="don-hang.html">Đơn hàng</a><a href="khieu-nai.html">Khiếu nại</a><a href="doanh-thu.html">Doanh thu</a><a href="thong-tin-htx.html">Thông tin HTX</a>
+  </nav><a href="../san-pham.html" class="back-link">← Xem cửa hàng</a></aside>
+  <main class="admin-main"><div class="admin-topbar"><h1>Mã giảm giá</h1><div class="admin-user-chip">Xin chào, <strong id="admin-user-name"></strong> · <button type="button" id="admin-logout" class="admin-logout-button">Đăng xuất</button></div></div>
+    <section class="admin-panel"><h3>Tạo mã giảm giá cho sản phẩm của gian hàng</h3><p class="voucher-admin-intro">Mã này chỉ áp dụng cho sản phẩm của nhà vườn/HTX đang đăng nhập.</p>
+      <form id="voucher-form"><div class="admin-form-grid">
+        <div class="field"><label for="voucher-code">Mã giảm giá</label><input id="voucher-code" name="code" required maxlength="20" pattern="[A-Za-z0-9_-]+" placeholder="VD: VUONXANH10"></div>
+        <div class="field"><label for="voucher-name">Tên chương trình</label><input id="voucher-name" name="name" required maxlength="60" placeholder="Ưu đãi mùa thu hoạch"></div>
+        <div class="field"><label for="voucher-type">Hình thức ưu đãi</label><select id="voucher-type" name="type"><option value="percent">Giảm theo phần trăm (%)</option><option value="fixed">Giảm số tiền cố định (đ)</option><option value="freeship">Hỗ trợ phí vận chuyển (đ)</option></select></div>
+        <div class="field"><label for="voucher-value">Mức giảm</label><input id="voucher-value" name="value" type="number" min="1" required></div>
+        <div class="field"><label for="voucher-cap">Giảm tối đa (chỉ dùng cho %)</label><input id="voucher-cap" name="maxDiscount" type="number" min="0" placeholder="Để trống nếu không giới hạn"></div>
+        <div class="field"><label for="voucher-min">Giá trị đơn tối thiểu (đ)</label><input id="voucher-min" name="minOrder" type="number" min="0" value="0"></div>
+        <div class="field"><label for="voucher-category">Danh mục áp dụng</label><select id="voucher-category" name="category"><option value="">Tất cả sản phẩm của gian hàng</option><option>Rau củ</option><option>Trái cây</option><option>Gạo</option><option>Nông sản khô</option><option>Cà phê</option><option>Trà</option><option>Đặc sản vùng miền</option></select></div>
+        <div class="field"><label for="voucher-limit">Tổng lượt sử dụng</label><input id="voucher-limit" name="usageLimit" type="number" min="1" required value="100"></div>
+        <div class="field"><label for="voucher-start">Bắt đầu</label><input id="voucher-start" name="startAt" type="datetime-local" required></div>
+        <div class="field"><label for="voucher-end">Kết thúc</label><input id="voucher-end" name="endAt" type="datetime-local" required></div>
+      </div><p id="voucher-form-message" class="voucher-form-message" role="status" aria-live="polite"></p><button class="btn" type="submit">Tạo mã giảm giá</button></form>
+    </section>
+    <section class="admin-panel"><h3>Mã do gian hàng phát hành</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Mã / chương trình</th><th>Ưu đãi</th><th>Điều kiện</th><th>Thời hạn</th><th>Lượt dùng</th><th></th></tr></thead><tbody id="farm-vouchers-body"></tbody></table></div></section>
+  </main></div><script type="module" src="../js/admin/vouchers.js"></script></body></html>

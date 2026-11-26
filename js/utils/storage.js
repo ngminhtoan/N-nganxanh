@@ -7,6 +7,7 @@ import { PRODUCTS } from "../data/products.js";
 import { FARMS } from "../data/farms.js";
 import { SEED_USERS } from "../data/users.js";
 import { SEED_ORDERS } from "../data/orders.js";
+import { VOUCHERS } from "../data/vouchers.js";
 
 export const KEYS = {
   PRODUCTS: "nsv_products",
@@ -17,6 +18,7 @@ export const KEYS = {
   CURRENT_USER: "nsv_currentUser",
   REVENUE: "nsv_revenue_records",
   LEADS: "nsv_leads",
+  VOUCHERS: "nsv_vouchers",
 };
 
 export function getItem(key, fallback){
@@ -81,6 +83,7 @@ export function initStorage(){
   if(localStorage.getItem(KEYS.CART) === null) setItem(KEYS.CART, []);
   if(localStorage.getItem(KEYS.REVENUE) === null) setItem(KEYS.REVENUE, []);
   if(localStorage.getItem(KEYS.LEADS) === null) setItem(KEYS.LEADS, []);
+  if(localStorage.getItem(KEYS.VOUCHERS) === null) setItem(KEYS.VOUCHERS, VOUCHERS);
 }
 
 export function getProducts(){ return getItem(KEYS.PRODUCTS, []); }
@@ -101,6 +104,8 @@ export function saveUsers(list){ setItem(KEYS.USERS, list); }
 
 export function getOrders(){ return getItem(KEYS.ORDERS, []); }
 export function saveOrders(list){ setItem(KEYS.ORDERS, list); }
+export function getVouchers(){ return getItem(KEYS.VOUCHERS, VOUCHERS); }
+export function saveVouchers(list){ setItem(KEYS.VOUCHERS, list); }
 
 /** Lịch sử các lần nhà vườn/HTX "chốt" doanh thu (đã lưu thuế suất + doanh thu sau thuế). */
 export function getRevenueRecords(){ return getItem(KEYS.REVENUE, []); }

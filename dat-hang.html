@@ -17,10 +17,10 @@
 
 <header class="site-header"><div id="site-header"></div></header>
 
-<section class="section">
+<section class="section checkout-page">
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">Trang chủ</a> / <a href="gio-hang.html">Giỏ hàng</a> / Đặt hàng</div>
-    <div class="section-head"><div><h2>Đặt hàng</h2></div></div>
+    <div class="checkout-heading"><div><span class="checkout-eyebrow">MUA SẮM AN TÂM · NÔNG SẢN TƯƠI</span><h1>Hoàn tất đơn hàng</h1><p>Kiểm tra thông tin nhận hàng và xác nhận đơn hàng của bạn.</p></div><div class="checkout-steps" aria-label="Tiến trình đặt hàng"><span class="is-done">✓ Giỏ hàng</span><i></i><span class="is-current">2&nbsp; Đặt hàng</span><i></i><span>3&nbsp; Hoàn tất</span></div></div>
 
     <div class="login-required-box" id="login-required">
       <div class="glyph" style="margin-bottom:14px;"><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock-keyhole" aria-hidden="true" style="display:inline-block; vertical-align:middle;"><circle cx="12" cy="16" r="1"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></svg></div>
@@ -30,35 +30,39 @@
 
     <div class="checkout-layout" id="checkout-content">
       <div>
-        <div class="account-card">
-          <h3>Thông tin nhận hàng</h3>
+        <div class="account-card checkout-form-card">
+          <div class="checkout-card-heading"><span class="checkout-card-icon" aria-hidden="true">⌂</span><div><h2>Thông tin nhận hàng</h2><p>Nhập địa chỉ để nhà vườn giao nông sản đến bạn.</p></div></div>
           <form id="checkout-form">
             <div class="field">
               <label for="co-name">Họ và tên</label>
-              <input type="text" id="co-name">
+              <input type="text" id="co-name" autocomplete="name" placeholder="Nguyễn Văn A" required>
             </div>
             <div class="field-row">
               <div class="field">
                 <label for="co-phone">Số điện thoại</label>
-                <input type="tel" id="co-phone">
+                <input type="tel" id="co-phone" autocomplete="tel" inputmode="tel" placeholder="0912 345 678" required>
               </div>
               <div class="field">
                 <label for="co-address">Địa chỉ nhận hàng</label>
-                <input type="text" id="co-address">
+                <input type="text" id="co-address" autocomplete="street-address" placeholder="Số nhà, đường, phường/xã, tỉnh/thành" required>
               </div>
             </div>
             <div class="field">
               <label for="co-note">Ghi chú (không bắt buộc)</label>
-              <textarea id="co-note" rows="3"></textarea>
+              <textarea id="co-note" rows="3" placeholder="Ví dụ: giao giờ hành chính, gọi trước khi đến..."></textarea>
             </div>
-            <button type="submit" class="btn btn-block">Xác nhận đặt hàng</button>
+            <button type="submit" class="btn btn-block checkout-submit"><span>Xác nhận đặt hàng</span><span aria-hidden="true">→</span></button>
           </form>
         </div>
       </div>
 
       <div>
-        <div class="order-review" id="order-review"></div>
-        <div class="summary-card">
+        <div class="order-review checkout-review" id="order-review"></div>
+        <div class="summary-card checkout-summary">
+          <div class="checkout-voucher-heading"><div><span class="checkout-mini-label">ƯU ĐÃI</span><label for="voucher-code">Mã giảm giá</label></div><span aria-hidden="true">％</span></div><div class="checkout-voucher-entry"><input id="voucher-code" type="text" placeholder="Nhập mã voucher"><button type="button" class="btn btn-outline" id="apply-voucher">Áp dụng</button></div><small id="voucher-message" class="checkout-voucher-message" role="status" aria-live="polite"></small>
+          <div class="summary-row"><span>Tạm tính</span><span id="checkout-subtotal">0đ</span></div>
+          <div class="summary-row"><span>Phí vận chuyển</span><span id="checkout-shipping">30.000đ</span></div>
+          <div class="summary-row"><span>Giảm giá</span><span id="checkout-discount">0đ</span></div>
           <div class="summary-row total"><span>Tổng thanh toán</span><span id="checkout-total">0đ</span></div>
         </div>
       </div>
