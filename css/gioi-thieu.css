@@ -113,12 +113,19 @@
 .bg-section::after{ content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; background:var(--bg-wash); }
 
 /* Từng khối: kích thước ảnh = 1920px rộng, cao theo đúng tỉ lệ ảnh gốc */
-.bg-section--values{    --bg-h:725px; --bg-top:#F0FCF1; --bg-bottom:#E0FAE3; --bg-wash:linear-gradient(rgba(255,255,255,.15), rgba(255,255,255,.25)); }
+.bg-section--values{    --bg-w:100vw; --bg-h:680px; --bg-top:#F0FCF1; --bg-bottom:#E0FAE3; --bg-wash:linear-gradient(rgba(255,255,255,.15), rgba(255,255,255,.25)); }
 .bg-section--values::before{    background-image:url('../img/certs/2ea6c939-b04e-49af-b19c-60095081beaf.png'); }
 
 
-.bg-section--journey{    --bg-h:850px; --bg-top:#D9EED1; --bg-bottom:#779137; --bg-wash:rgba(238,248,229,.15); }
+.bg-section--journey{    --bg-w:100vw; --bg-h:850px; --bg-top:#D9EED1; --bg-bottom:#779137; --bg-wash:rgba(238,248,229,.15); }
 .bg-section--journey::before{    background-image:url('../img/certs/1203b9d2-28cd-44be-809f-8f7239ae53a3.png'); }
+
+/* Các ảnh này đã có phần chân nền trong artwork; không làm mờ đáy để lộ dải màu nền dư. */
+.bg-section--values::before,
+.bg-section--journey::before{
+  -webkit-mask-image:none;
+  mask-image:none;
+}
 
 .bg-section--banner{    --bg-h:600px; --bg-top:#F0FCF1; --bg-bottom:#E0FAE3; --bg-wash:linear-gradient(rgba(255,255,255,.15), rgba(255,255,255,.25)); }
 .bg-section--banner::before{    background-image:url('../img/banners/Nền xanh pastel họa tiết lưới và sóng.png'); }

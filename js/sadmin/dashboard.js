@@ -282,7 +282,7 @@ if(admin){
     setItem(SETTINGS_KEY, settings);
     const message = document.getElementById("settings-system-message"); message.textContent = "Đã lưu cấu hình."; setTimeout(() => { if(message.isConnected) message.textContent = ""; }, 2000);
   });
-  const sections = { overview:"Tổng quan", farms:"Nhà bán nông sản", products:"Duyệt sản phẩm", complaints:"Quản lý khiếu nại", reports:"Báo cáo thống kê", settings:"Cấu hình & bảo mật" };
+  const sections = { overview:"Tổng quan", farms:"Nhà bán nông sản", products:"Duyệt sản phẩm", complaints:"Quản lý khiếu nại", reports:"Báo cáo thống kê", settings:"Cấu hình bảo mật" };
   document.querySelectorAll(".sadmin-nav [data-section]").forEach(button => button.addEventListener("click", () => {
     const key = button.dataset.section;
     document.querySelectorAll(".sadmin-nav [data-section]").forEach(item => item.classList.toggle("is-active", item === button));

@@ -1,6 +1,6 @@
 // js/pages/checkout.js
 import { initStorage, getProducts, saveProducts, getOrders, saveOrders, isProductApproved } from "../utils/storage.js";
-import { getCartWithProducts, cartTotal, clearCart } from "../utils/cart.js";
+import { getCartWithProducts, removeCartItems } from "../utils/cart.js";
 import { getCurrentUser, isLoggedIn } from "../utils/auth.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
@@ -25,10 +25,16 @@ if(!isLoggedIn()){
 
 function initCheckout(){
   const user = getCurrentUser();
-  const cart = getCartWithProducts();
+  const allCartItems = getCartWithProducts();
+  const selectionKey = "nsv_checkout_product_ids";
+  let selectedIds;
+  try{ selectedIds = JSON.parse(sessionStorage.getItem(selectionKey)); }catch{ selectedIds = null; }
+  const cart = Array.isArray(selectedIds)
+    ? allCartItems.filter(item => selectedIds.map(Number).includes(Number(item.productId)))
+    : allCartItems;
 
   if(cart.length === 0){
-    checkoutContent.innerHTML = `<div class="state-box" style="grid-column:1/-1;"><div class="glyph">🛒</div><p>Giỏ hàng đang trống, không thể đặt hàng.</p><a href="san-pham.html" class="btn btn-outline">Chọn sản phẩm</a></div>`;
+    checkoutContent.innerHTML = `<div class="state-box" style="grid-column:1/-1;"><div class="glyph">🛒</div><p>${allCartItems.length ? "Bạn chưa chọn sản phẩm nào để thanh toán." : "Giỏ hàng đang trống, không thể đặt hàng."}</p><a href="gio-hang.html" class="btn btn-outline">Quay lại giỏ hàng</a></div>`;
     return;
   }
 
@@ -43,8 +49,13 @@ function initCheckout(){
       <b>${formatVND(item.product.price * item.quantity)}</b>
     </div>`).join("")}</div>`;
 
-  const subtotal=cartTotal();
-  const shippingFee=30000;
+  const subtotal=cart.reduce((sum,item)=>sum+item.product.price*item.quantity,0);
+  const totalWeight=cart.reduce((sum,item)=>{
+    const unit=(item.product.unit||"").toLowerCase();
+    const weight=Number(item.product.weightKg)||(unit==="kg"?1:0);
+    return sum+weight*item.quantity;
+  },0);
+  const shippingFee=totalWeight>5?100000:30000;
   let appliedVoucher=null, discount=0;
   const renderTotal=()=>{
     document.getElementById("checkout-subtotal").textContent=formatVND(subtotal);
@@ -104,7 +115,8 @@ function initCheckout(){
     orders.push(newOrder);
     saveOrders(orders);
     if(appliedVoucher) recordVoucherUse(appliedVoucher.code);
-    clearCart();
+    removeCartItems(cart.map(item => item.productId));
+    sessionStorage.removeItem(selectionKey);
 
     alert(`Đặt hàng thành công! Mã đơn hàng #${newOrder.id}.`);
     window.location.href = "lich-su-don-hang.html";

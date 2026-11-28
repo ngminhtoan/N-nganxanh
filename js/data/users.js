@@ -6,7 +6,7 @@
 export const SEED_USERS = [
   {
     id: 1, type: "customer",
-    name: "Nguyễn Thị Lan", email: "khachhang@demo.vn", password: "123456",
+    name: "Nguyễn Minh Toàn", email: "khachhang@demo.vn", password: "123456",
     phone: "0901 234 567", address: "12 Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh",
   },
   {

@@ -1,0 +1,80 @@
+/* Điều chỉnh dùng chung cho điện thoại, máy tính bảng và màn hình cảm ứng. */
+img, video, iframe{ max-width:100%; }
+button, .btn, a{ touch-action:manipulation; }
+button, .btn{ min-height:40px; }
+input, select, textarea{ max-width:100%; }
+
+@media (max-width: 1024px){
+  :root{ --container:100%; }
+  .wrap, .banner-inner{ padding-right:24px; padding-left:24px; }
+  .header-top{ gap:16px; padding-right:24px; padding-left:24px; }
+  .main-nav{ gap:16px; }
+  .shop-block{ gap:32px; }
+  .account-layout{ grid-template-columns:190px minmax(0,1fr); gap:22px; }
+}
+
+@media (max-width: 760px){
+  .wrap, .banner-inner{ padding-right:18px; padding-left:18px; }
+  .section{ padding:44px 0; }
+  .section-tight{ padding:30px 0; }
+  .section-head{ align-items:flex-start; gap:12px; margin-bottom:22px; }
+  .shop-block{ grid-template-columns:minmax(0,1fr); gap:22px; padding:30px 0; }
+  .shop-block > *{ min-width:0; }
+  .account-layout{ grid-template-columns:minmax(0,1fr); gap:16px; }
+  .account-nav{ display:flex; gap:6px; overflow-x:auto; padding:8px; -webkit-overflow-scrolling:touch; }
+  .account-nav a{ flex:0 0 auto; min-height:42px; display:flex; align-items:center; white-space:nowrap; }
+  .account-card{ padding:20px; }
+  .cart-layout, .checkout-layout{ gap:18px; }
+  .detail-grid{ gap:22px; }
+  .detail-actions{ flex-wrap:wrap; }
+  .detail-actions > *{ flex:1 1 180px; }
+  .site-footer{ margin-top:44px; padding:40px 0 22px; }
+  .footer-grid{ gap:22px; }
+  .auth-shell{ margin:32px auto; padding:28px 22px; }
+  .table-wrap, .order-table-wrap, .admin-table-wrap{ max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table{ min-width:600px; }
+}
+
+@media (max-width: 560px){
+  .wrap, .banner-inner{ padding-right:14px; padding-left:14px; }
+  h2{ font-size:1.45rem; }
+  .header-top{ gap:10px; padding:7px 14px; }
+  .logo.header-logo{ flex:0 0 58px; width:58px; }
+  .header-actions{ gap:11px; }
+  .account-btn.login-link{ min-height:40px; padding:7px 11px; font-size:.78rem; }
+  .icon-btn, .nav-toggle{ min-width:40px; min-height:40px; display:inline-flex; align-items:center; justify-content:center; }
+  .mobile-menu{ padding:10px 14px 14px; }
+  .mobile-menu a{ min-height:44px; display:flex; align-items:center; }
+  .category-grid{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
+  .category-card{ padding:15px 7px; }
+  .category-card .glyph{ font-size:1.55rem; margin-bottom:6px; }
+  .category-card span{ font-size:.75rem; }
+  .farm-grid{ grid-template-columns:minmax(0,1fr); gap:14px; }
+  .farm-card{ padding:17px; }
+  .cert-grid{ gap:10px; }
+  .cert-card{ padding:16px 10px; }
+  .product-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .product-actions{ flex-wrap:wrap; }
+  .product-actions > .btn{ flex:1 1 100%; white-space:normal; }
+  .field-row{ grid-template-columns:minmax(0,1fr); gap:0; }
+  .account-card{ padding:16px 14px; }
+  .info-row{ align-items:flex-start; gap:12px; font-size:.82rem; }
+  .info-row > :last-child{ text-align:right; overflow-wrap:anywhere; }
+  .qty-row{ flex-wrap:wrap; gap:10px; }
+  .cart-item{ grid-template-columns:minmax(0,1fr); }
+  .banner{ padding:48px 0 54px; }
+  .banner-inner{ gap:20px; }
+  .banner-visual{ max-width:min(100%,260px); }
+  .banner-actions{ gap:9px; }
+  .banner-actions .btn{ flex:1 1 150px; }
+  .state-box{ padding:42px 14px; }
+  .cart-notice-dialog{ padding:28px 20px 24px; }
+  .footer-grid{ grid-template-columns:1fr 1fr; gap:20px 14px; }
+}
+
+@media (max-width: 360px){
+  .category-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .product-grid{ grid-template-columns:minmax(0,1fr); }
+  .footer-grid{ grid-template-columns:minmax(0,1fr); }
+  .header-actions{ gap:6px; }
+}

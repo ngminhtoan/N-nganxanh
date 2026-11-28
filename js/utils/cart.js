@@ -53,6 +53,11 @@ export function removeFromCart(productId){
   saveCart(cart);
 }
 
+export function removeCartItems(productIds){
+  const ids = new Set(productIds.map(Number));
+  saveCart(getCart().filter(item => !ids.has(Number(item.productId))));
+}
+
 export function clearCart(){
   saveCart([]);
 }

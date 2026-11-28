@@ -1,6 +1,6 @@
 // js/pages/cart.js
 import { initStorage, getProducts } from "../utils/storage.js";
-import { getCartWithProducts, updateCartQuantity, removeFromCart, cartTotal } from "../utils/cart.js";
+import { getCartWithProducts, updateCartQuantity, removeFromCart } from "../utils/cart.js";
 import { renderHeader } from "../components/header.js";
 import { renderFooter } from "../components/footer.js";
 import { formatVND } from "../utils/format.js";
@@ -14,6 +14,19 @@ renderFooter();
 const tableWrap = document.getElementById("cart-table-wrap");
 const emptyState = document.getElementById("cart-empty");
 const body = document.getElementById("cart-body");
+const SELECTION_KEY = "nsv_checkout_product_ids";
+const checkoutLink = document.getElementById("checkout-selected");
+
+function selectedIds(cart){
+  let ids;
+  try{ ids = JSON.parse(sessionStorage.getItem(SELECTION_KEY)); }catch{ ids = null; }
+  if(!Array.isArray(ids)) ids = cart.map(item => item.productId);
+  const validIds = new Set(cart.map(item => Number(item.productId)));
+  ids = [...new Set(ids.map(Number).filter(id => validIds.has(id)))];
+  cart.forEach(item => { if(!ids.includes(Number(item.productId)) && !sessionStorage.getItem(SELECTION_KEY)) ids.push(Number(item.productId)); });
+  sessionStorage.setItem(SELECTION_KEY, JSON.stringify(ids));
+  return ids;
+}
 
 function render(){
   const cart = getCartWithProducts();
@@ -25,12 +38,14 @@ function render(){
   }
   tableWrap.style.display = "grid";
   emptyState.style.display = "none";
+  const selected = selectedIds(cart);
 
   body.innerHTML = cart.map(item => {
     const p = item.product;
     const atMax = item.quantity >= p.stock;
     return `
       <tr>
+        <td><input type="checkbox" class="js-cart-select" data-id="${p.id}" aria-label="Chọn ${p.name}" ${selected.includes(Number(p.id)) ? "checked" : ""}></td>
         <td>
           <div class="cart-item">
             <div class="cart-thumb">${imgTag(productImgSrc(p), p.name)}</div>
@@ -54,8 +69,28 @@ function render(){
       </tr>`;
   }).join("");
 
-  document.getElementById("cart-subtotal").textContent = formatVND(cartTotal());
-  document.getElementById("cart-total").textContent = formatVND(cartTotal());
+  const updateSelectionSummary = () => {
+    const chosen = [...body.querySelectorAll(".js-cart-select:checked")].map(input => Number(input.dataset.id));
+    sessionStorage.setItem(SELECTION_KEY, JSON.stringify(chosen));
+    const selectedItems = cart.filter(item => chosen.includes(Number(item.productId)));
+    const selectedTotal = selectedItems.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+    document.getElementById("cart-selection-count").textContent = `${selectedItems.length} sản phẩm được chọn`;
+    document.getElementById("cart-subtotal").textContent = formatVND(selectedTotal);
+    document.getElementById("cart-total").textContent = formatVND(selectedTotal);
+    const allSelected = chosen.length === cart.length;
+    document.getElementById("cart-select-all").checked = allSelected;
+    checkoutLink.setAttribute("aria-disabled", chosen.length ? "false" : "true");
+    checkoutLink.classList.toggle("is-disabled", !chosen.length);
+  };
+  body.querySelectorAll(".js-cart-select").forEach(input => input.addEventListener("change", updateSelectionSummary));
+  document.getElementById("cart-select-all").onchange = event => {
+    body.querySelectorAll(".js-cart-select").forEach(input => { input.checked = event.target.checked; });
+    updateSelectionSummary();
+  };
+  checkoutLink.onclick = event => {
+    if(checkoutLink.getAttribute("aria-disabled") === "true") event.preventDefault();
+  };
+  updateSelectionSummary();
 
   body.querySelectorAll(".js-minus").forEach(btn => btn.addEventListener("click", () => {
     const cart = getCartWithProducts();

@@ -69,3 +69,96 @@
 .sadmin-farm-avatar{position:relative;overflow:hidden}.sadmin-farm-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#fff}
 .sadmin-complaint-reply-form{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:8px 12px;margin-top:14px;padding-top:12px;border-top:1px solid #edf1e9}.sadmin-complaint-reply-form label{grid-column:1/-1;color:#526653;font-size:.68rem;font-weight:700}.sadmin-complaint-reply-form textarea{width:100%;min-height:58px;padding:9px 10px;border:1px solid #dfe7dc;border-radius:7px;background:#fff;color:#344a38;font:inherit;font-size:.72rem;resize:vertical}.sadmin-complaint-reply-form textarea:focus{outline:3px solid rgba(66,121,69,.12);border-color:#79a578}.sadmin-complaint-reply-form .sadmin-primary-button{min-width:125px}.sadmin-complaint-reply{margin-top:12px;padding:10px 12px;border-left:3px solid #76a56c;border-radius:0 7px 7px 0;background:#f4f8f1;color:#526653;font-size:.7rem}.sadmin-complaint-reply p{margin:5px 0 0}
 @media(max-width:620px){.sadmin-complaint-reply-form{grid-template-columns:1fr}.sadmin-complaint-reply-form label{grid-column:auto}.sadmin-complaint-reply-form .sadmin-primary-button{width:100%}}
+
+/* Cấu hình hệ thống: nhóm thông tin quản trị thành các bảng điều khiển rõ ràng. */
+#section-settings .sadmin-page-heading{
+  margin-bottom:20px;
+  padding:18px 22px;
+  border:1px solid #e0e8dc;
+  border-radius:12px;
+  background:#fff;
+}
+#section-settings .sadmin-page-heading .sadmin-eyebrow::before{
+  display:none;
+}
+#section-settings .sadmin-heading-mark{
+  width:48px;
+  height:48px;
+  border-color:#dce7d7;
+  border-radius:12px;
+  background:#f1f6ed;
+}
+#section-settings .sadmin-settings-grid{
+  gap:0 16px;
+  align-items:stretch;
+}
+#section-settings .sadmin-card{
+  padding:22px;
+  border-color:#e1e9de;
+  border-radius:12px;
+  box-shadow:0 3px 12px rgba(31,65,39,.035);
+}
+#section-settings .sadmin-settings-grid .sadmin-card{
+  margin-bottom:16px;
+}
+#section-settings .sadmin-card-heading{
+  margin-bottom:18px;
+  padding-bottom:14px;
+}
+#section-settings .sadmin-card-heading h2{
+  font-size:1.12rem;
+}
+#section-settings .sadmin-settings-form,
+#section-settings #settings-system-form{
+  gap:16px;
+}
+#section-settings .sadmin-settings-form label,
+#section-settings #settings-system-form label{
+  gap:7px;
+  color:#526454;
+  font-size:.76rem;
+}
+#section-settings .sadmin-settings-form input,
+#section-settings #settings-system-form input,
+#section-settings #settings-system-form select{
+  min-height:42px;
+  padding:9px 12px;
+  border-color:#dce5d8;
+  border-radius:8px;
+  color:#2e4233;
+  font-size:.8rem;
+}
+#section-settings #settings-system-form{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px 20px;
+}
+#section-settings #settings-system-form .sadmin-form-wide{
+  padding-top:4px;
+}
+#section-settings .sadmin-primary-button{
+  min-height:40px;
+  padding:0 18px;
+  border-radius:8px;
+  font-size:.76rem;
+}
+#section-settings .sadmin-security-card{
+  border-left:3px solid #8aa87b;
+}
+#section-settings .sadmin-security-details>div{
+  min-height:76px;
+  align-content:center;
+  padding:14px 16px;
+  border-radius:8px;
+}
+#section-settings .sadmin-security-details span{font-size:.7rem}
+#section-settings .sadmin-security-details strong{font-size:.78rem}
+#section-settings .sadmin-security-note{
+  padding:13px 15px;
+  border-radius:8px;
+  font-size:.72rem;
+}
+@media(max-width:620px){
+  #section-settings .sadmin-page-heading{padding:16px}
+  #section-settings .sadmin-card{padding:18px}
+  #section-settings #settings-system-form{grid-template-columns:1fr}
+}
